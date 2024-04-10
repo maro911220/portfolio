@@ -1,0 +1,41 @@
+@import "./variables/_variables.scss";
+
+.home {
+  @apply mx-auto overflow-hidden;
+  @apply bg-white;
+}
+
+/* Hero */
+.home-hero {
+  @apply relative h-[50vw] max-h-[900px] min-h-[70vh] overflow-hidden;
+  @apply bg-dark;
+
+  &-wrap {
+    @include container;
+    @apply relative h-full flex;
+  }
+
+  &-con {
+    @apply relative z-[2] flex flex-col justify-center gap-2;
+    &__title {
+      @apply text-6xl text-white;
+    }
+
+    &__sub {
+      @apply text-lg text-gray-500;
+    }
+  }
+
+  &-imgbox {
+    @apply absolute top-[100px] left-0 w-full h-full;
+  }
+
+  &-img {
+    @apply w-full h-full object-contain object-right-bottom;
+  }
+}
+
+/* Skills */
+.home-skills {
+  @apply h-[280px];
+}

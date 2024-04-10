@@ -1,0 +1,11 @@
+@mixin container {
+  @apply max-w-screen-2xl w-full px-5 mx-auto;
+}
+
+@mixin md($size) {
+  @if ($size == "max") {
+    @media (min-width: 1536px) {
+      @content;
+    }
+  }
+}

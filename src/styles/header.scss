@@ -1,0 +1,31 @@
+@import "./variables/_variables.scss";
+
+.header {
+  @apply absolute top-0 z-[9] w-full;
+
+  &-con {
+    @include container;
+    @apply flex items-center justify-between text-white h-[80px];
+  }
+
+  &-title {
+    @apply text-3xl uppercase font-bold;
+  }
+
+  &-git {
+    @apply text-4xl;
+  }
+
+  &-nav {
+    @apply fixed left-[50%] bottom-[32px] translate-x-[-50%] flex p-2 rounded-full;
+    @apply text-white bg-gradient-to-tl to-body/80 from-black border border-solid border-gray-500;
+
+    button {
+      @apply first-letter:uppercase px-4 py-2 rounded-full transition-all;
+
+      &:hover {
+        @apply bg-gray-600;
+      }
+    }
+  }
+}
