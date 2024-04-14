@@ -2,7 +2,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -17,17 +16,15 @@
     --background-end-rgb: 0, 0, 0;
   }
 } */
-
 @font-face {
-  font-family: "DNFBitBitv2";
-  font-style: normal;
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
   font-weight: 400;
-  src: url("//cdn.df.nexon.com/img/common/font/DNFBitBitv2.otf")
-    format("opentype");
+  font-style: normal;
 }
-
 body {
-  font-family: "DNFBitBitv2";
+  font-family: "Pretendard-Regular";
   @apply bg-body;
 }
 
