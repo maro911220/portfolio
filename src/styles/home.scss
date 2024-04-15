@@ -1,13 +1,26 @@
 @import "./variables/_variables.scss";
+@property --angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@keyframes textGradient {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
 
 .home {
-  @apply mx-auto overflow-hidden;
-  @apply bg-white;
+  @apply bg-white text-gray-800;
 }
 
 /* Hero */
 .home-hero {
-  @apply relative h-[50vw] max-h-[900px] min-h-[70vh] overflow-hidden;
+  @apply relative h-[100vh] min-h-[700px] max-h-[920px] overflow-hidden;
 
   &-wrap {
     @include container;
@@ -15,29 +28,60 @@
   }
 
   &-con {
-    @apply relative z-[2] flex flex-col justify-center gap-2;
+    @apply relative z-[3] flex flex-col justify-center gap-2;
     &__title {
-      @apply text-7xl;
+      @apply text-8xl relative;
+      text-shadow: 0 2px #fff;
+      b {
+        text-shadow: none;
+        color: transparent;
+        background: linear-gradient(
+          var(--angle),
+          rgba(34, 193, 195, 1) 0%,
+          rgba(144, 190, 120, 1) 25%,
+          rgba(183, 189, 93, 1) 50%,
+          rgba(213, 188, 73, 1) 75%,
+          rgba(253, 187, 45, 1) 100%
+        );
+        background-clip: text;
+        animation: textGradient 2s linear infinite;
+      }
     }
 
     &__sub {
-      @apply text-2xl text-gray-500;
+      @apply my-6 text-2xl text-gray-500 leading-[1.4];
+      text-shadow: 0 2px #fff;
     }
   }
 
   &-imgbox {
     @apply absolute top-0 left-0 w-full h-full;
     &-canvas {
-      @apply absolute right-0 top-[50%] translate-y-[-50%] w-full max-w-[750px] h-full z-[2];
+      @apply absolute right-0 top-[50%] translate-y-[-50%] w-full min-w-[600px] max-w-[750px] h-full z-[2];
     }
-  }
-
-  &-img {
-    @apply w-full h-full object-contain object-right-bottom;
   }
 }
 
 /* Skills */
 .home-skills {
-  @apply h-[280px];
+  @apply h-[280px] bg-black;
+}
+
+/* About */
+.home-about {
+  @include container;
+  &-con {
+    @apply relative gap-[20px]  my-0 mx-auto flex items-start;
+  }
+
+  &-left {
+    @apply flex-none w-[400px] sticky top-[20px];
+  }
+
+  &-right {
+    @apply flex flex-col gap-[20px];
+    &-box {
+      @apply sticky top-[20px] rounded p-[20px] border border-solid h-[40vh] bg-white;
+    }
+  }
 }

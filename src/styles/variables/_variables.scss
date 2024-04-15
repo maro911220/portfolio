@@ -1,10 +1,25 @@
 @mixin container {
-  @apply max-w-screen-2xl w-full px-5 mx-auto;
+  @apply max-w-screen-2xl w-full px-10 mx-auto;
 }
 
 @mixin md($size) {
-  @if ($size == "max") {
-    @media (min-width: 1536px) {
+  @if ($size == "xl") {
+    @media (max-width: 1420px) {
+      @content;
+    }
+  }
+  @if ($size == "lg") {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+  @if ($size == "md") {
+    @media (max-width: 740px) {
+      @content;
+    }
+  }
+  @if ($size == "sm") {
+    @media (max-width: 480px) {
       @content;
     }
   }

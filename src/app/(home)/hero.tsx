@@ -15,10 +15,13 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
             Ref.current[0] = e;
           }}
         >
-          <h2 className="home-hero-con__title">Hi, I am Maro</h2>
+          <h2 className="home-hero-con__title">
+            Hi, I am <b>Maro</b>
+          </h2>
           <p className="home-hero-con__title"> I&apos;m web publisher</p>
           <p className="home-hero-con__sub">
-            and I&apos;m aiming to be a front-end developer.
+            I like implementing responsive web and using animation skills.
+            <br /> I&apos;m aiming to be a front-end developer.
           </p>
         </div>
         <div className="home-hero-imgbox">
@@ -57,7 +60,7 @@ function Model() {
       object={scene}
       ref={ref}
       scale={0.8}
-      position={[0, -1, 0]}
+      position={[0, -0.9, 0]}
       rotation={[0.1, -0.4, 0]}
     />
   );
@@ -67,7 +70,7 @@ function Shadows() {
   return (
     <>
       <Box
-        position={[0.01, -0.38, -0.35]}
+        position={[0.01, -0.5, -0.35]}
         args={[0.3, 1.5, 1.2]}
         rotation={[0, 0, 0]}
         castShadow
@@ -76,7 +79,7 @@ function Shadows() {
       </Box>
       <mesh
         rotation={[-0.5 * Math.PI, 0.02, 0]}
-        position={[0, -1.2, 0]}
+        position={[0, -1.15, 0]}
         receiveShadow
       >
         <planeGeometry args={[10, 10]} />
