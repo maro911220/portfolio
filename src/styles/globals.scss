@@ -8,14 +8,7 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
-/* 다크모드 사용 예정 없음 */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
+
 @font-face {
   font-family: "Freesentation-9Black";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
@@ -23,9 +16,9 @@
   font-weight: 900;
   font-style: normal;
 }
+
 body {
   font-family: "Freesentation-9Black";
-  @apply bg-body;
 }
 
 /* 임시 */

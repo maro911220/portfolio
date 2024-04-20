@@ -1,5 +1,11 @@
 @import "./variables/_variables.scss";
-@property --angle {
+
+.home {
+  @apply bg-white text-gray-800;
+}
+
+/* Hero */
+@property --textAngle {
   syntax: "<angle>";
   inherits: true;
   initial-value: 0deg;
@@ -7,18 +13,13 @@
 
 @keyframes textGradient {
   0% {
-    --angle: 0deg;
+    --textAngle: 0deg;
   }
   100% {
-    --angle: 360deg;
+    --textAngle: 360deg;
   }
 }
 
-.home {
-  @apply bg-white text-gray-800;
-}
-
-/* Hero */
 .home-hero {
   @apply relative h-[100vh] min-h-[700px] max-h-[920px] overflow-hidden;
 
@@ -28,7 +29,7 @@
   }
 
   &-con {
-    @apply relative z-[3] flex flex-col justify-center gap-2;
+    @apply relative z-[3] flex flex-col justify-center;
     &__title {
       @apply text-8xl relative;
       text-shadow: 0 2px #fff;
@@ -36,7 +37,7 @@
         text-shadow: none;
         color: transparent;
         background: linear-gradient(
-          var(--angle),
+          var(--textAngle),
           rgba(34, 193, 195, 1) 0%,
           rgba(144, 190, 120, 1) 25%,
           rgba(183, 189, 93, 1) 50%,
@@ -49,7 +50,7 @@
     }
 
     &__sub {
-      @apply my-6 text-2xl text-gray-500 leading-[1.4];
+      @apply my-lg text-2xl text-gray-500 leading-[1.4];
       text-shadow: 0 2px #fff;
     }
   }
@@ -63,25 +64,72 @@
 }
 
 /* Skills */
+@keyframes rolling {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-1980px);
+  }
+}
+
 .home-skills {
-  @apply h-[280px] bg-black;
+  @include container;
+  @apply h-[240px];
+  &-wrap {
+    @apply relative h-full flex overflow-hidden;
+  }
+
+  &-con {
+    @apply flex items-center flex-nowrap gap-md;
+    animation: rolling 30s linear infinite;
+  }
+
+  &-logo {
+    @apply flex-none w-[200px] h-[100px] p-md;
+    img {
+      @apply w-full h-full object-contain object-center;
+    }
+  }
 }
 
 /* About */
 .home-about {
   @include container;
+  @apply py-con;
   &-con {
-    @apply relative gap-[20px]  my-0 mx-auto flex items-start;
+    @apply relative gap-lg  mx-auto flex justify-between items-start;
+  }
+
+  &-title {
+    @apply text-5xl mb-md;
   }
 
   &-left {
-    @apply flex-none w-[400px] sticky top-[20px];
+    @apply flex-none w-[500px] sticky top-[40px] break-keep text-xl;
   }
 
   &-right {
-    @apply flex flex-col gap-[20px];
+    @apply flex flex-col flex-1 max-w-[900px] gap-md;
     &-box {
-      @apply sticky top-[20px] rounded p-[20px] border border-solid h-[40vh] bg-white;
+      @apply sticky flex gap-md top-[40px] rounded-lg bg-white border border-solid border-gray-200 p-lg;
+    }
+    &__num {
+      @apply w-[80px];
+    }
+    &__title,
+    &__num {
+      @apply text-xl flex-none;
+    }
+
+    &__list {
+      @apply flex flex-col gap-xs flex-1;
+    }
+    &__item {
+      @apply flex justify-between py-1 text-gray-600 border-b border-solid border-gray-200;
+      &:last-of-type {
+        @apply border-0;
+      }
     }
   }
 }

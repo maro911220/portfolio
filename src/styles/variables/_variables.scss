@@ -1,5 +1,5 @@
 @mixin container {
-  @apply max-w-screen-2xl w-full px-10 mx-auto;
+  @apply max-w-[1680px] w-full px-lg mx-auto;
 }
 
 @mixin md($size) {

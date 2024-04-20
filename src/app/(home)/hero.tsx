@@ -18,7 +18,7 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
           <h2 className="home-hero-con__title">
             Hi, I am <b>Maro</b>
           </h2>
-          <p className="home-hero-con__title"> I&apos;m web publisher</p>
+          <p className="home-hero-con__title"> I&apos;m Web Publisher</p>
           <p className="home-hero-con__sub">
             I like implementing responsive web and using animation skills.
             <br /> I&apos;m aiming to be a front-end developer.
