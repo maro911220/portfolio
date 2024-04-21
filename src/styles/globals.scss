@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -17,8 +18,24 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
+  font-family: "Pretendard-Regular", sans-serif;
+}
+
+.fs-fr {
   font-family: "Freesentation-9Black";
+}
+
+.col-main {
+  @apply text-main;
 }
 
 /* 임시 */

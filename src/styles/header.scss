@@ -1,6 +1,7 @@
 @import "./variables/_variables.scss";
 
 .header {
+  font-family: "Freesentation-9Black";
   @apply absolute top-0 z-[9] w-full;
 
   &-con {

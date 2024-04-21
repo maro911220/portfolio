@@ -15,10 +15,10 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
             Ref.current[0] = e;
           }}
         >
-          <h2 className="home-hero-con__title">
+          <h2 className="home-hero-con__title fs-fr">
             Hi, I am <b>Maro</b>
           </h2>
-          <p className="home-hero-con__title"> I&apos;m Web Publisher</p>
+          <p className="home-hero-con__title fs-fr"> I&apos;m Web Publisher</p>
           <p className="home-hero-con__sub">
             I like implementing responsive web and using animation skills.
             <br /> I&apos;m aiming to be a front-end developer.

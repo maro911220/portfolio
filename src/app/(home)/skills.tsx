@@ -17,8 +17,10 @@ export default function Skills({ Ref }: { Ref: sectionRef }) {
       <article className="home-skills-wrap">
         <h3 className="hidden">Skill Logo</h3>
         <div className="home-skills-con">
-          <LogoList />
-          <LogoList />
+          <div className="home-skills-box">
+            <LogoList />
+            <LogoList />
+          </div>
         </div>
       </article>
     </section>

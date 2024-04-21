@@ -50,7 +50,7 @@
     }
 
     &__sub {
-      @apply my-lg text-2xl text-gray-500 leading-[1.4];
+      @apply my-lg text-2xl text-gray-500 leading-[1.2];
       text-shadow: 0 2px #fff;
     }
   }
@@ -74,14 +74,18 @@
 }
 
 .home-skills {
-  @include container;
-  @apply h-[240px];
+  @apply h-[220px] bg-gray-50;
   &-wrap {
-    @apply relative h-full flex overflow-hidden;
+    @include container;
+    @apply relative h-full overflow-hidden;
   }
 
   &-con {
-    @apply flex items-center flex-nowrap gap-md;
+    @apply w-full h-full flex overflow-hidden;
+  }
+
+  &-box {
+    @apply flex items-center flex-nowrap gap-md px-lg;
     animation: rolling 30s linear infinite;
   }
 
@@ -102,7 +106,7 @@
   }
 
   &-title {
-    @apply text-5xl mb-md;
+    @apply text-6xl mb-md;
   }
 
   &-left {
@@ -110,16 +114,16 @@
   }
 
   &-right {
-    @apply flex flex-col flex-1 max-w-[900px] gap-md;
+    @apply flex flex-col flex-1 max-w-[900px] mt-moCon gap-lg;
     &-box {
-      @apply sticky flex gap-md top-[40px] rounded-lg bg-white border border-solid border-gray-200 p-lg;
+      @apply sticky flex gap-md top-[40px] rounded-lg p-lg bg-white border border-solid border-gray-200;
     }
     &__num {
       @apply w-[80px];
     }
     &__title,
     &__num {
-      @apply text-xl flex-none;
+      @apply text-xl font-semibold flex-none;
     }
 
     &__list {
