@@ -7,7 +7,7 @@ import { defaultStore } from "@/store/store";
 import About from "./(home)/about";
 import Contact from "./(home)/contact";
 import Hero from "./(home)/hero";
-import Work from "./(home)/Work";
+import Work from "./(home)/work";
 import Skills from "./(home)/skills";
 
 export default function Home() {
