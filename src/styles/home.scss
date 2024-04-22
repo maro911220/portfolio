@@ -137,3 +137,21 @@
     }
   }
 }
+
+/* lists */
+
+.home-work {
+  @include container;
+  @apply h-auto overflow-hidden;
+
+  &-scroller {
+    @apply flex w-full h-svh overflow-hidden;
+  }
+
+  &-con {
+    @apply w-full h-full overflow-x-hidden;
+  }
+  &-wrap {
+    @apply w-[4000px] min-w-full h-full flex;
+  }
+}

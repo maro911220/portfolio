@@ -7,7 +7,7 @@ import { defaultStore } from "@/store/store";
 import About from "./(home)/about";
 import Contact from "./(home)/contact";
 import Hero from "./(home)/hero";
-import Lists from "./(home)/lists";
+import Work from "./(home)/Work";
 import Skills from "./(home)/skills";
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
       <Hero Ref={Ref} />
       <Skills Ref={Ref} />
       <About Ref={Ref} />
-      <Lists Ref={Ref} />
+      <Work Ref={Ref} />
       <Contact Ref={Ref} />
     </main>
   );

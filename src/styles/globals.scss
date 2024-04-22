@@ -37,37 +37,3 @@ body {
 .col-main {
   @apply text-main;
 }
-
-/* 임시 */
-
-.list-section {
-  height: auto;
-  overflow: hidden;
-  @apply max-w-screen-2xl mx-auto;
-}
-
-.list-scroller {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.list {
-  box-sizing: border-box;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-}
-
-.list-item {
-  min-width: 100%;
-  height: 100%;
-  background: #fff;
-  display: flex;
-}
-
-.list-item:nth-of-type(2n) {
-  background-color: black;
-}
