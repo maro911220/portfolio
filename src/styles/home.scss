@@ -142,16 +142,37 @@
 
 .home-work {
   @include container;
-  @apply h-auto overflow-hidden;
+  @apply h-auto;
 
   &-scroller {
-    @apply flex w-full h-svh overflow-hidden;
+    @apply flex w-full h-svh;
   }
 
   &-con {
-    @apply w-full h-full overflow-x-hidden;
+    @apply w-full h-full;
   }
   &-wrap {
-    @apply w-[4000px] min-w-full h-full flex;
+    @apply w-fit min-w-full h-full flex;
+  }
+
+  &-hero {
+    @apply flex flex-col pt-con w-[400px] mr-con;
+    &__title {
+      @apply text-6xl mb-md;
+    }
+    &__sub {
+      @apply break-keep text-xl;
+    }
+  }
+
+  &-list {
+    @apply flex items-center gap-lg h-full p-con pr-moCon;
+  }
+
+  &-item {
+    @apply w-[90vw] max-w-[100vh] h-full;
+    &__link {
+      @apply flex w-full h-full bg-slate-200;
+    }
   }
 }

@@ -28,6 +28,7 @@
 
 body {
   font-family: "Pretendard-Regular", sans-serif;
+  @apply overflow-x-hidden;
 }
 
 .fs-fr {

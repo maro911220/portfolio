@@ -34,7 +34,7 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
   return (
     // portfolio-container / portfolio-list / portfolio-list-item
     <section className="home-work" ref={container}>
-      <h2 className="hidden">List</h2>
+      <h2 className="hidden">Work</h2>
       <article className="home-work-scroller">
         <div
           className="home-work-con"
@@ -43,9 +43,51 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
           }}
         >
           <div className="home-work-wrap">
-            <h3>Work</h3>
-            <p>1</p>
-            <p>2</p>
+            <div className="home-work-hero">
+              <h3 className="home-work-hero__title fs-fr">Work</h3>
+              <p className="home-work-hero__sub">
+                A selection of our crafted work, built from scratch by our
+                experienced team.
+              </p>
+            </div>
+            <ul className="home-work-list">
+              <li className="home-work-item">
+                <a className="home-work-item__link" href="#none">
+                  <p className="home-work-item__title">Portfolio Sample</p>
+                  <div className="home-wrok-item__box">
+                    <span>UI/UX Design</span>
+                    <span>E-Commerce</span>
+                  </div>
+                </a>
+              </li>
+              <li className="home-work-item">
+                <a className="home-work-item__link" href="#none">
+                  <p className="home-work-item__title">Portfolio Sample</p>
+                  <div className="home-wrok-item__box">
+                    <span>UI/UX Design</span>
+                    <span>E-Commerce</span>
+                  </div>
+                </a>
+              </li>
+              <li className="home-work-item">
+                <a className="home-work-item__link" href="#none">
+                  <p className="home-work-item__title">Portfolio Sample</p>
+                  <div className="home-wrok-item__box">
+                    <span>UI/UX Design</span>
+                    <span>E-Commerce</span>
+                  </div>
+                </a>
+              </li>
+              <li className="home-work-item">
+                <a className="home-work-item__link" href="#none">
+                  <p className="home-work-item__title">Portfolio Sample</p>
+                  <div className="home-wrok-item__box">
+                    <span>UI/UX Design</span>
+                    <span>E-Commerce</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </article>
