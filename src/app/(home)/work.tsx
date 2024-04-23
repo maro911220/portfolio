@@ -8,6 +8,29 @@ import { sectionRef } from "@/types/useTypes";
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
+const workList = [
+  {
+    name: "portfolio sample1",
+    link: "#none",
+    type: ["UI/UX Design", "E-Commerce"],
+  },
+  {
+    name: "portfolio sample2",
+    link: "#none",
+    type: ["UI/UX Design", "E-Commerce"],
+  },
+  {
+    name: "portfolio sample3",
+    link: "#none",
+    type: ["UI/UX Design", "E-Commerce"],
+  },
+  {
+    name: "portfolio sample4",
+    link: "#none",
+    type: ["UI/UX Design", "E-Commerce"],
+  },
+];
+
 export default function Work({ Ref }: { Ref: sectionRef }) {
   const container = useRef<HTMLElement>(null);
   useGSAP(
@@ -51,42 +74,20 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
               </p>
             </div>
             <ul className="home-work-list">
-              <li className="home-work-item">
-                <a className="home-work-item__link" href="#none">
-                  <p className="home-work-item__title">Portfolio Sample</p>
-                  <div className="home-wrok-item__box">
-                    <span>UI/UX Design</span>
-                    <span>E-Commerce</span>
-                  </div>
-                </a>
-              </li>
-              <li className="home-work-item">
-                <a className="home-work-item__link" href="#none">
-                  <p className="home-work-item__title">Portfolio Sample</p>
-                  <div className="home-wrok-item__box">
-                    <span>UI/UX Design</span>
-                    <span>E-Commerce</span>
-                  </div>
-                </a>
-              </li>
-              <li className="home-work-item">
-                <a className="home-work-item__link" href="#none">
-                  <p className="home-work-item__title">Portfolio Sample</p>
-                  <div className="home-wrok-item__box">
-                    <span>UI/UX Design</span>
-                    <span>E-Commerce</span>
-                  </div>
-                </a>
-              </li>
-              <li className="home-work-item">
-                <a className="home-work-item__link" href="#none">
-                  <p className="home-work-item__title">Portfolio Sample</p>
-                  <div className="home-wrok-item__box">
-                    <span>UI/UX Design</span>
-                    <span>E-Commerce</span>
-                  </div>
-                </a>
-              </li>
+              {workList.map((item, index) => {
+                return (
+                  <li className="home-work-item" key={index}>
+                    <a className="home-work-item__link" href={item.link}>
+                      <p className="home-work-item__title">{item.name}</p>
+                      <div className="home-wrok-item__box">
+                        {item.type.map((label, index) => {
+                          return <span key={index}>{label}</span>;
+                        })}
+                      </div>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
