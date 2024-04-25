@@ -144,8 +144,7 @@
   }
 }
 
-/* lists */
-
+/* work */
 .home-work {
   @apply w-full h-auto overflow-hidden;
 
@@ -165,7 +164,7 @@
   }
 
   &-hero {
-    @apply flex flex-col pt-con w-[400px] mr-con;
+    @apply flex flex-col pt-con w-[430px] mr-con;
     &__title {
       @apply text-6xl mb-md;
     }
@@ -181,7 +180,19 @@
   &-item {
     @apply w-[90vw] max-w-[100vh] h-full;
     &__link {
-      @apply flex w-full h-full bg-slate-200;
+      @apply flex flex-col justify-end bg-center bg-cover bg-no-repeat w-full h-full bg-slate-600 rounded-lg p-lg;
+    }
+    &__title {
+      @apply text-4xl font-bold border-b border-solid pb-sm border-gray-300 text-white;
+    }
+    &__sub {
+      @apply mt-xs text-xl text-gray-200;
+    }
+    &__box {
+      @apply flex mt-md gap-sm;
+      span {
+        @apply border border-solid py-xs px-sm text-gray-300 rounded-full;
+      }
     }
   }
 }

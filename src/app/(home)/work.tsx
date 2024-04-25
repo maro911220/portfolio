@@ -10,24 +10,32 @@ gsap.registerPlugin(ScrollTrigger);
 
 const workList = [
   {
-    name: "portfolio sample1",
+    name: "연습장",
+    sub: "샬라 샬라라랄라라랄라",
     link: "#none",
-    type: ["UI/UX Design", "E-Commerce"],
+    type: ["React", "Next.js"],
+    src: "https://cdn.pixabay.com/photo/2023/12/07/19/45/tiger-8436227_1280.jpg",
   },
   {
-    name: "portfolio sample2",
+    name: "Portfolio Sample2",
+    sub: "샬라 샬라라랄라라랄라",
     link: "#none",
     type: ["UI/UX Design", "E-Commerce"],
+    src: "https://cdn.pixabay.com/photo/2023/12/07/19/45/tiger-8436227_1280.jpg",
   },
   {
-    name: "portfolio sample3",
+    name: "연습장",
+    sub: "개인적인 작업물을 정리해놓았음.",
     link: "#none",
-    type: ["UI/UX Design", "E-Commerce"],
+    type: ["React", "Next.js"],
+    src: "https://cdn.pixabay.com/photo/2023/12/07/19/45/tiger-8436227_1280.jpg",
   },
   {
-    name: "portfolio sample4",
+    name: "Portfolio Sample4",
+    sub: "샬라 샬라라랄라라랄라",
     link: "#none",
     type: ["UI/UX Design", "E-Commerce"],
+    src: "https://cdn.pixabay.com/photo/2023/12/07/19/45/tiger-8436227_1280.jpg",
   },
 ];
 
@@ -77,17 +85,21 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
               <div className="home-work-hero">
                 <h3 className="home-work-hero__title fs-fr">Work</h3>
                 <p className="home-work-hero__sub">
-                  A selection of our crafted work, built from scratch by our
-                  experienced team.
+                  회사 작업물 또는 개인 작업물 목록입니다.
                 </p>
               </div>
               <ul className="home-work-list">
                 {workList.map((item, index) => {
                   return (
                     <li className="home-work-item" key={index}>
-                      <a className="home-work-item__link" href={item.link}>
+                      <a
+                        className="home-work-item__link"
+                        style={{ backgroundImage: `url(${item.src})` }}
+                        href={item.link}
+                      >
                         <p className="home-work-item__title">{item.name}</p>
-                        <div className="home-wrok-item__box">
+                        <p className="home-work-item__sub">{item.sub}</p>
+                        <div className="home-work-item__box">
                           {item.type.map((label, index) => {
                             return <span key={index}>{label}</span>;
                           })}

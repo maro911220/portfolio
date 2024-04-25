@@ -22,6 +22,7 @@ const config: Config = {
         lg: "40px",
         md: "20px",
         sm: "12px",
+        xs: "6px",
       },
       margin: {
         con: "140px",
@@ -29,6 +30,7 @@ const config: Config = {
         lg: "40px",
         md: "20px",
         sm: "12px",
+        xs: "6px",
       },
       gap: {
         lg: "40px",
