@@ -146,7 +146,7 @@
 
 /* work */
 .home-work {
-  @apply w-full h-auto overflow-hidden;
+  @apply w-full h-auto overflow-hidden bg-dark;
 
   &-scroller-dummy {
     @include container;
@@ -166,10 +166,10 @@
   &-hero {
     @apply flex flex-col pt-con w-[430px] mr-con;
     &__title {
-      @apply text-6xl mb-md;
+      @apply text-6xl mb-md text-white;
     }
     &__sub {
-      @apply break-keep text-xl;
+      @apply break-keep text-xl text-gray-300;
     }
   }
 
@@ -199,5 +199,12 @@
 
 /* contact */
 .home-contact {
-  @apply min-h-[100vh];
+  @include container;
+  @apply py-con;
+  &-title {
+    @apply text-6xl text-center;
+  }
+  &-con {
+    @apply my-moCon;
+  }
 }
