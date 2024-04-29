@@ -15,13 +15,16 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
             Ref.current[0] = e;
           }}
         >
+          {/* 문구 수정 예정 */}
           <h2 className="home-hero-con__title fs-fr">
-            Hi, I am <b>Maro</b>
+            안녕하세요
+            <br />
+            <b>MARO</b>입니다.
           </h2>
-          <p className="home-hero-con__title fs-fr"> I&apos;m Web Publisher</p>
           <p className="home-hero-con__sub">
-            I like implementing responsive web and using animation skills.
-            <br /> I&apos;m aiming to be a front-end developer.
+            저는 반응형 웹을 만들고 애니메이션 기술을 사용하는걸 좋아합니다.
+            <br />
+            또한 프론트엔드 개발자를 목표로 공부하고 있습니다.
           </p>
         </div>
         <div className="home-hero-imgbox">

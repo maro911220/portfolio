@@ -42,6 +42,7 @@ export default function About({ Ref }: { Ref: sectionRef }) {
       <div className="home-about-con">
         <div className="home-about-left">
           <h2 className="home-about-title fs-fr">About</h2>
+          {/* 좀 더 상세하게 */}
           <p>
             안녕하세요 저는 <span className="fs-fr col-main">MARO</span> 입니다.{" "}
             <br />

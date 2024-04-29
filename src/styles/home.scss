@@ -205,6 +205,35 @@
     @apply text-6xl text-center;
   }
   &-con {
-    @apply my-moCon;
+    @apply my-moCon flex max-w-6xl mx-auto;
+  }
+
+  &-form {
+    @apply flex flex-col gap-8 flex-1 overflow-hidden;
+    &-box {
+      @apply flex gap-4;
+    }
+    &-item {
+      @apply flex flex-1 flex-col;
+    }
+    label {
+      @apply text-lg mb-2;
+    }
+
+    input,
+    textarea {
+      @apply text-lg w-full min-h-[42px] p-sm rounded border border-solid;
+    }
+
+    textarea {
+      @apply h-[120px] resize-none;
+    }
+    button {
+      @apply mt-8 border border-solid bg-main text-white p-sm rounded;
+    }
+  }
+
+  &-side {
+    @apply flex-1 overflow-hidden;
   }
 }

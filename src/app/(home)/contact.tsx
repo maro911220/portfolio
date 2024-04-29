@@ -26,6 +26,14 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
       )
       .then(
         (result) => {
+          // 이후 컨텐츠 추가
+          if (form.current) {
+            for (let i = 0; i <= form.current?.elements.length - 1; i++) {
+              const target = form.current[i] as HTMLInputElement;
+              target.value = "";
+            }
+          }
+          alert("성공했습니다.");
           console.log(result.text);
         },
         (error) => {
@@ -43,15 +51,27 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
       <h2 className="home-contact-title fs-fr">Contact</h2>
       <article className="home-contact-con">
         <h3 className="hidden">Contact Form</h3>
+        <div className="home-contact-side">
+          <p>아래 연락처 또는 오른쪽 문의로 연락주세용</p>
+          <p>honeybreads@naver.com</p>
+        </div>
 
-        <form ref={form} onSubmit={sendEmail}>
-          <label>Name</label>
-          <input type="text" name="user_name" />
-          <label>Email</label>
-          <input type="email" name="user_email" />
-          <label>Message</label>
-          <textarea name="message" />
-          <input type="submit" value="Send" />
+        <form className="home-contact-form" ref={form} onSubmit={sendEmail}>
+          <div className="home-contact-form-box">
+            <div className="home-contact-form-item">
+              <label>이름</label>
+              <input type="text" name="user_name" required />
+            </div>
+            <div className="home-contact-form-item">
+              <label>이메일</label>
+              <input type="email" name="user_email" required />
+            </div>
+          </div>
+          <div className="home-contact-form-item">
+            <label>메세지</label>
+            <textarea name="message" required />
+          </div>
+          <button type="submit">보내기</button>
         </form>
       </article>
     </section>
