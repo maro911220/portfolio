@@ -1,10 +1,10 @@
 @mixin container {
-  @apply max-w-[1680px] w-full px-lg mx-auto;
+  @apply max-w-[1480px] w-full px-lg mx-auto;
 }
 
 @mixin md($size) {
   @if ($size == "xl") {
-    @media (max-width: 1420px) {
+    @media (max-width: 1280px) {
       @content;
     }
   }

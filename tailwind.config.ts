@@ -12,6 +12,8 @@ const config: Config = {
         body: "#222",
         dark: "#161717",
         main: "#4BC0A7",
+        content: "rgb(252, 250, 251)",
+        contentLine: "rgba(247, 240, 248, 1)",
       },
       maxWidth: {
         full: "1920px",

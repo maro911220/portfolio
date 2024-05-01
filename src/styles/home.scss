@@ -56,10 +56,20 @@
   }
 
   &-imgbox {
-    @apply absolute top-0 left-0 w-full h-full;
-    &-canvas {
-      @apply absolute right-0 top-[50%] translate-y-[-50%] w-full min-w-[600px] max-w-[750px] h-full z-[2];
+    @apply absolute top-0 left-0 w-full h-full flex items-center justify-end;
+  }
+
+  &-blob {
+    @apply absolute w-[600px] h-[600px];
+    .tk-blob {
+      --time: 15s;
+      --amount: 3;
     }
+  }
+
+  &-blur {
+    @apply absolute right-10 z-[2] bg-white/30 backdrop-blur-lg w-[500px] h-[500px] rounded-full block;
+    box-shadow: inset 0 0 16px #ceedeb;
   }
 }
 
@@ -74,7 +84,7 @@
 }
 
 .home-skills {
-  @apply h-[220px] bg-gray-50;
+  @apply h-[220px];
   &-wrap {
     @include container;
     @apply relative h-full overflow-hidden;
@@ -116,7 +126,8 @@
   &-right {
     @apply flex flex-col flex-1 max-w-[900px] mt-moCon gap-lg;
     &-box {
-      @apply sticky flex gap-md top-[40px] rounded-lg p-lg bg-white border border-solid border-gray-200;
+      @apply sticky flex items-start gap-md top-[40px] rounded-lg p-lg transition-all;
+      @apply bg-content border border-solid border-contentLine;
       &:nth-of-type(2) {
         @apply top-[60px];
       }
@@ -124,11 +135,12 @@
         @apply top-[80px];
       }
     }
-    &__num {
-      @apply w-[80px];
+
+    &__img {
+      @apply mr-md;
+      filter: drop-shadow(6px 4px 1px #ddd);
     }
-    &__title,
-    &__num {
+    &__title {
       @apply text-xl font-semibold flex-none;
     }
 
@@ -199,41 +211,31 @@
 
 /* contact */
 .home-contact {
-  @include container;
-  @apply py-con;
+  @apply py-con relative;
+  &::before {
+    content: "";
+    @apply w-full h-1/2 bg-dark absolute top-0 left-0;
+  }
   &-title {
-    @apply text-6xl text-center;
+    @apply relative z-[2] text-6xl text-center text-white;
   }
   &-con {
-    @apply my-moCon flex max-w-6xl mx-auto;
+    @apply relative z-[2] mt-moCon flex max-w-2xl bg-white mx-auto rounded shadow-xl;
   }
 
   &-form {
-    @apply flex flex-col gap-8 flex-1 overflow-hidden;
-    &-box {
-      @apply flex gap-4;
-    }
-    &-item {
-      @apply flex flex-1 flex-col;
-    }
-    label {
-      @apply text-lg mb-2;
-    }
+    @apply flex flex-col gap-4 p-lg flex-1  overflow-hidden;
 
     input,
     textarea {
-      @apply text-lg w-full min-h-[42px] p-sm rounded border border-solid;
+      @apply mt-2 w-full min-h-[42px] p-sm rounded border border-solid;
     }
 
     textarea {
       @apply h-[120px] resize-none;
     }
     button {
-      @apply mt-8 border border-solid bg-main text-white p-sm rounded;
+      @apply border border-solid bg-main text-white p-sm rounded;
     }
-  }
-
-  &-side {
-    @apply flex-1 overflow-hidden;
   }
 }

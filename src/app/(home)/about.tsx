@@ -1,8 +1,10 @@
 import { sectionRef } from "@/types/useTypes";
+import Image from "next/image";
 
 const aboutList = [
   {
     title: "학력",
+    img: "/images/icons/ico_school.png",
     list: [
       { year: "2007.03 ~ 2010.02", name: "구로 고등학교" },
       {
@@ -13,6 +15,7 @@ const aboutList = [
   },
   {
     title: "기타 경력",
+    img: "/images/icons/ico_etc.png",
     list: [
       { year: "2016.02 ~ 2017.02", name: "골든프레임 / 3D 애니메이터" },
       { year: "2017.12 ~ 2020.05", name: "KOG / 3D캐릭터 모델러" },
@@ -20,6 +23,7 @@ const aboutList = [
   },
   {
     title: "웹 퍼블리셔",
+    img: "/images/icons/ico_now.png",
     list: [
       { year: "2020.05 ~ 2020.09", name: "대구 코리아IT아카데미 수료" },
       { year: "2020.09 ~ 2021.05", name: "스카이 패밀리" },
@@ -55,7 +59,13 @@ export default function About({ Ref }: { Ref: sectionRef }) {
           {aboutList.map((item, index) => {
             return (
               <article className="home-about-right-box" key={index}>
-                <p className="home-about-right__num">0{index + 1}</p>
+                <Image
+                  className="home-about-right__img"
+                  src={item.img}
+                  width={80}
+                  height={80}
+                  alt={item.title}
+                />
                 <div className="home-about-right__list">
                   <h3 className="home-about-right__title">{item.title}</h3>
                   {item.list.map((item, index) => {

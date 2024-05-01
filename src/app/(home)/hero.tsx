@@ -1,13 +1,43 @@
 "use client";
-
 import { sectionRef } from "@/types/useTypes";
-import { Canvas } from "@react-three/fiber";
-import { useGLTF, useAnimations, Box, SoftShadows } from "@react-three/drei";
-import { useEffect } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger, Observer } from "gsap/all";
+import { useRef } from "react";
+import "@/styles/blobz.min.css";
+
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger, Observer);
 
 export default function Hero({ Ref }: { Ref: sectionRef }) {
+  const container = useRef<HTMLElement>(null);
+  useGSAP(
+    (e: any) => {
+      Observer.create({
+        target: window,
+        type: "pointer,touch",
+        onMove: (e) => {
+          const value = 0.04;
+          const x = (Number(e.x) - window.innerWidth / 2) * value;
+          const y = (Number(e.y) - window.innerHeight / 2) * value;
+
+          gsap.to(".home-hero-blur", {
+            x: -x,
+            y: -y,
+          });
+
+          gsap.to(".home-hero-blob", {
+            x: x,
+            y: y,
+          });
+        },
+      });
+    },
+    { scope: container }
+  );
+
   return (
-    <section className="home-hero">
+    <section className="home-hero" ref={container}>
       <div className="home-hero-wrap">
         <div
           className="home-hero-con"
@@ -28,20 +58,9 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
           </p>
         </div>
         <div className="home-hero-imgbox">
-          <div className="home-hero-imgbox-canvas">
-            <Canvas shadows camera={{ position: [0, 0, 10], fov: 20 }}>
-              {/* Lightmap */}
-              <directionalLight
-                intensity={10}
-                color="#eee8df"
-                position={[-5, 2, 3]}
-              />
-              <spotLight intensity={1} castShadow />
-              {/* model */}
-              <Model />
-              {/* shadow */}
-              <Shadows />
-            </Canvas>
+          <div className="home-hero-blur"></div>
+          <div className="home-hero-blob">
+            <Blob />
           </div>
         </div>
       </div>
@@ -49,46 +68,19 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
   );
 }
 
-function Model() {
-  const { scene, animations } = useGLTF("/modeling/test.glb");
-  const { ref, actions, names } = useAnimations(animations);
-  useEffect(() => {
-    actions[names[0]]?.reset().play();
-  }, []);
-
+function Blob() {
   return (
-    <primitive
-      castShadow
-      receiveShadow
-      object={scene}
-      ref={ref}
-      scale={0.8}
-      position={[0, -0.9, 0]}
-      rotation={[0.1, -0.4, 0]}
-    />
-  );
-}
-
-function Shadows() {
-  return (
-    <>
-      <Box
-        position={[0.01, -0.5, -0.35]}
-        args={[0.3, 1.5, 1.2]}
-        rotation={[0, 0, 0]}
-        castShadow
-      >
-        <shadowMaterial transparent opacity={0} />
-      </Box>
-      <mesh
-        rotation={[-0.5 * Math.PI, 0.02, 0]}
-        position={[0, -1.15, 0]}
-        receiveShadow
-      >
-        <planeGeometry args={[10, 10]} />
-        <shadowMaterial transparent color="#c18b3b" opacity={0.8} />
-      </mesh>
-      <SoftShadows size={100} samples={100} />
-    </>
+    <div className="tk-blob">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 747.2 726.7">
+        <linearGradient id="PSgrad_0" x1="70.711%" x2="0%" y1="70.711%" y2="0%">
+          <stop offset="0%" stopColor="rgb(34, 193, 195)" stopOpacity="1" />
+          <stop offset="100%" stopColor="rgb(253, 187, 45)" stopOpacity="1" />
+        </linearGradient>
+        <path
+          fill="url(#PSgrad_0)"
+          d="M539.8 137.6c98.3 69 183.5 124 203 198.4 19.3 74.4-27.1 168.2-93.8 245-66.8 76.8-153.8 136.6-254.2 144.9-100.6 8.2-214.7-35.1-292.7-122.5S-18.1 384.1 7.4 259.8C33 135.6 126.3 19 228.5 2.2c102.1-16.8 213.2 66.3 311.3 135.4z"
+        ></path>
+      </svg>
+    </div>
   );
 }

@@ -50,26 +50,25 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
     >
       <h2 className="home-contact-title fs-fr">Contact</h2>
       <article className="home-contact-con">
-        <h3 className="hidden">Contact Form</h3>
-        <div className="home-contact-side">
-          <p>아래 연락처 또는 오른쪽 문의로 연락주세용</p>
-          <p>honeybreads@naver.com</p>
-        </div>
-
         <form className="home-contact-form" ref={form} onSubmit={sendEmail}>
-          <div className="home-contact-form-box">
-            <div className="home-contact-form-item">
-              <label>이름</label>
-              <input type="text" name="user_name" required />
-            </div>
-            <div className="home-contact-form-item">
-              <label>이메일</label>
-              <input type="email" name="user_email" required />
-            </div>
+          <h3>바로 연락하기</h3>
+          <p>아래의 내용을 입력해주세요.</p>
+          <div className="home-contact-form-item">
+            <label>이름</label>
+            <input placeholder="홍길동" type="text" name="user_name" required />
+          </div>
+          <div className="home-contact-form-item">
+            <label>이메일</label>
+            <input
+              placeholder="abc@abc.com"
+              type="email"
+              name="user_email"
+              required
+            />
           </div>
           <div className="home-contact-form-item">
             <label>메세지</label>
-            <textarea name="message" required />
+            <textarea placeholder="상세 메세지" name="message" required />
           </div>
           <button type="submit">보내기</button>
         </form>

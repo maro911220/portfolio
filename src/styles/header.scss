@@ -18,7 +18,7 @@
   }
 
   &-nav {
-    @apply fixed left-[50%] bottom-[32px] translate-x-[-50%] flex p-2 rounded-full;
+    @apply fixed left-[50%] bottom-[30px] translate-x-[-50%] flex p-2 rounded-full;
     @apply text-white bg-gradient-to-tl to-body/80 from-black border border-solid border-gray-500;
 
     button {
