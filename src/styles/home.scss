@@ -112,7 +112,7 @@
   @include container;
   @apply py-con;
   &-con {
-    @apply relative gap-lg  mx-auto flex justify-between items-start;
+    @apply opacity-0 relative gap-lg  mx-auto flex justify-between items-start;
   }
 
   &-title {

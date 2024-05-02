@@ -2,12 +2,12 @@
 import { sectionRef } from "@/types/useTypes";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger, Observer } from "gsap/all";
+import { Observer } from "gsap/all";
 import { useRef } from "react";
 import "@/styles/blobz.min.css";
 
 gsap.registerPlugin(useGSAP);
-gsap.registerPlugin(ScrollTrigger, Observer);
+gsap.registerPlugin(Observer);
 
 export default function Hero({ Ref }: { Ref: sectionRef }) {
   const container = useRef<HTMLElement>(null);
@@ -29,6 +29,16 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
           gsap.to(".home-hero-blob", {
             x: x,
             y: y,
+          });
+        },
+      });
+
+      Observer.create({
+        target: window,
+        type: "scroll,touch",
+        onChangeY: (e) => {
+          gsap.to(".home-hero-con", {
+            y: e.deltaY * 2,
           });
         },
       });

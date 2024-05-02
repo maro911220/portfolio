@@ -1,5 +1,8 @@
 import { sectionRef } from "@/types/useTypes";
 import Image from "next/image";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const aboutList = [
   {
@@ -36,6 +39,22 @@ const aboutList = [
 // gsap를 사용해 스크롤 끝나는애는 스케일 작아지거나 뭔가 효과를 주는 방향으로..?
 
 export default function About({ Ref }: { Ref: sectionRef }) {
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    (e: any) => {
+      gsap.to(container.current, {
+        scrollTrigger: {
+          trigger: container.current,
+          start: `top-=${window.innerHeight * 0.6}`,
+          toggleActions: "play none none reverse",
+        },
+        opacity: 1,
+      });
+    },
+    { scope: container }
+  );
+
   return (
     <section
       className="home-about"
@@ -43,7 +62,7 @@ export default function About({ Ref }: { Ref: sectionRef }) {
         Ref.current[2] = e;
       }}
     >
-      <div className="home-about-con">
+      <div className="home-about-con" ref={container}>
         <div className="home-about-left">
           <h2 className="home-about-title fs-fr">About</h2>
           {/* 좀 더 상세하게 */}
