@@ -1,7 +1,7 @@
 export interface sectionRef {
-    current: null[] | HTMLElement[];
+  current: HTMLElement[] | null[] | any[];
 }
 
 export interface storeSectionRef {
-    current:HTMLElement[]
+  current: HTMLElement[];
 }

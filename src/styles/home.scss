@@ -239,3 +239,44 @@
     }
   }
 }
+
+.wave {
+  background: url(/images/wave.svg) repeat-x;
+  position: absolute;
+  top: 50%;
+  width: 6400px;
+  height: 198px;
+  animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.5s infinite;
+  transform: translate3d(0, 0, 0) rotate(180deg);
+}
+
+.wave:nth-of-type(2) {
+  top: 55%;
+  animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.3s infinite,
+    swell 10s ease -1s infinite;
+  opacity: 0.3;
+}
+.wave:nth-of-type(3) {
+  top: 57%;
+  animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.1s infinite,
+    swell 10s ease -2s infinite;
+  opacity: 0.1;
+}
+
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+@keyframes swell {
+  0%,
+  100% {
+    transform: translate3d(0, -25px, 0) rotate(180deg);
+  }
+  50% {
+    transform: translate3d(0, 5px, 0) rotate(180deg);
+  }
+}

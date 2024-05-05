@@ -10,7 +10,6 @@ gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(Observer);
 
 export default function Hero({ Ref }: { Ref: sectionRef }) {
-  const container = useRef<HTMLElement>(null);
   useGSAP(
     (e: any) => {
       Observer.create({
@@ -37,17 +36,17 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
         target: window,
         type: "scroll,touch",
         onChangeY: (e) => {
-          gsap.to(".home-hero-con", {
+          gsap.to(Ref.current[0], {
             y: e.deltaY * 2,
           });
         },
       });
     },
-    { scope: container }
+    { scope: Ref.current[0] }
   );
 
   return (
-    <section className="home-hero" ref={container}>
+    <section className="home-hero">
       <div className="home-hero-wrap">
         <div
           className="home-hero-con"

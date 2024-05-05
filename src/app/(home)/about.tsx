@@ -39,20 +39,18 @@ const aboutList = [
 // gsap를 사용해 스크롤 끝나는애는 스케일 작아지거나 뭔가 효과를 주는 방향으로..?
 
 export default function About({ Ref }: { Ref: sectionRef }) {
-  const container = useRef<HTMLDivElement>(null);
-
   useGSAP(
     (e: any) => {
-      gsap.to(container.current, {
+      gsap.to(".home-about-con", {
         scrollTrigger: {
-          trigger: container.current,
+          trigger: ".home-about-con",
           start: `top-=${window.innerHeight * 0.6}`,
           toggleActions: "play none none reverse",
         },
         opacity: 1,
       });
     },
-    { scope: container }
+    { scope: Ref.current[2] }
   );
 
   return (
@@ -62,7 +60,7 @@ export default function About({ Ref }: { Ref: sectionRef }) {
         Ref.current[2] = e;
       }}
     >
-      <div className="home-about-con" ref={container}>
+      <div className="home-about-con">
         <div className="home-about-left">
           <h2 className="home-about-title fs-fr">About</h2>
           {/* 좀 더 상세하게 */}

@@ -1,6 +1,8 @@
 import { sectionRef } from "@/types/useTypes";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const API_KEY = process.env.EMAIL;
 const EMAILSERVICE = process.env.EMAILSERVICE;
@@ -41,6 +43,25 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
         }
       );
   };
+
+  useGSAP(
+    (e: any) => {
+      gsap.set(".home-contact-con", {
+        opacity: 0,
+        y: 100,
+      });
+      gsap.to(".home-contact-con", {
+        scrollTrigger: {
+          trigger: ".home-contact-con",
+          start: `top-=${window.innerHeight * 0.6}`,
+          toggleActions: "play none none reverse",
+        },
+        opacity: 1,
+        y: 0,
+      });
+    },
+    { scope: Ref.current[4] }
+  );
   return (
     <section
       className="home-contact"
@@ -73,6 +94,9 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
           <button type="submit">보내기</button>
         </form>
       </article>
+      <div className="wave"></div>
+      <div className="wave"></div>
+      <div className="wave"></div>
     </section>
   );
 }
