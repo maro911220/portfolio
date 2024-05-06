@@ -10,11 +10,17 @@
   }
 
   &-title {
-    @apply text-3xl uppercase font-bold;
+    @apply text-3xl uppercase font-bold transition-all;
+    &:hover {
+      @apply text-main;
+    }
   }
 
   &-git {
-    @apply text-4xl;
+    @apply text-4xl transition-all;
+    &:hover {
+      @apply text-main;
+    }
   }
 
   &-nav {

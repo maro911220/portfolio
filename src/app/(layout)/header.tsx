@@ -14,7 +14,9 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-con">
-        <h1 className="header-title">Maro</h1>
+        <h1 className="header-title">
+          <a href="#none">Maro</a>
+        </h1>
         <a
           className="header-git"
           href="https://github.com/maro911220"

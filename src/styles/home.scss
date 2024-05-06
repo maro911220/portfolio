@@ -31,9 +31,10 @@
   &-con {
     @apply relative z-[3] flex flex-col justify-center;
     &__title {
-      @apply text-8xl relative;
-      text-shadow: 0 2px #fff;
+      @apply relative text-7xl leading-[1.3] font-bold;
+      filter: drop-shadow(2px 2px 0 rgba(255, 255, 255, 0.7));
       b {
+        @apply text-8xl;
         text-shadow: none;
         color: transparent;
         background: linear-gradient(
@@ -50,8 +51,7 @@
     }
 
     &__sub {
-      @apply my-lg text-2xl text-gray-500 leading-[1.2];
-      text-shadow: 0 2px #fff;
+      @apply my-md text-xl leading-[1.4];
     }
   }
 
@@ -214,7 +214,7 @@
   @apply py-con relative;
   &::before {
     content: "";
-    @apply w-full h-1/2 bg-dark absolute top-0 left-0;
+    @apply w-full h-1/2 absolute top-0 left-0 bg-dark;
   }
   &-title {
     @apply relative z-[2] text-6xl text-center text-white;
@@ -238,29 +238,27 @@
       @apply border border-solid bg-main text-white p-sm rounded;
     }
   }
-}
 
-.wave {
-  background: url(/images/wave.svg) repeat-x;
-  position: absolute;
-  top: 50%;
-  width: 6400px;
-  height: 198px;
-  animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.5s infinite;
-  transform: translate3d(0, 0, 0) rotate(180deg);
-}
+  .wave {
+    @apply absolute top-[50%] w-[6400px] h-[198px];
+    background: url(/images/wave.svg) repeat-x;
+    animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.5s infinite;
+    transform: translate3d(0, 0, 0) rotate(180deg);
 
-.wave:nth-of-type(2) {
-  top: 55%;
-  animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.3s infinite,
-    swell 10s ease -1s infinite;
-  opacity: 0.3;
-}
-.wave:nth-of-type(3) {
-  top: 57%;
-  animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.1s infinite,
-    swell 10s ease -2s infinite;
-  opacity: 0.1;
+    &:nth-of-type(2) {
+      top: 55%;
+      animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.3s infinite,
+        swell 10s ease -1s infinite;
+      opacity: 0.3;
+    }
+
+    &:nth-of-type(3) {
+      top: 57%;
+      animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.1s infinite,
+        swell 10s ease -2s infinite;
+      opacity: 0.1;
+    }
+  }
 }
 
 @keyframes wave {

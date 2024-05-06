@@ -1,17 +1,20 @@
 "use client";
-import { sectionRef } from "@/types/useTypes";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { Observer } from "gsap/all";
-import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { sectionRef } from "@/types/useTypes";
 import "@/styles/blobz.min.css";
 
+// GSAP 플러그인 설정
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(Observer);
 
+// Hero 컴포넌트
 export default function Hero({ Ref }: { Ref: sectionRef }) {
+  // useGSAP 사용
   useGSAP(
-    (e: any) => {
+    () => {
+      // 마우스 이동에 따른 효과를 추가
       Observer.create({
         target: window,
         type: "pointer,touch",
@@ -20,25 +23,24 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
           const x = (Number(e.x) - window.innerWidth / 2) * value;
           const y = (Number(e.y) - window.innerHeight / 2) * value;
 
-          gsap.to(".home-hero-blur", {
-            x: -x,
-            y: -y,
-          });
-
-          gsap.to(".home-hero-blob", {
-            x: x,
-            y: y,
-          });
+          function blobAct(target: string, x: number, y: number) {
+            gsap.to(target, { x: x, y: y });
+          }
+          blobAct(".home-hero-blur", -x, -y);
+          blobAct(".home-hero-blob", x, y);
         },
       });
 
+      // 스크롤에 따른 효과를 추가
       Observer.create({
         target: window,
         type: "scroll,touch",
         onChangeY: (e) => {
-          gsap.to(Ref.current[0], {
-            y: e.deltaY * 2,
-          });
+          function scrollAct(target: string, y: number) {
+            gsap.to(target, { y: y });
+          }
+          scrollAct(Ref.current[0], e.deltaY * 2);
+          scrollAct(".home-hero-imgbox", e.deltaY);
         },
       });
     },
@@ -54,18 +56,22 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
             Ref.current[0] = e;
           }}
         >
-          {/* 문구 수정 예정 */}
+          {/* Hero 콘텐츠 */}
           <h2 className="home-hero-con__title fs-fr">
-            안녕하세요
+            Welcome To My
             <br />
-            <b>MARO</b>입니다.
+            <b>PORTFOLIO</b>
           </h2>
-          <p className="home-hero-con__sub">
-            저는 반응형 웹을 만들고 애니메이션 기술을 사용하는걸 좋아합니다.
+          <p className="home-hero-con__sub ">
+            안녕하세요 저는 <span className="fs-fr text-main">MARO</span>{" "}
+            입니다.
             <br />
-            또한 프론트엔드 개발자를 목표로 공부하고 있습니다.
+            저는 애니메이션이 적용된 웹 페이지를 만드는 걸 좋아하며 현재는
+            <br />
+            퍼블리셔로 일하면서 프론트엔드 개발자를 목표로 공부하고 있습니다.
           </p>
         </div>
+        {/* Blob 컴포넌트 */}
         <div className="home-hero-imgbox">
           <div className="home-hero-blur"></div>
           <div className="home-hero-blob">
@@ -77,6 +83,7 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
   );
 }
 
+// Blob 컴포넌트
 function Blob() {
   return (
     <div className="tk-blob">
