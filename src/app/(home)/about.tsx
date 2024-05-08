@@ -65,11 +65,16 @@ export default function About({ Ref }: { Ref: sectionRef }) {
           <h2 className="home-about-title fs-fr">About</h2>
           {/* 좀 더 상세하게 */}
           <p>
-            안녕하세요 저는 <span className="fs-fr col-main">MARO</span> 입니다.{" "}
-            <br />
-            이전에 3D 모델러로 일했으며, 현재는 웹 퍼블리셔로 일하고 있습니다.
-            웹 퍼블리싱을 하면서 애니메이션 기술을 적용하고 공부하는 것을
-            즐깁니다. 또한 프론트엔드 개발자를 목표로 공부하고 있습니다.
+            안녕하세요 저는 <span className="fs-fr col-main">MARO</span> 입니다.
+          </p>
+          <p>
+            이전에 3D 모델러 및 애니메이터로 일한 경험이 있으며 현재는
+            웹퍼블리셔로 일하고 있습니다.
+          </p>
+          <p>
+            GSAP, Framer등의 애니메이션 라이브러리를 사용해 애니메이션이 적용된
+            웹 페이지를 만드는 걸 좋아하며 다양한 화면을 구현하는 프론트엔드
+            개발자를 목표로 공부하고 있습니다.
           </p>
         </div>
         <div className="home-about-right">

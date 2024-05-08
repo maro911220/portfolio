@@ -116,11 +116,11 @@
   }
 
   &-title {
-    @apply text-6xl mb-md;
+    @apply text-6xl;
   }
 
   &-left {
-    @apply flex-none w-[500px] sticky top-[40px] break-keep text-xl;
+    @apply flex-none flex flex-col gap-md w-[500px] sticky top-[40px] break-keep text-lg;
   }
 
   &-right {
