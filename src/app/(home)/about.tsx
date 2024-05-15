@@ -84,8 +84,8 @@ export default function About({ Ref }: { Ref: sectionRef }) {
                 <Image
                   className="home-about-right__img"
                   src={item.img}
-                  width={80}
-                  height={80}
+                  width={72}
+                  height={72}
                   alt={item.title}
                 />
                 <div className="home-about-right__list">

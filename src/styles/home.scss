@@ -137,8 +137,7 @@
     }
 
     &__img {
-      @apply mr-md;
-      filter: drop-shadow(6px 4px 1px #ddd);
+      @apply mr-lg;
     }
     &__title {
       @apply text-xl font-semibold flex-none;
@@ -191,19 +190,52 @@
 
   &-item {
     @apply w-[90vw] max-w-[100vh] h-full;
+
     &__link {
-      @apply flex flex-col justify-end bg-center bg-cover bg-no-repeat w-full h-full bg-slate-600 rounded-lg p-lg;
+      @apply relative flex flex-col justify-end w-full h-full p-lg;
+      img {
+        @apply left-[1px] top-[1px] w-[calc(100%-2px)] h-[calc(100%-2px)] object-cover rounded-2xl #{!important};
+      }
+
+      &::after,
+      &::before {
+        content: "";
+        @apply inline-block absolute top-0  left-0 w-full h-full;
+      }
+
+      &::after {
+        @apply bg-gradient-to-t from-dark;
+      }
+
+      &::before {
+        @apply border-2 border-solid border-dark transition-all rounded-2xl z-[2];
+      }
+
+      &:hover {
+        &::before {
+          @apply border-main;
+        }
+      }
     }
+
+    &__title,
+    &__sub,
+    &__box {
+      @apply relative z-[2];
+    }
+
     &__title {
       @apply text-4xl font-bold border-b border-solid pb-sm border-gray-300 text-white;
     }
+
     &__sub {
-      @apply mt-xs text-xl text-gray-200;
+      @apply mt-xs text-xl text-gray-200 h-[48px];
     }
+
     &__box {
       @apply flex mt-md gap-sm;
       span {
-        @apply border border-solid py-xs px-sm text-gray-300 rounded-full;
+        @apply border border-solid py-xs px-sm leading-[1] text-gray-300 rounded-full;
       }
     }
   }
@@ -211,7 +243,7 @@
 
 /* contact */
 .home-contact {
-  @apply py-con relative;
+  @apply py-con relative overflow-hidden;
   &::before {
     content: "";
     @apply w-full h-1/2 absolute top-0 left-0 bg-dark;

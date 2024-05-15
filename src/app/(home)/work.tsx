@@ -4,38 +4,39 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { sectionRef } from "@/types/useTypes";
+import Image from "next/image";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 const workList = [
   {
-    name: "연습장",
-    sub: "샬라 샬라라랄라라랄라",
-    link: "#none",
-    type: ["React", "Next.js"],
-    src: "https://cdn.pixabay.com/photo/2023/12/07/19/45/tiger-8436227_1280.jpg",
+    name: "STN 인포텍 연구소",
+    sub: "STN 인포텍 회사 내 연구소 소개 페이지",
+    link: "http://lab.stninfotech.com/index.html",
+    type: ["Gulp", "Sass", "JS", "GSAP"],
+    src: "/images/web/web_1.png",
   },
   {
-    name: "Portfolio Sample2",
-    sub: "샬라 샬라라랄라라랄라",
-    link: "#none",
-    type: ["UI/UX Design", "E-Commerce"],
-    src: "https://cdn.pixabay.com/photo/2023/12/07/19/45/tiger-8436227_1280.jpg",
+    name: "Dashboard",
+    sub: "KT AiON, 국방 관련 대시보드 페이지",
+    link: "http://lab.stninfotech.com/case_02.html",
+    type: ["Gulp", "Sass", "JS"],
+    src: "/images/web/web_2.png",
   },
   {
-    name: "연습장",
-    sub: "개인적인 작업물을 정리해놓았음.",
-    link: "#none",
-    type: ["React", "Next.js"],
-    src: "https://cdn.pixabay.com/photo/2023/12/07/19/45/tiger-8436227_1280.jpg",
+    name: "My Dashboard",
+    sub: "최신 영화,미디어 정보와 날씨가 확인 가능하며 간단한 검색기능이 있는 개인 대시보드 페이지",
+    link: "https://maro-board.vercel.app/",
+    type: ["React", "Next.js", "framer"],
+    src: "/images/web/web_3.png",
   },
   {
-    name: "Portfolio Sample4",
-    sub: "샬라 샬라라랄라라랄라",
-    link: "#none",
-    type: ["UI/UX Design", "E-Commerce"],
-    src: "https://cdn.pixabay.com/photo/2023/12/07/19/45/tiger-8436227_1280.jpg",
+    name: "My Template",
+    sub: "개인 연습용 레이아웃 페이지 모음",
+    link: "https://marotemplate.vercel.app/",
+    type: ["React", "Next.js", "framer"],
+    src: "/images/web/web_4.png",
   },
 ];
 
@@ -85,7 +86,7 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
               <div className="home-work-hero">
                 <h3 className="home-work-hero__title fs-fr">Work</h3>
                 <p className="home-work-hero__sub">
-                  회사 작업물 또는 개인 작업물 목록입니다.
+                  회사 작업물과 개인 작업물 목록입니다.
                 </p>
               </div>
               <ul className="home-work-list">
@@ -94,9 +95,10 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
                     <li className="home-work-item" key={index}>
                       <a
                         className="home-work-item__link"
-                        style={{ backgroundImage: `url(${item.src})` }}
                         href={item.link}
+                        target="_blank"
                       >
+                        <Image src={item.src} alt={item.name} fill />
                         <p className="home-work-item__title">{item.name}</p>
                         <p className="home-work-item__sub">{item.sub}</p>
                         <div className="home-work-item__box">
