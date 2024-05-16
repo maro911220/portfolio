@@ -252,7 +252,16 @@
     @apply relative z-[2] text-6xl text-center text-white;
   }
   &-con {
-    @apply relative z-[2] mt-moCon flex max-w-2xl bg-white mx-auto rounded shadow-xl;
+    @apply relative z-[2] mt-moCon flex max-w-4xl bg-white mx-auto rounded-xl shadow-xl overflow-hidden;
+  }
+
+  &-sub {
+    @apply flex-none  overflow-hidden w-[280px] relative p-lg text-white bg-gradient-to-t from-main to-sub/70 flex flex-col justify-end;
+    &::after {
+      content: "";
+      @apply inline-block w-full h-full absolute top-0 left-0;
+      background: url(/images/Mail-amico.svg) no-repeat left 0 bottom 80px;
+    }
   }
 
   &-form {

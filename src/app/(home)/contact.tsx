@@ -3,6 +3,7 @@ import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { AiOutlineMail } from "react-icons/ai";
 
 const API_KEY = process.env.EMAIL;
 const EMAILSERVICE = process.env.EMAILSERVICE;
@@ -71,9 +72,15 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
     >
       <h2 className="home-contact-title fs-fr">Contact</h2>
       <article className="home-contact-con">
+        <h3 className="hidden">문의하기</h3>
+        <div className="home-contact-sub">
+          <div className="flex gap-2">
+            <AiOutlineMail size={21} />
+            <p>Email</p>
+          </div>
+          <p>honeybreads@naver.com </p>
+        </div>
         <form className="home-contact-form" ref={form} onSubmit={sendEmail}>
-          <h3>바로 연락하기</h3>
-          <p>아래의 내용을 입력해주세요.</p>
           <div className="home-contact-form-item">
             <label>이름</label>
             <input placeholder="홍길동" type="text" name="user_name" required />
