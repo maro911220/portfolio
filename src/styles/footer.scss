@@ -1,7 +1,7 @@
 @import "./variables/_variables.scss";
 
 .footer {
-  @apply bg-dark h-[60px] leading-[60px] text-center text-white;
+  @apply bg-dark h-[50px] leading-[50px] text-center text-white;
   &-wrap {
     @include container;
     @apply h-full flex items-center justify-between gap-sm;

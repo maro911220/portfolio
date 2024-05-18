@@ -120,7 +120,7 @@
   }
 
   &-left {
-    @apply flex-none flex flex-col gap-md w-[500px] sticky top-[40px] break-keep text-lg;
+    @apply flex-none flex flex-col gap-md w-[400px] sticky top-[40px] break-keep text-lg;
   }
 
   &-right {
@@ -134,10 +134,16 @@
       &:nth-of-type(3) {
         @apply top-[80px];
       }
+
+      &:nth-of-type(3) {
+        .home-about-right__img {
+          @apply scale-[0.85];
+        }
+      }
     }
 
     &__img {
-      @apply mr-lg;
+      @apply mr-md;
     }
     &__title {
       @apply text-xl font-semibold flex-none;
@@ -150,6 +156,22 @@
       @apply flex justify-between py-1 text-gray-600 border-b border-solid border-gray-200;
       &:last-of-type {
         @apply border-0;
+      }
+    }
+  }
+
+  // media xl
+  @include md("xl") {
+    &-con {
+      @apply flex-col;
+    }
+    &-left {
+      @apply static text-center w-full max-w-[500px] mx-auto;
+    }
+    &-right {
+      @apply max-w-full w-full;
+      &-box {
+        @apply static;
       }
     }
   }
@@ -246,7 +268,7 @@
   @apply py-con relative overflow-hidden;
   &::before {
     content: "";
-    @apply w-full h-1/2 absolute top-0 left-0 bg-dark;
+    @apply w-full h-[40%] absolute top-0 left-0 bg-dark;
   }
   &-title {
     @apply relative z-[2] text-6xl text-center text-white;
@@ -260,7 +282,7 @@
     &::after {
       content: "";
       @apply inline-block w-full h-full absolute top-0 left-0;
-      background: url(/images/Mail-amico.svg) no-repeat left 0 bottom 80px;
+      background: url(/images/Mail-amico.svg) no-repeat center;
     }
   }
 
@@ -281,20 +303,20 @@
   }
 
   .wave {
-    @apply absolute top-[50%] w-[6400px] h-[198px];
+    @apply absolute top-[40%] w-[6400px] h-[198px];
     background: url(/images/wave.svg) repeat-x;
     animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.5s infinite;
     transform: translate3d(0, 0, 0) rotate(180deg);
 
     &:nth-of-type(2) {
-      top: 55%;
+      top: 45%;
       animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.3s infinite,
         swell 10s ease -1s infinite;
       opacity: 0.3;
     }
 
     &:nth-of-type(3) {
-      top: 57%;
+      top: 50%;
       animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.1s infinite,
         swell 10s ease -2s infinite;
       opacity: 0.1;
