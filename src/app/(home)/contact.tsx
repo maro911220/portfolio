@@ -73,13 +73,6 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
       <h2 className="home-contact-title fs-fr">Contact</h2>
       <article className="home-contact-con">
         <h3 className="hidden">문의하기</h3>
-        <div className="home-contact-sub">
-          <div className="flex gap-2">
-            <AiOutlineMail size={21} />
-            <p>Email</p>
-          </div>
-          <p>honeybreads@naver.com </p>
-        </div>
         <form className="home-contact-form" ref={form} onSubmit={sendEmail}>
           <div className="home-contact-form-item">
             <label>이름</label>

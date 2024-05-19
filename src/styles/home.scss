@@ -134,18 +134,13 @@
       &:nth-of-type(3) {
         @apply top-[80px];
       }
-
-      &:nth-of-type(3) {
-        .home-about-right__img {
-          @apply scale-[0.85];
-        }
-      }
     }
 
-    &__img {
-      @apply mr-md;
+    &__num {
+      @apply mr-lg mt-[-1px];
     }
-    &__title {
+    &__title,
+    &__num {
       @apply text-xl font-semibold flex-none;
     }
 
@@ -265,25 +260,13 @@
 
 /* contact */
 .home-contact {
-  @apply py-con relative overflow-hidden;
-  &::before {
-    content: "";
-    @apply w-full h-[40%] absolute top-0 left-0 bg-dark;
-  }
+  @apply py-con   relative overflow-hidden;
+
   &-title {
-    @apply relative z-[2] text-6xl text-center text-white;
+    @apply relative z-[2] text-6xl text-center;
   }
   &-con {
-    @apply relative z-[2] mt-moCon flex max-w-4xl bg-white mx-auto rounded-xl shadow-xl overflow-hidden;
-  }
-
-  &-sub {
-    @apply flex-none  overflow-hidden w-[280px] relative p-lg text-white bg-gradient-to-t from-main to-sub/70 flex flex-col justify-end;
-    &::after {
-      content: "";
-      @apply inline-block w-full h-full absolute top-0 left-0;
-      background: url(/images/Mail-amico.svg) no-repeat center;
-    }
+    @apply relative z-[2] mt-moCon flex max-w-xl bg-content mx-auto rounded-xl border border-solid border-contentLine overflow-hidden;
   }
 
   &-form {
@@ -291,35 +274,22 @@
 
     input,
     textarea {
-      @apply mt-2 w-full min-h-[42px] p-sm rounded border border-solid;
+      @apply mt-2 w-full min-h-[42px] p-sm rounded bg-white border border-solid border-contentLine;
+
+      &:focus {
+        @apply outline-main;
+      }
     }
 
     textarea {
       @apply h-[120px] resize-none;
     }
     button {
-      @apply border border-solid bg-main text-white p-sm rounded;
-    }
-  }
+      @apply border border-solid bg-dark text-white p-sm rounded transition-all;
 
-  .wave {
-    @apply absolute top-[40%] w-[6400px] h-[198px];
-    background: url(/images/wave.svg) repeat-x;
-    animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.5s infinite;
-    transform: translate3d(0, 0, 0) rotate(180deg);
-
-    &:nth-of-type(2) {
-      top: 45%;
-      animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.3s infinite,
-        swell 10s ease -1s infinite;
-      opacity: 0.3;
-    }
-
-    &:nth-of-type(3) {
-      top: 50%;
-      animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.1s infinite,
-        swell 10s ease -2s infinite;
-      opacity: 0.1;
+      &:hover {
+        @apply bg-main;
+      }
     }
   }
 }

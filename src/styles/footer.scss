@@ -1,19 +1,15 @@
 @import "./variables/_variables.scss";
 
 .footer {
-  @apply bg-dark h-[50px] leading-[50px] text-center text-white;
+  @apply h-[140px] text-center text-gray-500;
   &-wrap {
     @include container;
-    @apply h-full flex items-center justify-between gap-sm;
+    @apply border-t border-solid border-gray-200 h-full flex items-center justify-between gap-sm;
     a {
       @apply flex items-center text-2xl transition-all;
 
       &:hover {
         @apply text-main;
-      }
-      &:not(:first-of-type)::before {
-        content: "";
-        @apply inline-block w-[2px] mr-sm h-4 bg-gray-300;
       }
     }
   }
