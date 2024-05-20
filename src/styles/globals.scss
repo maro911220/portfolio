@@ -29,6 +29,18 @@
 body {
   font-family: "Pretendard-Regular", sans-serif;
   @apply overflow-x-hidden;
+
+  &::-webkit-scrollbar {
+    @apply w-4 h-4;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply bg-main rounded;
+  }
 }
 
 .fs-fr {

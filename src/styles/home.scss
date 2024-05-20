@@ -15,13 +15,15 @@
   0% {
     --textAngle: 0deg;
   }
+
   100% {
     --textAngle: 360deg;
   }
 }
 
 .home-hero {
-  @apply relative h-[100vh] min-h-[700px] max-h-[920px] overflow-hidden;
+  @apply overflow-hidden;
+  @apply h-[100vh] min-h-[700px] max-h-[920px];
 
   &-wrap {
     @include container;
@@ -29,10 +31,13 @@
   }
 
   &-con {
-    @apply relative z-[3] flex flex-col justify-center;
+    @apply relative z-[3];
+    @apply flex flex-col justify-center;
+
     &__title {
-      @apply relative text-7xl leading-[1.3] font-bold;
-      filter: drop-shadow(2px 2px 0 rgba(255, 255, 255, 0.7));
+      @apply text-7xl leading-[1.3] font-bold;
+      @apply drop-shadow-[2px_2px_0_rgba(255,255,255,0.7)];
+
       b {
         @apply text-8xl;
         text-shadow: none;
@@ -40,13 +45,10 @@
         background: linear-gradient(
           var(--textAngle),
           rgba(34, 193, 195, 1) 0%,
-          rgba(144, 190, 120, 1) 25%,
-          rgba(183, 189, 93, 1) 50%,
-          rgba(213, 188, 73, 1) 75%,
           rgba(253, 187, 45, 1) 100%
         );
         background-clip: text;
-        animation: textGradient 2s linear infinite;
+        animation: textGradient 4s linear infinite;
       }
     }
 
@@ -56,7 +58,9 @@
   }
 
   &-imgbox {
-    @apply absolute top-0 left-0 w-full h-full flex items-center justify-end;
+    @apply w-full h-full;
+    @apply absolute top-0 left-0;
+    @apply flex items-center justify-end;
   }
 
   &-blob {
@@ -68,8 +72,9 @@
   }
 
   &-blur {
-    @apply absolute right-10 z-[2] bg-white/30 backdrop-blur-lg w-[500px] h-[500px] rounded-full block;
-    box-shadow: inset 0 0 16px #ceedeb;
+    @apply absolute right-10 z-[2];
+    @apply block w-[500px] h-[500px] rounded-full;
+    @apply bg-white/30 backdrop-blur-lg shadow-[inset_0_0_16px_#ceedec];
   }
 }
 
@@ -91,18 +96,22 @@
   }
 
   &-con {
-    @apply w-full h-full flex overflow-hidden;
+    @apply w-full h-full;
+    @apply flex overflow-hidden;
   }
 
   &-box {
-    @apply flex items-center flex-nowrap gap-md px-lg;
+    @apply gap-md px-lg;
+    @apply flex items-center flex-nowrap;
     animation: rolling 30s linear infinite;
   }
 
   &-logo {
-    @apply flex-none w-[200px] h-[100px] p-md;
+    @apply flex-none;
+    @apply w-[200px] h-[100px] p-md;
     img {
-      @apply w-full h-full object-contain object-center;
+      @apply w-full h-full;
+      @apply object-contain object-center;
     }
   }
 }
@@ -111,8 +120,11 @@
 .home-about {
   @include container;
   @apply py-con;
+
   &-con {
-    @apply opacity-0 relative gap-lg  mx-auto flex justify-between items-start;
+    @apply relative opacity-0;
+    @apply gap-lg mx-auto;
+    @apply flex justify-between items-start;
   }
 
   &-title {
@@ -120,35 +132,40 @@
   }
 
   &-left {
-    @apply flex-none flex flex-col gap-md w-[400px] sticky top-[40px] break-keep text-lg;
+    @apply sticky top-[40px];
+    @apply gap-md w-[400px];
+    @apply break-keep text-lg;
+    @apply flex-none flex flex-col;
   }
 
   &-right {
-    @apply flex flex-col flex-1 max-w-[900px] mt-moCon gap-lg;
+    @apply flex flex-col flex-1;
+    @apply max-w-[900px] mt-moCon gap-lg;
+
     &-box {
-      @apply sticky flex items-start gap-md top-[40px] rounded-lg p-lg transition-all;
+      @apply sticky top-[40px];
+      @apply flex items-start;
+      @apply gap-md p-lg rounded-lg transition-all;
       @apply bg-content border border-solid border-contentLine;
-      &:nth-of-type(2) {
-        @apply top-[60px];
-      }
-      &:nth-of-type(3) {
-        @apply top-[80px];
-      }
     }
 
     &__num {
       @apply mr-lg mt-[-1px];
     }
+
     &__title,
     &__num {
       @apply text-xl font-semibold flex-none;
     }
 
     &__list {
-      @apply flex flex-col gap-xs flex-1;
+      @apply flex flex-col flex-1 gap-xs;
     }
+
     &__item {
-      @apply flex justify-between py-1 text-gray-600 border-b border-solid border-gray-200;
+      @apply flex justify-between py-1;
+      @apply text-gray-600 border-b border-solid border-gray-200;
+
       &:last-of-type {
         @apply border-0;
       }
@@ -160,11 +177,15 @@
     &-con {
       @apply flex-col;
     }
+
     &-left {
-      @apply static text-center w-full max-w-[500px] mx-auto;
+      @apply static text-center;
+      @apply w-full max-w-[500px] mx-auto;
     }
+
     &-right {
       @apply max-w-full w-full;
+
       &-box {
         @apply static;
       }
@@ -192,32 +213,40 @@
   }
 
   &-hero {
-    @apply flex flex-col pt-con w-[430px] mr-con;
+    @apply flex flex-col;
+    @apply w-[430px] pt-con mr-con;
+
     &__title {
-      @apply text-6xl mb-md text-white;
+      @apply text-6xl text-white mb-md;
     }
+
     &__sub {
-      @apply break-keep text-xl text-gray-300;
+      @apply text-xl text-gray-300 break-keep;
     }
   }
 
   &-list {
-    @apply flex items-center gap-lg h-full p-con pr-0;
+    @apply flex items-center;
+    @apply h-full p-con pr-0 gap-lg;
   }
 
   &-item {
     @apply w-[90vw] max-w-[100vh] h-full;
 
     &__link {
-      @apply relative flex flex-col justify-end w-full h-full p-lg;
+      @apply flex flex-col justify-end;
+      @apply relative w-full h-full p-lg;
+
       img {
-        @apply left-[1px] top-[1px] w-[calc(100%-2px)] h-[calc(100%-2px)] object-cover rounded-2xl #{!important};
+        @apply left-[1px] top-[1px] object-cover #{!important};
+        @apply w-[calc(100%-2px)] h-[calc(100%-2px)] rounded-2xl #{!important};
       }
 
       &::after,
       &::before {
         content: "";
-        @apply inline-block absolute top-0  left-0 w-full h-full;
+        @apply absolute top-0 left-0;
+        @apply inline-block w-full h-full;
       }
 
       &::after {
@@ -225,7 +254,8 @@
       }
 
       &::before {
-        @apply border-2 border-solid border-dark transition-all rounded-2xl z-[2];
+        @apply transition-all rounded-2xl z-[2];
+        @apply border-2 border-solid border-dark;
       }
 
       &:hover {
@@ -242,17 +272,22 @@
     }
 
     &__title {
-      @apply text-4xl font-bold border-b border-solid pb-sm border-gray-300 text-white;
+      @apply text-4xl font-bold text-white;
+      @apply border-b border-solid border-gray-300 pb-sm;
     }
 
     &__sub {
-      @apply mt-xs text-xl text-gray-200 h-[48px];
+      @apply h-[48px] mt-xs;
+      @apply text-xl text-gray-200;
     }
 
     &__box {
       @apply flex mt-md gap-sm;
+
       span {
-        @apply border border-solid py-xs px-sm leading-[1] text-gray-300 rounded-full;
+        @apply py-xs px-sm;
+        @apply leading-[1] text-gray-300;
+        @apply border border-solid rounded-full;
       }
     }
   }
@@ -260,21 +295,28 @@
 
 /* contact */
 .home-contact {
-  @apply py-con   relative overflow-hidden;
+  @apply relative py-con overflow-hidden;
 
   &-title {
-    @apply relative z-[2] text-6xl text-center;
+    @apply relative z-[2];
+    @apply text-6xl text-center;
   }
   &-con {
-    @apply relative z-[2] mt-moCon flex max-w-xl bg-content mx-auto rounded-xl border border-solid border-contentLine overflow-hidden;
+    @apply relative z-[2];
+    @apply flex max-w-xl mt-moCon mx-auto;
+    @apply bg-content rounded-xl overflow-hidden;
+    @apply border border-solid border-contentLine;
   }
 
   &-form {
-    @apply flex flex-col gap-4 p-lg flex-1  overflow-hidden;
+    @apply flex flex-col flex-1;
+    @apply p-lg gap-4 overflow-hidden;
 
     input,
     textarea {
-      @apply mt-2 w-full min-h-[42px] p-sm rounded bg-white border border-solid border-contentLine;
+      @apply bg-white rounded;
+      @apply w-full min-h-[42px] mt-2 p-sm;
+      @apply border border-solid border-contentLine;
 
       &:focus {
         @apply outline-main;
@@ -284,30 +326,14 @@
     textarea {
       @apply h-[120px] resize-none;
     }
+
     button {
-      @apply border border-solid bg-dark text-white p-sm rounded transition-all;
+      @apply border border-solid;
+      @apply bg-dark text-white p-sm rounded transition-all;
 
       &:hover {
         @apply bg-main;
       }
     }
-  }
-}
-
-@keyframes wave {
-  0% {
-    margin-left: 0;
-  }
-  100% {
-    margin-left: -1600px;
-  }
-}
-@keyframes swell {
-  0%,
-  100% {
-    transform: translate3d(0, -25px, 0) rotate(180deg);
-  }
-  50% {
-    transform: translate3d(0, 5px, 0) rotate(180deg);
   }
 }
