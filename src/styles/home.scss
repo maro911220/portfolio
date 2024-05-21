@@ -76,6 +76,43 @@
     @apply block w-[500px] h-[500px] rounded-full;
     @apply bg-white/30 backdrop-blur-lg shadow-[inset_0_0_16px_#ceedec];
   }
+
+  // media xl
+  @include md("md") {
+    &-con {
+      @apply w-full text-center;
+      &__title {
+        @apply text-[10.5vw];
+        b {
+          @apply text-[14.5vw];
+        }
+      }
+
+      &__sub {
+        @apply text-lg break-keep;
+        br {
+          @apply hidden;
+        }
+      }
+    }
+    &-imgbox {
+      @apply justify-center;
+    }
+    &-blur {
+      @apply w-[80vw] h-[80vw] right-auto;
+    }
+    &-blob {
+      @apply opacity-50 w-[65vw] h-[65vw];
+    }
+  }
+
+  @include md("sm") {
+    &-con {
+      &__sub {
+        @apply text-sm;
+      }
+    }
+  }
 }
 
 /* Skills */

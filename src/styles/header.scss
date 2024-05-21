@@ -35,4 +35,16 @@
       }
     }
   }
+
+  @include md("md") {
+    &-nav {
+      @apply w-full border-0 rounded-t-xl rounded-b-none;
+      @apply left-0 bottom-0 translate-x-0;
+      @apply justify-center;
+
+      button {
+        @apply flex-1 rounded-xl text-sm;
+      }
+    }
+  }
 }

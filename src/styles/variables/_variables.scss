@@ -1,5 +1,8 @@
 @mixin container {
-  @apply max-w-[1480px] w-full px-lg mx-auto;
+  @apply max-w-[1480px] px-lg w-full mx-auto;
+  @include md("lg") {
+    @apply px-md;
+  }
 }
 
 @mixin md($size) {
