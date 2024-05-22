@@ -34,8 +34,9 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
       // 스크롤에 따른 효과를 추가
       Observer.create({
         target: window,
-        type: "scroll,touch",
+        type: "scroll",
         onChangeY: (e) => {
+          console.log(e);
           function scrollAct(target: string, y: number) {
             gsap.to(target, { y: y });
           }

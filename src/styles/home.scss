@@ -79,8 +79,9 @@
 
   // media xl
   @include md("md") {
+    @apply pb-moCon;
     &-con {
-      @apply w-full text-center;
+      @apply w-full justify-end items-start;
       &__title {
         @apply text-[10.5vw];
         b {
@@ -98,11 +99,12 @@
     &-imgbox {
       @apply justify-center;
     }
-    &-blur {
-      @apply w-[80vw] h-[80vw] right-auto;
-    }
+    &-blur,
     &-blob {
-      @apply opacity-50 w-[65vw] h-[65vw];
+      @apply w-[70vw] h-[70vw] top-[150px] right-[20px];
+    }
+    &-blur {
+      @apply top-[200px] right-[40px];
     }
   }
 
