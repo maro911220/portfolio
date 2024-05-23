@@ -79,7 +79,7 @@
 
   // media xl
   @include md("md") {
-    @apply min-h-0 max-h-[calc(100dvh-52px)] h-[780px] pb-lg;
+    @apply min-h-0 max-h-none h-[calc(100dvh-52px)] pb-lg;
     &-con {
       @apply w-full justify-end items-start;
       &__title {
