@@ -34,15 +34,22 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
       // 스크롤에 따른 효과를 추가
       Observer.create({
         target: window,
-        type: "scroll",
-        onChangeY: (e) => {
-          console.log(e);
+        type: "scroll", //wheel 고려해보기
+        onDown: (e) => {
           function scrollAct(target: string, y: number) {
             gsap.to(target, { y: y });
           }
           scrollAct(Ref.current[0], e.deltaY * 2);
           scrollAct(".home-hero-imgbox", e.deltaY);
         },
+        // onChangeY: (e) => {
+        //   console.log(e);
+        //   function scrollAct(target: string, y: number) {
+        //     gsap.to(target, { y: y });
+        //   }
+        //   scrollAct(Ref.current[0], e.scrollY.v * 2);
+        //   scrollAct(".home-hero-imgbox", e.scrollY.v);
+        // },
       });
     },
     { scope: Ref.current[0] }
