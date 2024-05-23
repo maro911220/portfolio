@@ -79,7 +79,7 @@
 
   // media xl
   @include md("md") {
-    @apply max-h-[calc(100vh-52px)] min-h-[500px] pb-moCon;
+    @apply min-h-0 max-h-[calc(100vh-52px)] h-[720px] pb-lg;
     &-con {
       @apply w-full justify-end items-start;
       &__title {
@@ -104,7 +104,7 @@
       @apply w-[50vw] h-[50vw] top-[120px] right-[20px];
     }
     &-blur {
-      @apply top-[180px] right-[40px];
+      @apply top-[150px] right-[40px];
     }
   }
 
