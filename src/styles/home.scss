@@ -77,11 +77,24 @@
     @apply bg-white/30 backdrop-blur-lg shadow-[inset_0_0_16px_#ceedec];
   }
 
-  // media xl
+  // media lg
+  @include md("lg") {
+    &-blob {
+      @apply w-[450px] h-[450px];
+    }
+
+    &-blur {
+      @apply w-[400px] h-[400px];
+    }
+  }
+
+  // media md
   @include md("md") {
     @apply min-h-0 max-h-none h-auto pb-lg;
+
     &-con {
       @apply w-full pt-[450px];
+
       &__title {
         @apply text-5xl;
         b {
@@ -96,21 +109,26 @@
         }
       }
     }
+
     &-imgbox {
       @apply justify-center;
     }
+
     &-blur,
     &-blob {
-      @apply w-[280px] h-[280px] top-[100px] right-[20px];
+      @apply w-[280px] h-[280px] top-[100px] right-0;
     }
+
     &-blur {
-      @apply top-[120px] right-[40px];
+      @apply top-[120px] right-[20px];
     }
   }
 
+  // media sm
   @include md("sm") {
     &-con {
       @apply pt-[400px];
+
       &__title {
         @apply text-3xl;
         b {
@@ -119,12 +137,13 @@
       }
 
       &__sub {
-        @apply text-sm;
+        @apply mt-sm text-sm;
       }
     }
+
     &-blur,
     &-blob {
-      @apply w-[240px] h-[240px];
+      @apply w-[230px] h-[230px];
     }
   }
 }
@@ -163,6 +182,25 @@
     img {
       @apply w-full h-full;
       @apply object-contain object-center;
+    }
+  }
+
+  @include md("md") {
+    @keyframes rolling {
+      from {
+        transform: translate(0);
+      }
+      to {
+        transform: translate(-1440px);
+      }
+    }
+
+    &-wrap {
+      @apply px-0;
+    }
+
+    &-logo {
+      @apply w-[140px] h-[100px];
     }
   }
 }
