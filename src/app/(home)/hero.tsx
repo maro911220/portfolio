@@ -42,14 +42,6 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
           scrollAct(Ref.current[0], e.deltaY * 2);
           scrollAct(".home-hero-imgbox", e.deltaY);
         },
-        // onChangeY: (e) => {
-        //   console.log(e);
-        //   function scrollAct(target: string, y: number) {
-        //     gsap.to(target, { y: y });
-        //   }
-        //   scrollAct(Ref.current[0], e.scrollY.v * 2);
-        //   scrollAct(".home-hero-imgbox", e.scrollY.v);
-        // },
       });
     },
     { scope: Ref.current[0] }

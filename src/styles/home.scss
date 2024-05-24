@@ -79,13 +79,13 @@
 
   // media xl
   @include md("md") {
-    @apply min-h-0 max-h-none h-[calc(100dvh-52px)] pb-lg;
+    @apply min-h-0 max-h-none h-auto pb-lg;
     &-con {
-      @apply w-full justify-end items-start;
+      @apply w-full pt-[450px];
       &__title {
-        @apply text-[10.5vw];
+        @apply text-5xl;
         b {
-          @apply text-[14.5vw];
+          @apply text-7xl;
         }
       }
 
@@ -101,18 +101,30 @@
     }
     &-blur,
     &-blob {
-      @apply w-[50vw] h-[50vw] top-[120px] right-[20px];
+      @apply w-[280px] h-[280px] top-[100px] right-[20px];
     }
     &-blur {
-      @apply top-[150px] right-[40px];
+      @apply top-[120px] right-[40px];
     }
   }
 
   @include md("sm") {
     &-con {
+      @apply pt-[400px];
+      &__title {
+        @apply text-3xl;
+        b {
+          @apply text-5xl;
+        }
+      }
+
       &__sub {
         @apply text-sm;
       }
+    }
+    &-blur,
+    &-blob {
+      @apply w-[240px] h-[240px];
     }
   }
 }
