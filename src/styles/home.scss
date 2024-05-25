@@ -203,6 +203,14 @@
       @apply w-[140px] h-[100px];
     }
   }
+
+  @include md("sm") {
+    &-logo {
+      img {
+        @apply w-3/4 h-3/4;
+      }
+    }
+  }
 }
 
 /* About */
@@ -266,17 +274,71 @@
     &-con {
       @apply flex-col;
     }
-
+    &-title {
+      @apply text-center mb-lg;
+    }
     &-left {
-      @apply static text-center;
+      @apply static;
       @apply w-full max-w-[500px] mx-auto;
     }
 
     &-right {
       @apply max-w-full w-full;
+    }
+  }
+
+  @include md("md") {
+    @apply py-moCon;
+
+    &-con {
+      @apply gap-md;
+    }
+
+    &-title {
+      @apply text-5xl;
+    }
+
+    &-left {
+      @apply max-w-[420px] gap-sm text-base;
+    }
+
+    &-right {
+      @apply mt-lg;
 
       &-box {
-        @apply static;
+        @apply p-md;
+      }
+
+      &__title {
+        @apply text-lg;
+      }
+
+      &__num {
+        @apply hidden;
+      }
+
+      &__item {
+        @apply text-sm;
+      }
+    }
+  }
+
+  @include md("sm") {
+    &-title {
+      @apply text-4xl mb-md;
+    }
+
+    &-left {
+      @apply max-w-full text-sm;
+    }
+
+    &-right {
+      &__title {
+        @apply text-base;
+      }
+
+      &__item {
+        @apply flex-col;
       }
     }
   }

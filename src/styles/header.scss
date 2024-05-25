@@ -47,4 +47,18 @@
       }
     }
   }
+
+  @include md("sm") {
+    &-con {
+      @apply h-[60px];
+    }
+
+    &-title {
+      @apply text-2xl;
+    }
+
+    &-git {
+      @apply text-3xl;
+    }
+  }
 }
