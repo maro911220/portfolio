@@ -61,4 +61,12 @@
       @apply text-3xl;
     }
   }
+
+  @include md("xs") {
+    &-nav {
+      button {
+        @apply text-xs;
+      }
+    }
+  }
 }

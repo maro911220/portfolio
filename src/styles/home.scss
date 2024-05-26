@@ -146,6 +146,21 @@
       @apply w-[230px] h-[230px];
     }
   }
+  // media xs
+  @include md("xs") {
+    &-con {
+      &__title {
+        @apply text-2xl;
+        b {
+          @apply text-4xl;
+        }
+      }
+
+      &__sub {
+        @apply text-xs;
+      }
+    }
+  }
 }
 
 /* Skills */
@@ -276,10 +291,10 @@
       @apply flex-col;
     }
     &-title {
-      @apply text-center mb-lg;
+      @apply mb-lg;
     }
     &-left {
-      @apply static;
+      @apply static text-center;
       @apply w-full max-w-[500px] mx-auto;
     }
 
@@ -341,6 +356,25 @@
 
       &__item {
         @apply flex-col-reverse;
+      }
+    }
+  }
+
+  @include md("xs") {
+    &-left {
+      @apply text-xs;
+    }
+
+    &-right {
+      &-box {
+        @apply px-sm;
+      }
+      &__title {
+        @apply text-sm;
+      }
+
+      &__item {
+        @apply text-xs;
       }
     }
   }
@@ -506,12 +540,36 @@
         @apply text-2xl;
       }
 
-      &__sub {
-        @apply text-sm;
-      }
-
+      &__sub,
       &__box {
         @apply text-sm;
+      }
+    }
+  }
+
+  @include md("xs") {
+    &-hero {
+      @apply mr-sm;
+      &__title {
+        @apply text-4xl;
+      }
+      &__sub {
+        @apply text-xs;
+      }
+    }
+
+    &-list {
+      @apply pl-sm;
+    }
+
+    &-item {
+      &__title {
+        @apply text-xl;
+      }
+
+      &__sub,
+      &__box {
+        @apply text-xs;
       }
     }
   }
@@ -584,6 +642,12 @@
 
     &-form {
       @apply text-sm;
+    }
+  }
+
+  @include md("xs") {
+    &-form {
+      @apply px-sm;
     }
   }
 }
