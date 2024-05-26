@@ -13,4 +13,22 @@
       }
     }
   }
+
+  @include md("md") {
+    @apply h-[120px];
+    &-wrap {
+      @apply items-start pt-md;
+    }
+  }
+
+  @include md("sm") {
+    @apply h-[110px];
+
+    &-wrap {
+      @apply text-sm;
+      a {
+        @apply text-xl;
+      }
+    }
+  }
 }

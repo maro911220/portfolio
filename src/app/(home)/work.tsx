@@ -64,7 +64,7 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
           scrub: 1,
           pin: true,
           start: "top",
-          end: list.clientHeight * 5,
+          end: list.clientHeight * 6,
         },
       });
     },
