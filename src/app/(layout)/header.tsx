@@ -5,7 +5,7 @@ import { defaultStore } from "@/store/store";
 import { FaGithub } from "react-icons/fa";
 
 export default function Header() {
-  const sectionList = ["hero", "skills", "about", "work", "contact"];
+  const sectionList = ["home", "skills", "about", "work", "contact"];
   const { sectionRef } = useStore(defaultStore);
   const move = (num: number) => {
     sectionRef.current[num].scrollIntoView({ behavior: "smooth" });

@@ -350,6 +350,8 @@
     }
 
     &-right {
+      @apply text-center;
+
       &__title {
         @apply text-base;
       }
