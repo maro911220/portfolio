@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { Observer } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import { sectionRef } from "@/types/useTypes";
-import "@/styles/blobz.min.css";
+import "@/styles/vendors/blobz.min.css";
 
 // GSAP 플러그인 설정
 gsap.registerPlugin(useGSAP);

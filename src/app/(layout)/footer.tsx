@@ -1,5 +1,4 @@
 "use client";
-import "@/styles/footer.scss";
 import { FaGithub, FaArrowAltCircleUp } from "react-icons/fa";
 
 export default function Footer() {

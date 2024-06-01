@@ -1,3 +1,4 @@
+/* container */
 @mixin container {
   @apply max-w-[1480px] px-lg w-full mx-auto;
   @include md("lg") {
@@ -5,6 +6,7 @@
   }
 }
 
+/* media query */
 @mixin md($size) {
   @if ($size == "xl") {
     @media (max-width: 1280px) {

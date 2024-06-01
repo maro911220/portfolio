@@ -1,9 +1,8 @@
 "use client";
-import "@/styles/home.scss";
+import "@/styles/main.scss";
 import { useEffect, useRef } from "react";
 import { useStore } from "zustand";
 import { defaultStore } from "@/store/store";
-
 import About from "./(home)/about";
 import Contact from "./(home)/contact";
 import Hero from "./(home)/hero";

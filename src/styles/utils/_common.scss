@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@font-face {
+  font-family: "Freesentation-9Black";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
+    format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fs-fr {
+  font-family: "Freesentation-9Black";
+}
+
+.col-main {
+  @apply text-main;
+}
+
+body {
+  font-family: "Pretendard-Regular", sans-serif;
+  @apply overflow-x-hidden;
+
+  // Scroll 스타일 전체 적용
+  &::-webkit-scrollbar {
+    @apply w-4 h-4;
+    &-track {
+      @apply bg-gray-200;
+    }
+
+    &-thumb {
+      @apply bg-main rounded;
+    }
+  }
+}

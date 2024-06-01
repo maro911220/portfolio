@@ -1,0 +1,87 @@
+/* header */
+.header {
+  font-family: "Freesentation-9Black";
+  @apply w-full;
+  @apply absolute top-0 z-[9];
+
+  &-con {
+    @include container;
+    @apply h-[80px];
+    @apply flex items-center justify-between;
+  }
+
+  &-title {
+    @apply transition-all;
+    @apply text-3xl font-bold uppercase;
+
+    &:hover {
+      @apply text-main;
+    }
+  }
+
+  &-git {
+    @apply text-4xl;
+    @apply transition-all;
+
+    &:hover {
+      @apply text-main;
+    }
+  }
+
+  &-nav {
+    @apply p-2;
+    @apply flex;
+    @apply text-white;
+    @apply bg-gradient-to-tl to-body/80 from-black;
+    @apply fixed left-[50%] bottom-[40px] translate-x-[-50%];
+    @apply border border-solid border-gray-500 rounded-full;
+
+    button {
+      @apply px-4 py-2;
+      @apply rounded-full;
+      @apply first-letter:uppercase transition-all;
+
+      &:hover {
+        @apply bg-gray-600;
+      }
+    }
+  }
+
+  // tablet
+  @include md("md") {
+    &-nav {
+      @apply w-full;
+      @apply justify-center;
+      @apply left-0 bottom-0 translate-x-0;
+      @apply border-0 rounded-t-xl rounded-b-none;
+
+      button {
+        @apply flex-1 rounded-xl text-sm px-0;
+      }
+    }
+  }
+
+  // mobile
+  @include md("sm") {
+    &-con {
+      @apply h-[60px];
+    }
+
+    &-title {
+      @apply text-2xl;
+    }
+
+    &-git {
+      @apply text-3xl;
+    }
+  }
+
+  // mobile xs
+  @include md("xs") {
+    &-nav {
+      button {
+        @apply text-xs;
+      }
+    }
+  }
+}

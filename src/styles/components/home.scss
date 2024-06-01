@@ -1,16 +1,11 @@
-@import "./variables/_variables.scss";
-
-.home {
-  @apply bg-white text-gray-800;
-}
-
-/* Hero */
+/* property */
 @property --textAngle {
   syntax: "<angle>";
   inherits: true;
   initial-value: 0deg;
 }
 
+/* keyframes */
 @keyframes textGradient {
   0% {
     --textAngle: 0deg;
@@ -21,6 +16,32 @@
   }
 }
 
+@keyframes rolling {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-1980px);
+  }
+}
+
+@include md("md") {
+  @keyframes rolling {
+    from {
+      transform: translate(0);
+    }
+    to {
+      transform: translate(-1440px);
+    }
+  }
+}
+
+/* home */
+.home {
+  @apply bg-white text-gray-800;
+}
+
+/* home-hero */
 .home-hero {
   @apply overflow-hidden;
   @apply h-[100vh] min-h-[700px] max-h-[920px];
@@ -53,7 +74,8 @@
     }
 
     &__sub {
-      @apply my-md text-xl leading-[1.4];
+      @apply my-md;
+      @apply text-xl leading-[1.4];
     }
   }
 
@@ -64,7 +86,9 @@
   }
 
   &-blob {
-    @apply absolute w-[600px] h-[600px];
+    @apply absolute;
+    @apply w-[600px] h-[600px];
+
     .tk-blob {
       --time: 15s;
       --amount: 3;
@@ -77,7 +101,7 @@
     @apply bg-white/30 backdrop-blur-lg shadow-[inset_0_0_16px_#ceedec];
   }
 
-  // media lg
+  // pc
   @include md("lg") {
     &-blob {
       @apply w-[450px] h-[450px];
@@ -88,7 +112,7 @@
     }
   }
 
-  // media md
+  // tablet
   @include md("md") {
     @apply min-h-0 max-h-none h-auto pb-lg;
 
@@ -97,6 +121,7 @@
 
       &__title {
         @apply text-5xl;
+
         b {
           @apply text-7xl;
         }
@@ -104,6 +129,7 @@
 
       &__sub {
         @apply text-lg break-keep;
+
         br {
           @apply hidden;
         }
@@ -116,7 +142,8 @@
 
     &-blur,
     &-blob {
-      @apply w-[280px] h-[280px] top-[100px] right-0;
+      @apply w-[280px] h-[280px];
+      @apply top-[100px] right-0;
     }
 
     &-blur {
@@ -124,7 +151,7 @@
     }
   }
 
-  // media sm
+  // mobile
   @include md("sm") {
     &-con {
       @apply pt-[400px];
@@ -146,7 +173,8 @@
       @apply w-[230px] h-[230px];
     }
   }
-  // media xs
+
+  // mobile xs
   @include md("xs") {
     &-con {
       &__title {
@@ -164,20 +192,12 @@
 }
 
 /* Skills */
-@keyframes rolling {
-  from {
-    transform: translate(0);
-  }
-  to {
-    transform: translate(-1980px);
-  }
-}
-
 .home-skills {
   @apply h-[220px];
   &-wrap {
     @include container;
-    @apply relative h-full overflow-hidden;
+    @apply h-full;
+    @apply relative overflow-hidden;
   }
 
   &-con {
@@ -194,22 +214,15 @@
   &-logo {
     @apply flex-none;
     @apply w-[200px] h-[100px] p-md;
+
     img {
       @apply w-full h-full;
       @apply object-contain object-center;
     }
   }
 
+  // tablet
   @include md("md") {
-    @keyframes rolling {
-      from {
-        transform: translate(0);
-      }
-      to {
-        transform: translate(-1440px);
-      }
-    }
-
     &-wrap {
       @apply px-0;
     }
@@ -219,8 +232,10 @@
     }
   }
 
+  // mobile
   @include md("sm") {
     @apply h-[180px];
+
     &-logo {
       img {
         @apply w-3/4 h-3/4;
@@ -258,8 +273,8 @@
     &-box {
       @apply sticky top-[40px];
       @apply flex items-start;
-      @apply gap-md p-lg rounded-lg transition-all;
-      @apply bg-content border border-solid border-contentLine;
+      @apply gap-md p-lg transition-all;
+      @apply bg-content border border-solid border-contentLine rounded-lg;
     }
 
     &__num {
@@ -276,8 +291,9 @@
     }
 
     &__item {
-      @apply flex justify-between py-1;
-      @apply text-gray-600 border-b border-solid border-gray-200;
+      @apply text-gray-600 py-1;
+      @apply flex justify-between;
+      @apply border-b border-solid border-gray-200;
 
       &:last-of-type {
         @apply border-0;
@@ -285,14 +301,16 @@
     }
   }
 
-  // media xl
+  // pc
   @include md("xl") {
     &-con {
       @apply flex-col;
     }
+
     &-title {
       @apply mb-lg;
     }
+
     &-left {
       @apply static text-center;
       @apply w-full max-w-[500px] mx-auto;
@@ -303,6 +321,7 @@
     }
   }
 
+  // tablet
   @include md("md") {
     @apply py-moCon;
 
@@ -315,7 +334,8 @@
     }
 
     &-left {
-      @apply max-w-[420px] gap-sm text-base;
+      @apply text-base;
+      @apply max-w-[420px] gap-sm;
     }
 
     &-right {
@@ -339,8 +359,10 @@
     }
   }
 
+  // mobile
   @include md("sm") {
     @apply pt-lg pb-moCon;
+
     &-title {
       @apply text-4xl mb-md;
     }
@@ -362,6 +384,7 @@
     }
   }
 
+  // mobile xs
   @include md("xs") {
     &-left {
       @apply text-xs;
@@ -371,6 +394,7 @@
       &-box {
         @apply px-sm;
       }
+
       &__title {
         @apply text-sm;
       }
@@ -384,21 +408,25 @@
 
 /* work */
 .home-work {
-  @apply w-full h-auto overflow-hidden bg-dark;
+  @apply bg-dark;
+  @apply w-full h-auto;
+  @apply overflow-hidden;
 
   &-scroller-dummy {
     @include container;
   }
 
   &-scroller {
-    @apply flex w-full h-svh;
+    @apply flex;
+    @apply w-full h-svh;
   }
 
   &-con {
     @apply w-full h-full;
   }
   &-wrap {
-    @apply w-fit min-w-full h-full flex;
+    @apply flex;
+    @apply w-fit min-w-full h-full;
   }
 
   &-hero {
@@ -417,9 +445,11 @@
   &-list {
     @apply flex items-center;
     @apply h-full p-con pr-0 gap-lg;
+
     &::after {
       content: "";
-      @apply inline-block w-[20vw] h-full;
+      @apply inline-block;
+      @apply w-[20vw] h-full;
     }
   }
 
@@ -465,8 +495,9 @@
     }
 
     &__title {
+      @apply pb-sm;
       @apply text-4xl font-bold text-white;
-      @apply border-b border-solid border-gray-300 pb-sm;
+      @apply border-b border-solid border-gray-300;
     }
 
     &__sub {
@@ -475,7 +506,8 @@
     }
 
     &__box {
-      @apply flex mt-md gap-sm;
+      @apply flex;
+      @apply mt-md gap-sm;
 
       span {
         @apply py-xs px-sm;
@@ -485,18 +517,22 @@
     }
   }
 
+  // pc
   @include md("lg") {
     &-hero {
       @apply w-[320px] mr-moCon;
     }
   }
 
+  // tablet
   @include md("md") {
     &-hero {
       @apply w-[200px] mr-lg;
+
       &__title {
         @apply text-5xl;
       }
+
       &__sub {
         @apply text-base;
       }
@@ -508,6 +544,7 @@
 
     &-item {
       @apply w-[calc(100vw-20px)];
+
       &__title {
         @apply text-3xl;
       }
@@ -518,12 +555,15 @@
     }
   }
 
+  // mobile
   @include md("sm") {
     &-hero {
       @apply mr-md;
+
       &__title {
         @apply text-4xl;
       }
+
       &__sub {
         @apply text-sm;
       }
@@ -549,12 +589,15 @@
     }
   }
 
+  // mobile xs
   @include md("xs") {
     &-hero {
       @apply mr-sm;
+
       &__title {
         @apply text-4xl;
       }
+
       &__sub {
         @apply text-xs;
       }
@@ -579,17 +622,20 @@
 
 /* contact */
 .home-contact {
-  @apply relative py-con overflow-hidden;
+  @apply py-con;
+  @apply relative overflow-hidden;
 
   &-title {
     @apply relative z-[2];
     @apply text-6xl text-center;
   }
+
   &-con {
+    @apply flex;
     @apply relative z-[2];
-    @apply flex max-w-xl mt-moCon mx-auto w-[calc(100%-40px)];
-    @apply bg-content rounded-xl overflow-hidden;
-    @apply border border-solid border-contentLine;
+    @apply bg-content overflow-hidden;
+    @apply max-w-xl mt-moCon mx-auto w-[calc(100%-40px)];
+    @apply border border-solid border-contentLine rounded-xl;
   }
 
   &-form {
@@ -612,8 +658,10 @@
     }
 
     button {
-      @apply border border-solid;
-      @apply bg-dark text-white p-sm rounded transition-all;
+      @apply bg-dark;
+      @apply text-white;
+      @apply p-sm transition-all;
+      @apply border border-solid rounded;
 
       &:hover {
         @apply bg-main;
@@ -621,6 +669,7 @@
     }
   }
 
+  // tablet
   @include md("md") {
     @apply py-moCon;
 
@@ -637,6 +686,7 @@
     }
   }
 
+  // mobile
   @include md("sm") {
     &-title {
       @apply text-4xl;
@@ -647,6 +697,7 @@
     }
   }
 
+  // mobile xs
   @include md("xs") {
     &-form {
       @apply px-sm;

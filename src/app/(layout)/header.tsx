@@ -1,5 +1,4 @@
 "use client";
-import "@/styles/header.scss";
 import { useStore } from "zustand";
 import { defaultStore } from "@/store/store";
 import { FaGithub } from "react-icons/fa";

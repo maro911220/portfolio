@@ -1,0 +1,43 @@
+/* footer */
+.footer {
+  @apply h-[140px];
+  @apply text-center text-gray-500;
+
+  &-wrap {
+    @include container;
+    @apply h-full gap-sm;
+    @apply flex items-center justify-between;
+    @apply border-t border-solid border-gray-200;
+
+    a {
+      @apply text-2xl;
+      @apply transition-all;
+      @apply flex items-center;
+
+      &:hover {
+        @apply text-main;
+      }
+    }
+  }
+
+  // tablet
+  @include md("md") {
+    @apply h-[120px];
+    &-wrap {
+      @apply pt-md;
+      @apply items-start;
+    }
+  }
+
+  // mobile
+  @include md("sm") {
+    @apply h-[110px];
+
+    &-wrap {
+      @apply text-sm;
+      a {
+        @apply text-xl;
+      }
+    }
+  }
+}
