@@ -5,16 +5,15 @@ import { useGSAP } from "@gsap/react";
 import { sectionRef } from "@/types/useTypes";
 import "@/styles/vendors/blobz.min.css";
 
-// GSAP 플러그인 설정
-gsap.registerPlugin(useGSAP);
-gsap.registerPlugin(Observer);
+// GSAP 플러그인
+gsap.registerPlugin(useGSAP, Observer);
 
 // Hero 컴포넌트
 export default function Hero({ Ref }: { Ref: sectionRef }) {
-  // useGSAP 사용
+  // GSAP 애니메이션 설정
   useGSAP(
     () => {
-      // 마우스 이동에 따른 효과를 추가
+      // 마우스 이동 이벤트 감지 및 애니메이션 효과
       Observer.create({
         target: window,
         type: "pointer,touch",
@@ -22,23 +21,22 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
           const value = 0.04;
           const x = (Number(e.x) - window.innerWidth / 2) * value;
           const y = (Number(e.y) - window.innerHeight / 2) * value;
-
-          function blobAct(target: string, x: number, y: number) {
+          const blobAct = (target: string, x: number, y: number) => {
             gsap.to(target, { x: x, y: y });
-          }
+          };
           blobAct(".home-hero-blur", -x, -y);
           blobAct(".home-hero-blob", x, y);
         },
       });
 
-      // 스크롤에 따른 효과를 추가
+      // 스크롤 이벤트 감지 및 애니메이션 효과
       Observer.create({
         target: window,
-        type: "scroll", //wheel 고려해보기
+        type: "scroll",
         onDown: (e) => {
-          function scrollAct(target: string, y: number) {
+          const scrollAct = (target: string, y: number) => {
             gsap.to(target, { y: y });
-          }
+          };
           scrollAct(Ref.current[0], e.deltaY * 2);
           scrollAct(".home-hero-imgbox", e.deltaY);
         },

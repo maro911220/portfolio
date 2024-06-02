@@ -3,15 +3,17 @@ import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { AiOutlineMail } from "react-icons/ai";
 
+// 환경 변수에서 API 키와 서비스 ID 가져오기
 const API_KEY = process.env.EMAIL;
 const EMAILSERVICE = process.env.EMAILSERVICE;
 const EMAILTEMP = process.env.EMAILTEMP;
 
+// Contact 컴포넌트
 export default function Contact({ Ref }: { Ref: sectionRef }) {
   const form = useRef<HTMLFormElement>(null);
 
+  // 이메일 전송 함수
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -29,15 +31,14 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
       )
       .then(
         (result) => {
-          // 이후 컨텐츠 추가
           if (form.current) {
-            for (let i = 0; i <= form.current?.elements.length - 1; i++) {
-              const target = form.current[i] as HTMLInputElement;
+            // 폼 초기화
+            Array.from(form.current.elements).forEach((element) => {
+              const target = element as HTMLInputElement;
               target.value = "";
-            }
+            });
           }
-          alert("성공했습니다.");
-          console.log(result.text);
+          alert("메일을 전송했습니다.");
         },
         (error) => {
           console.log(error.text);
@@ -45,8 +46,9 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
       );
   };
 
+  // GSAP 애니메이션 설정
   useGSAP(
-    (e: any) => {
+    () => {
       gsap.set(".home-contact-con", {
         opacity: 0,
         y: 100,
@@ -63,6 +65,7 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
     },
     { scope: Ref.current[4] }
   );
+
   return (
     <section
       className="home-contact"

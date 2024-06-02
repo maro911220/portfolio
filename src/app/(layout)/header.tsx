@@ -3,9 +3,12 @@ import { useStore } from "zustand";
 import { defaultStore } from "@/store/store";
 import { FaGithub } from "react-icons/fa";
 
+// Header 컴포넌트
 export default function Header() {
   const sectionList = ["home", "skills", "about", "work", "contact"];
   const { sectionRef } = useStore(defaultStore);
+
+  // 특정 섹션으로 스크롤하는 함수
   const move = (num: number) => {
     sectionRef.current[num].scrollIntoView({ behavior: "smooth" });
   };
@@ -20,6 +23,7 @@ export default function Header() {
           className="header-git"
           href="https://github.com/maro911220"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <FaGithub />
         </a>

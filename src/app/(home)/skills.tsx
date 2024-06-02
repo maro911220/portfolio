@@ -1,10 +1,12 @@
 import { sectionRef } from "@/types/useTypes";
 import Image from "next/image";
 
+// 스킬 로고 배열 생성
 const skillLogos = [...new Array(9)].map(
-  (item, index) => `/images/logos/logo_${index + 1}.svg`
+  (_, index) => `/images/logos/logo_${index + 1}.svg`
 );
 
+// Skills 컴포넌트
 export default function Skills({ Ref }: { Ref: sectionRef }) {
   return (
     <section
@@ -27,6 +29,7 @@ export default function Skills({ Ref }: { Ref: sectionRef }) {
   );
 }
 
+// LogoList 컴포넌트
 function LogoList() {
   return skillLogos.map((item, index) => {
     return (

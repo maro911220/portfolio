@@ -3,13 +3,12 @@ import Header from "./(layout)/header";
 import Footer from "./(layout)/footer";
 import "@/styles/globals.scss";
 
+// 사이트 메타데이터 설정
 export const metadata: Metadata = {
   title: "Maro Portfolio",
   description: "MARO의 포트폴리오 페이지 입니다.",
   keywords: ["maro"],
-  icons: {
-    icon: "/favicon.ico",
-  },
+  icons: { icon: "/favicon.ico" },
   metadataBase: new URL("https://maro-portfolio.vercel.app"),
   openGraph: {
     title: "Maro Portfolio",
@@ -21,6 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
+// RootLayout 컴포넌트
 export default function RootLayout({
   children,
 }: Readonly<{

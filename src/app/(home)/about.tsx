@@ -1,9 +1,8 @@
-import { sectionRef } from "@/types/useTypes";
-import Image from "next/image";
-import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { sectionRef } from "@/types/useTypes";
 
+// 경력 정보 목록
 const aboutList = [
   {
     title: "학력",
@@ -33,11 +32,11 @@ const aboutList = [
   },
 ];
 
-// gsap를 사용해 스크롤 끝나는애는 스케일 작아지거나 뭔가 효과를 주는 방향으로..?
-
+// About 컴포넌트
 export default function About({ Ref }: { Ref: sectionRef }) {
+  // GSAP 애니메이션 설정
   useGSAP(
-    (e: any) => {
+    () => {
       gsap.to(".home-about-con", {
         scrollTrigger: {
           trigger: ".home-about-con",
@@ -60,7 +59,6 @@ export default function About({ Ref }: { Ref: sectionRef }) {
       <div className="home-about-con">
         <div className="home-about-left">
           <h2 className="home-about-title fs-fr">About</h2>
-          {/* 좀 더 상세하게 */}
           <p>
             안녕하세요 저는 <span className="fs-fr col-main">MARO</span> 입니다.
           </p>
@@ -81,11 +79,15 @@ export default function About({ Ref }: { Ref: sectionRef }) {
                 <p className="home-about-right__num">0{index + 1}</p>
                 <div className="home-about-right__list">
                   <h3 className="home-about-right__title">{item.title}</h3>
-                  {item.list.map((item, index) => {
+                  {item.list.map((listItem, index) => {
                     return (
                       <div className="home-about-right__item" key={index}>
-                        <p className="home-about-right__year">{item.year}</p>
-                        <p className="home-about-right__name">{item.name}</p>
+                        <p className="home-about-right__year">
+                          {listItem.year}
+                        </p>
+                        <p className="home-about-right__name">
+                          {listItem.name}
+                        </p>
                       </div>
                     );
                   })}

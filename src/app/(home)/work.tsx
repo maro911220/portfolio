@@ -6,9 +6,10 @@ import { ScrollTrigger } from "gsap/all";
 import { sectionRef } from "@/types/useTypes";
 import Image from "next/image";
 
-gsap.registerPlugin(useGSAP);
-gsap.registerPlugin(ScrollTrigger);
+// GSAP 플러그인
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
+// 작업물 리스트
 const workList = [
   {
     name: "STN 인포텍 연구소",
@@ -40,20 +41,24 @@ const workList = [
   },
 ];
 
+// Work 컴포넌트
 export default function Work({ Ref }: { Ref: sectionRef }) {
   const container = useRef<HTMLElement>(null);
   const [resizeCheck, setResizeCheck] = useState(0);
+
+  // 창 크기 변경 시 상태 업데이트
   useEffect(() => {
     window.addEventListener("resize", () => {
       setResizeCheck(window.innerWidth);
     });
   }, []);
 
+  // GSAP 애니메이션 설정
   useGSAP(
-    (e: any) => {
-      const list = e.selector(".home-work-wrap")[0];
+    (context: any) => {
+      const list = context.selector(".home-work-wrap")[0];
       const listWidth = list.clientWidth;
-      const wrapWidth = e.selector(".home-work-con")[0].clientWidth;
+      const wrapWidth = context.selector(".home-work-con")[0].clientWidth;
       const x = listWidth - wrapWidth;
 
       gsap.to(list, {
