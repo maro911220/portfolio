@@ -22,8 +22,7 @@ export default function Home() {
     <main className="home">
       <h1 className="hidden">Maro-portfolio-main</h1>
       {/* 초기 CSS 로딩 방지 */}
-      {/* {firstLoadEnd && <Loading />} */}
-      <Loading />
+      {firstLoadEnd && <Loading />}
       {/* 각 섹션 컴포넌트에 Ref 전달 */}
       <Hero Ref={Ref} />
       <Skills Ref={Ref} />
