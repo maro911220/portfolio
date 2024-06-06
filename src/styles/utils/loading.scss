@@ -1,5 +1,5 @@
 .loading {
-  @apply fixed flex justify-center items-center top-0 left-0 w-full h-full bg-dark z-[999];
+  @apply fixed flex justify-center items-center top-0 left-0 w-dvw h-dvh bg-dark z-[999];
   #loading-lottie {
     @apply w-[500px] h-[240px];
   }
