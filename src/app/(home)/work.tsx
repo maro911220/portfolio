@@ -5,7 +5,6 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { sectionRef } from "@/types/useTypes";
 import Image from "next/image";
-
 // GSAP 플러그인
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -48,11 +47,17 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
   const [resizeCheck, setResizeCheck] = useState(0);
 
   // 창 크기 변경 시 상태 업데이트
+  const resize = () => {
+    if (window.innerWidth !== resizeCheck) setResizeCheck(window.innerWidth);
+  };
+
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      setResizeCheck(window.innerWidth);
-    });
-  }, []);
+    setResizeCheck(window.innerWidth);
+    window.addEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, [resizeCheck]);
 
   // GSAP 애니메이션 설정
   useGSAP(
@@ -74,7 +79,7 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
         },
       });
     },
-    { scope: container, revertOnUpdate: true }
+    { dependencies: [resizeCheck], scope: container, revertOnUpdate: true }
   );
 
   return (
