@@ -32,7 +32,11 @@
 
 body {
   font-family: "Pretendard-Regular", sans-serif;
-  @apply overflow-x-hidden;
+  @apply overflow-hidden;
+
+  &.active {
+    @apply overflow-visible overflow-x-hidden;
+  }
 
   // Scroll 스타일 전체 적용
   &::-webkit-scrollbar {

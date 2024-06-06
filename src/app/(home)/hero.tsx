@@ -4,15 +4,42 @@ import { Observer } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import { sectionRef } from "@/types/useTypes";
 import "@/styles/vendors/blobz.min.css";
+import { useStore } from "zustand";
+import { defaultStore } from "@/store/store";
 
 // GSAP 플러그인
 gsap.registerPlugin(useGSAP, Observer);
 
 // Hero 컴포넌트
 export default function Hero({ Ref }: { Ref: sectionRef }) {
+  const { firstLoad, setFirstLoadEnd } = useStore(defaultStore);
   // GSAP 애니메이션 설정
   useGSAP(
     () => {
+      gsap.set(".home-hero-con__title, .home-hero-con__sub, .home-hero-blob", {
+        y: 30,
+        opacity: 0,
+      });
+
+      // 로딩 이후 애니메이션
+      if (!firstLoad) {
+        const animations = {
+          y: 0,
+          opacity: 1,
+          duration: 1.5,
+        };
+
+        gsap.to(".home-hero-con__title, .home-hero-blob", {
+          ...animations,
+          onComplete: () => setFirstLoadEnd(),
+        });
+
+        gsap.to(".home-hero-con__sub", {
+          ...animations,
+          delay: 0.3,
+        });
+      }
+
       // 마우스 이동 이벤트 감지 및 애니메이션 효과
       Observer.create({
         target: window,
@@ -37,23 +64,23 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
           const scrollAct = (target: string, y: number) => {
             gsap.to(target, { y: y });
           };
-          scrollAct(Ref.current[0], e.deltaY * 2);
+          scrollAct(".home-hero-con", e.deltaY * 2);
           scrollAct(".home-hero-imgbox", e.deltaY);
         },
       });
     },
-    { scope: Ref.current[0] }
+    { scope: Ref.current[0], dependencies: [firstLoad] }
   );
 
   return (
     <section className="home-hero">
-      <div className="home-hero-wrap">
-        <div
-          className="home-hero-con"
-          ref={(e) => {
-            Ref.current[0] = e;
-          }}
-        >
+      <div
+        className="home-hero-wrap"
+        ref={(e) => {
+          Ref.current[0] = e;
+        }}
+      >
+        <div className="home-hero-con">
           {/* Hero 콘텐츠 */}
           <h2 className="home-hero-con__title fs-fr">
             Welcome To My
