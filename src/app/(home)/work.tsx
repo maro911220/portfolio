@@ -57,10 +57,6 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
   // GSAP 애니메이션 설정
   useGSAP(
     (context: any) => {
-      ScrollTrigger.config({
-        autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
-      });
-
       const list = context.selector(".home-work-wrap")[0];
       const listWidth = list.clientWidth;
       const wrapWidth = context.selector(".home-work-con")[0].clientWidth;
@@ -78,7 +74,7 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
         },
       });
     },
-    { dependencies: [resizeCheck], scope: container, revertOnUpdate: true }
+    { scope: container, revertOnUpdate: true }
   );
 
   return (

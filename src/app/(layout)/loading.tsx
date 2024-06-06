@@ -28,7 +28,7 @@ export default function Loading() {
 
       gsap.to("#loading-lottie", {
         delay: 2.5,
-        y: "100%",
+        y: 100,
         opacity: 0,
       });
     },
