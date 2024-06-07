@@ -14,9 +14,9 @@ type Store = {
 // zustand를 사용하여 상태 관리
 export const defaultStore = create<Store>()((set) => ({
   sectionRef: { current: [] }, // 섹션 참조
-  firstLoad: true,
-  firstLoadEnd: true,
-  setFirstLoad: () => set(() => ({ firstLoad: false })),
-  setFirstLoadEnd: () => set(() => ({ firstLoadEnd: false })),
+  firstLoad: true, // 로드 초기
+  firstLoadEnd: true, // 로드 종료
+  setFirstLoad: () => set(() => ({ firstLoad: false })), // 로드 초기 설정 함수
+  setFirstLoadEnd: () => set(() => ({ firstLoadEnd: false })), // 로드 종료 설정 함수
   setSectionRef: (e) => set(() => ({ sectionRef: e })), // 섹션 참조 설정 함수
 }));

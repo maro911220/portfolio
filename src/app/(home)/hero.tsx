@@ -16,12 +16,13 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
   // GSAP 애니메이션 설정
   useGSAP(
     () => {
+      // 로딩 전
       gsap.set(".home-hero-con__title, .home-hero-con__sub, .home-hero-blob", {
         y: 30,
         opacity: 0,
       });
 
-      // 로딩 이후 애니메이션
+      // 로딩 후
       if (!firstLoad) {
         const animations = {
           y: 0,
