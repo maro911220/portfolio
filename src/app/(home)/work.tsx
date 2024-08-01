@@ -1,13 +1,6 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/all";
-import { sectionRef } from "@/types/useTypes";
 import Image from "next/image";
-// GSAP 플러그인
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+import { sectionRef } from "@/types/useTypes";
 
 // 작업물 리스트
 const workList = [
@@ -43,47 +36,8 @@ const workList = [
 
 // Work 컴포넌트
 export default function Work({ Ref }: { Ref: sectionRef }) {
-  const container = useRef<HTMLElement>(null);
-  const [resizeCheck, setResizeCheck] = useState(0);
-
-  // 창 크기 변경 시 상태 업데이트
-  const resize = () => {
-    if (window.innerWidth !== resizeCheck) setResizeCheck(window.innerWidth);
-  };
-
-  useEffect(() => {
-    setResizeCheck(window.innerWidth);
-    window.addEventListener("resize", resize);
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  }, [resizeCheck]);
-
-  // GSAP 애니메이션 설정
-  useGSAP(
-    (context: any) => {
-      const list = context.selector(".home-work-wrap")[0];
-      const listWidth = list.clientWidth;
-      const wrapWidth = context.selector(".home-work-con")[0].clientWidth;
-      const x = listWidth - wrapWidth;
-
-      gsap.to(list, {
-        x: -x,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".home-work-scroller",
-          scrub: 1,
-          pin: true,
-          start: "top",
-          end: list.clientHeight * 6,
-        },
-      });
-    },
-    { dependencies: [resizeCheck], scope: container, revertOnUpdate: true }
-  );
-
   return (
-    <section className="home-work" ref={container}>
+    <section className="home-work">
       <h2 className="hidden">Work</h2>
       <article className="home-work-scroller-dummy">
         <div className="home-work-scroller">

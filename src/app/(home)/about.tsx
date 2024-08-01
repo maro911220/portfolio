@@ -1,5 +1,3 @@
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { sectionRef } from "@/types/useTypes";
 
 // 경력 정보 목록
@@ -34,21 +32,6 @@ const aboutList = [
 
 // About 컴포넌트
 export default function About({ Ref }: { Ref: sectionRef }) {
-  // GSAP 애니메이션 설정
-  useGSAP(
-    () => {
-      gsap.to(".home-about-con", {
-        scrollTrigger: {
-          trigger: ".home-about-con",
-          start: `top-=${window.innerHeight * 0.6}`,
-          toggleActions: "play none none reverse",
-        },
-        opacity: 1,
-      });
-    },
-    { scope: Ref.current[2] }
-  );
-
   return (
     <section
       className="home-about"

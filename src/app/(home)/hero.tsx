@@ -1,78 +1,8 @@
-"use client";
-import gsap from "gsap";
-import { Observer } from "gsap/all";
-import { useGSAP } from "@gsap/react";
-import { sectionRef } from "@/types/useTypes";
 import "@/styles/vendors/blobz.min.css";
-import { useStore } from "zustand";
-import { defaultStore } from "@/store/store";
-
-// GSAP 플러그인
-gsap.registerPlugin(useGSAP, Observer);
+import { sectionRef } from "@/types/useTypes";
 
 // Hero 컴포넌트
 export default function Hero({ Ref }: { Ref: sectionRef }) {
-  const { firstLoad, setFirstLoadEnd } = useStore(defaultStore);
-  // GSAP 애니메이션 설정
-  useGSAP(
-    () => {
-      // 로딩 전
-      gsap.set(".home-hero-con__title, .home-hero-con__sub, .home-hero-blob", {
-        y: 30,
-        opacity: 0,
-      });
-
-      // 로딩 후
-      if (!firstLoad) {
-        const animations = {
-          y: 0,
-          opacity: 1,
-          duration: 1.5,
-        };
-
-        gsap.to(".home-hero-con__title, .home-hero-blob", {
-          ...animations,
-          onComplete: () => setFirstLoadEnd(),
-        });
-
-        gsap.to(".home-hero-con__sub", {
-          ...animations,
-          delay: 0.3,
-        });
-      }
-
-      // 마우스 이동 이벤트 감지 및 애니메이션 효과
-      Observer.create({
-        target: window,
-        type: "pointer,touch",
-        onMove: (e) => {
-          const value = 0.04;
-          const x = (Number(e.x) - window.innerWidth / 2) * value;
-          const y = (Number(e.y) - window.innerHeight / 2) * value;
-          const blobAct = (target: string, x: number, y: number) => {
-            gsap.to(target, { x: x, y: y });
-          };
-          blobAct(".home-hero-blur", -x, -y);
-          blobAct(".home-hero-blob", x, y);
-        },
-      });
-
-      // 스크롤 이벤트 감지 및 애니메이션 효과
-      Observer.create({
-        target: window,
-        type: "scroll",
-        onDown: (e) => {
-          const scrollAct = (target: string, y: number) => {
-            gsap.to(target, { y: y });
-          };
-          scrollAct(".home-hero-con", e.deltaY * 2);
-          scrollAct(".home-hero-imgbox", e.deltaY);
-        },
-      });
-    },
-    { scope: Ref.current[0], dependencies: [firstLoad] }
-  );
-
   return (
     <section className="home-hero">
       <div
