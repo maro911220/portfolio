@@ -40,7 +40,7 @@ export default function Home() {
   // GSAP 애니메이션 설정
   useGSAP((context) => mainGsap(firstLoad, setFirstLoadEnd, context), {
     scope: mainRef,
-    dependencies: [firstLoad],
+    dependencies: [firstLoad, resizeCheck],
     revertOnUpdate: true, // 반응형 체크
   });
 
