@@ -43,11 +43,14 @@ export const mainGsap = (
     },
   });
 
-  // 스크롤 이벤트 감지 및 애니메이션 효과
-  Observer.create({
-    target: window,
-    type: "scroll",
-    onDown: (e) => gsap.to(".home-hero-imgbox", { y: e.deltaY }),
+  gsap.to(".home-hero-imgbox, .home-hero-con", {
+    scrollTrigger: {
+      trigger: ".home-hero",
+      start: "top",
+      end: "bottom",
+      scrub: 1,
+    },
+    y: 50,
   });
 
   // about
@@ -86,7 +89,7 @@ export const mainGsap = (
   gsap.to(".home-contact-con", {
     scrollTrigger: {
       trigger: ".home-contact-con",
-      start: `top-=${window.innerHeight * 0.6}`,
+      start: `top-=${window.innerHeight * 0.8}`,
       toggleActions: "play none none reverse",
     },
     opacity: 1,

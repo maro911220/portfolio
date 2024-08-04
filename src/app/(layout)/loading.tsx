@@ -6,7 +6,7 @@ import { useStore } from "zustand";
 import { defaultStore } from "@/store/store";
 
 // 로딩 컨테이너 스타일
-const loadingStyle = `fixed flex justify-center items-center top-0 left-0 w-dvw h-dvh bg-dark z-[999]`;
+const loadingStyle = `fixed flex justify-center items-center top-0 left-0 w-dvw h-dvh bg-white -hue-rotate-15	z-[999]`;
 
 // loading 컴포넌트
 export default function Loading() {
@@ -27,7 +27,6 @@ export default function Loading() {
         // 로티 애니메이션 종료 후 실행
         lottieElement.addEventListener("complete", () => {
           gsap.to("#loading-lottie", {
-            y: 100,
             opacity: 0,
           });
 
@@ -49,12 +48,12 @@ export default function Loading() {
   return (
     <div className={loadingStyle} ref={loadingRef}>
       <lottie-player
-        speed={2}
+        speed={1.5}
         autoplay
         mode="normal"
         ref={lottieRef}
         id="loading-lottie"
-        style={{ width: "auto", height: 200 }}
+        style={{ width: "auto", height: 300 }}
         src="/loading-lottie.json"
       ></lottie-player>
     </div>
