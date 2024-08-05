@@ -449,12 +449,12 @@
     &::after {
       content: "";
       @apply inline-block;
-      @apply w-[20vw] h-full;
+      @apply w-[40px] h-full;
     }
   }
 
   &-item {
-    @apply w-[90vw] max-w-[100vh] h-full;
+    @apply w-[50vw] h-full;
 
     &__link {
       @apply flex flex-col justify-end;
@@ -521,6 +521,13 @@
   @include md("lg") {
     &-hero {
       @apply w-[320px] mr-moCon;
+    }
+
+    &-list {
+      &::after {
+        content: "";
+        @apply w-[10vw];
+      }
     }
   }
 
