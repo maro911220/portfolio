@@ -42,15 +42,18 @@ export default function Home() {
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.07,
-    });
-    lenis.on("scroll", ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
+      syncTouch: true,
     });
 
-    gsap.ticker.lagSmoothing(0);
-    firstLoad ? lenis.stop() : lenis.start();
+    if (!firstLoad) {
+      lenis.on("scroll", ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+    }
     return () => {
       gsap.ticker.remove(lenis.raf);
     };
