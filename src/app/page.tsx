@@ -13,6 +13,7 @@ import Hero from "./(home)/hero";
 import Work from "./(home)/work";
 import Skills from "./(home)/skills";
 import Loading from "./(layout)/loading";
+import Lenis from "@studio-freight/lenis";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, Observer);
 
@@ -36,6 +37,24 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
     };
   }, [setSectionRef, resizeCheck]);
+
+  // lenis 설정
+  useEffect(() => {
+    const lenis = new Lenis({
+      lerp: 0.07,
+    });
+    lenis.on("scroll", ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+    firstLoad ? lenis.stop() : lenis.start();
+    return () => {
+      gsap.ticker.remove(lenis.raf);
+    };
+  }, [firstLoad]);
 
   // GSAP 애니메이션 설정
   useGSAP((context) => mainGsap(firstLoad, setFirstLoadEnd, context), {
