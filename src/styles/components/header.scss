@@ -35,6 +35,7 @@
     @apply bg-gradient-to-tl to-body/80 from-black;
     @apply fixed left-[50%] bottom-[40px] translate-x-[-50%];
     @apply border border-solid border-gray-500 rounded-full;
+    @apply duration-500;
 
     button {
       @apply px-4 py-2;
@@ -84,4 +85,9 @@
       }
     }
   }
+}
+
+.lenis-scrolling .header-nav {
+  @apply opacity-0;
+  @apply pointer-events-none;
 }
