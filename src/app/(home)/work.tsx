@@ -5,20 +5,6 @@ import { sectionRef } from "@/types/useTypes";
 // 작업물 리스트
 const workList = [
   {
-    name: "STN 인포텍 연구소",
-    sub: "STN 인포텍 회사 내 연구소 소개 페이지",
-    link: "http://lab.stninfotech.com/index.html",
-    type: ["Gulp", "Sass", "JS", "GSAP"],
-    src: "/images/web/web_1.png",
-  },
-  {
-    name: "Dashboard",
-    sub: "KT AiON, 국방 관련 대시보드 페이지",
-    link: "http://lab.stninfotech.com/case_02.html",
-    type: ["Gulp", "Sass", "JS"],
-    src: "/images/web/web_2.png",
-  },
-  {
     name: "My Dashboard",
     sub: "최신 영화,미디어 정보와 날씨가 확인 가능하며 간단한 검색기능이 있는 개인 대시보드 페이지",
     link: "https://maro-board.vercel.app/",
@@ -31,6 +17,20 @@ const workList = [
     link: "https://marotemplate.vercel.app/",
     type: ["React", "Next.js", "framer"],
     src: "/images/web/web_4.png",
+  },
+  {
+    name: "STN 인포텍 연구소",
+    sub: "STN 인포텍 회사 내 연구소 소개 페이지",
+    link: "http://lab.stninfotech.com/index.html",
+    type: ["Gulp", "Sass", "JS", "GSAP"],
+    src: "/images/web/web_1.png",
+  },
+  {
+    name: "Dashboard",
+    sub: "KT AiON, 국방 관련 대시보드 페이지",
+    link: "http://lab.stninfotech.com/case_02.html",
+    type: ["Gulp", "Sass", "JS"],
+    src: "/images/web/web_2.png",
   },
 ];
 
@@ -63,7 +63,13 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
                         href={item.link}
                         target="_blank"
                       >
-                        <Image src={item.src} alt={item.name} fill />
+                        <Image
+                          src={item.src}
+                          alt={item.name}
+                          placeholder="blur"
+                          blurDataURL={item.src}
+                          fill
+                        />
                         <p className="home-work-item__title">{item.name}</p>
                         <p className="home-work-item__sub">{item.sub}</p>
                         <div className="home-work-item__box">

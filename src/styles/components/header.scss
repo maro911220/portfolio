@@ -31,6 +31,7 @@
   &-nav {
     @apply p-2;
     @apply flex;
+    @apply opacity-0;
     @apply text-white;
     @apply bg-gradient-to-tl to-body/80 from-black;
     @apply fixed left-[50%] bottom-[40px] translate-x-[-50%];
@@ -87,7 +88,7 @@
   }
 }
 
-.lenis-scrolling .header-nav {
+.lenis-scrolling body.active .header-nav {
   @apply opacity-0;
   @apply pointer-events-none;
 }

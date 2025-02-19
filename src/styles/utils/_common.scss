@@ -36,6 +36,19 @@ body {
 
   &.active {
     @apply overflow-visible overflow-x-hidden;
+    .header-nav {
+      opacity: 1;
+      animation: fade 1.5s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   // Scroll 스타일 전체 적용
