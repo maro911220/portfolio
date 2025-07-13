@@ -260,21 +260,52 @@
   }
 
   &-left {
+    @apply z-10;
     @apply sticky top-[40px];
     @apply gap-md w-[400px];
     @apply break-keep text-lg;
     @apply flex-none flex flex-col;
+
+    p {
+      text-shadow: 1px 2px #fff;
+    }
   }
 
   &-right {
+    @apply relative;
     @apply flex flex-col flex-1;
     @apply max-w-[900px] mt-moCon gap-lg;
 
+    &::before,
+    &::after {
+      content: "";
+      @apply w-0 h-0;
+      @apply absolute;
+      @apply opacity-0;
+      @apply inline-block;
+      @apply rounded-full;
+      @apply transition duration-700;
+    }
+
+    &::before {
+      @apply p-[20%];
+      @apply bg-main;
+      @apply -bottom-5 -left-60;
+    }
+
+    &::after {
+      @apply p-[15%];
+      @apply bg-sub;
+      @apply -top-5 -right-20;
+    }
+
     &-box {
+      @apply z-10;
       @apply sticky top-[40px];
       @apply flex items-start;
       @apply gap-md p-lg transition-all;
-      @apply bg-content border border-solid border-contentLine rounded-lg;
+      @apply bg-white/60 border-2 border-solid border-contentLine rounded-lg;
+      @apply backdrop-blur-lg;
     }
 
     &__num {
@@ -301,7 +332,27 @@
     }
   }
 
+  &-con.active {
+    .home-about-right {
+      &::before,
+      &::after {
+        @apply opacity-100;
+        @apply delay-500;
+      }
+    }
+  }
+
   // pc
+  @include md("2xl") {
+    &-right {
+      &::before {
+        @apply -left-2;
+      }
+      &::after {
+        @apply -right-2;
+      }
+    }
+  }
   @include md("xl") {
     &-con {
       @apply flex-col;
@@ -630,19 +681,25 @@
 /* contact */
 .home-contact {
   @apply py-con;
-  @apply relative overflow-hidden;
+  @apply relative;
 
   &-title {
     @apply relative z-[2];
     @apply text-6xl text-center;
   }
 
+  &-wave {
+    @apply w-full h-2/3;
+    @apply absolute -bottom-[140px] left-0;
+    @apply bg-[url("/images/wave.svg")] bg-cover bg-no-repeat;
+  }
+
   &-con {
     @apply flex;
     @apply relative z-[2];
-    @apply bg-content overflow-hidden;
+    @apply bg-white/50 backdrop-blur overflow-hidden;
     @apply max-w-xl mt-moCon mx-auto w-[calc(100%-40px)];
-    @apply border border-solid border-contentLine rounded-xl;
+    @apply border-2 border-solid border-contentLine rounded-xl;
   }
 
   &-form {
@@ -653,7 +710,7 @@
     textarea {
       @apply bg-white rounded;
       @apply w-full min-h-[42px] mt-2 p-sm;
-      @apply border border-solid border-contentLine;
+      @apply border border-solid border-borderLine;
 
       &:focus {
         @apply outline-main;

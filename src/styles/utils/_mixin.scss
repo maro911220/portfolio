@@ -8,6 +8,11 @@
 
 /* media query */
 @mixin md($size) {
+  @if ($size == "2xl") {
+    @media (max-width: 1600px) {
+      @content;
+    }
+  }
   @if ($size == "xl") {
     @media (max-width: 1280px) {
       @content;

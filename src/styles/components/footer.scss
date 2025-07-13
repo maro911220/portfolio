@@ -1,13 +1,13 @@
 /* footer */
 .footer {
   @apply h-[140px];
-  @apply text-center text-gray-500;
+  @apply relative z-10;
+  @apply text-center text-white;
 
   &-wrap {
     @include container;
     @apply h-full gap-sm;
     @apply flex items-center justify-between;
-    @apply border-t border-solid border-gray-200;
 
     a {
       @apply text-2xl;

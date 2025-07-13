@@ -5,32 +5,32 @@ import { sectionRef } from "@/types/useTypes";
 // 작업물 리스트
 const workList = [
   {
-    name: "My Dashboard",
-    sub: "최신 영화,미디어 정보와 날씨가 확인 가능하며 간단한 검색기능이 있는 개인 대시보드 페이지",
-    link: "https://maro-board.vercel.app/",
-    type: ["React", "Next.js", "framer"],
-    src: "/images/web/web_3.png",
+    name: "Dashboard",
+    sub: "KT AiON 국방 관련 대시보드 (보안 사유로 소개용 화면으로 대체)",
+    link: "http://stninfotech.com/dashboard/",
+    type: ["Gulp", "React", "Sass", "JS"],
+    src: "/images/web/web_2.png",
   },
   {
-    name: "My Template",
-    sub: "개인 연습용 레이아웃 페이지 모음",
+    name: "포레스트 한방병원",
+    sub: "포레스트 한방병원 웹페이지 퍼블리싱",
+    link: "https://foresthospital.co.kr/jongno/main/main.html",
+    type: ["PHP", "CSS", "JS"],
+    src: "/images/web/web_1.png",
+  },
+  {
+    name: "Playground",
+    sub: "[개인 프로젝트] 퍼블리싱 연습 프로젝트 모음 ",
     link: "https://marotemplate.vercel.app/",
     type: ["React", "Next.js", "framer"],
     src: "/images/web/web_4.png",
   },
   {
-    name: "STN 인포텍 연구소",
-    sub: "STN 인포텍 회사 내 연구소 소개 페이지",
-    link: "http://lab.stninfotech.com/index.html",
-    type: ["Gulp", "Sass", "JS", "GSAP"],
-    src: "/images/web/web_1.png",
-  },
-  {
     name: "Dashboard",
-    sub: "KT AiON, 국방 관련 대시보드 페이지",
-    link: "http://lab.stninfotech.com/case_02.html",
-    type: ["Gulp", "Sass", "JS"],
-    src: "/images/web/web_2.png",
+    sub: "[개인 프로젝트] 실시간 영화/미디어 정보 및 날씨 확인이 가능한 검색형 대시보드",
+    link: "https://maro-board.vercel.app/",
+    type: ["React", "Next.js", "framer"],
+    src: "/images/web/web_3.png",
   },
 ];
 

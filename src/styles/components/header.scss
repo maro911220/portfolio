@@ -2,7 +2,7 @@
 .header {
   font-family: "Freesentation-9Black";
   @apply w-full;
-  @apply absolute top-0 z-[9];
+  @apply absolute top-0 z-[99];
 
   &-con {
     @include container;
@@ -33,7 +33,7 @@
     @apply flex;
     @apply opacity-0;
     @apply text-white;
-    @apply bg-gradient-to-tl to-body/80 from-black;
+    @apply bg-gradient-to-tl to-body/50 from-black backdrop-blur;
     @apply fixed left-[50%] bottom-[40px] translate-x-[-50%];
     @apply border border-solid border-gray-500 rounded-full;
     @apply duration-500;
@@ -41,10 +41,10 @@
     button {
       @apply px-4 py-2;
       @apply rounded-full;
-      @apply first-letter:uppercase transition-all;
+      @apply first-letter:uppercase transition-all duration-300;
 
       &:hover {
-        @apply bg-gray-600;
+        @apply bg-black;
       }
     }
   }

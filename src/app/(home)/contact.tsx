@@ -75,9 +75,7 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
           <button type="submit">보내기</button>
         </form>
       </article>
-      <div className="wave"></div>
-      <div className="wave"></div>
-      <div className="wave"></div>
+      <div className="home-contact-wave"></div>
     </section>
   );
 }

@@ -19,12 +19,8 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
             <b>PORTFOLIO</b>
           </h2>
           <p className="home-hero-con__sub ">
-            안녕하세요 저는 <span className="fs-fr text-main">MARO</span>{" "}
-            입니다.
-            <br />
-            저는 애니메이션이 적용된 웹 페이지를 만드는 걸 좋아하며 현재는
-            <br />
-            웹퍼블리셔로 일하면서 프론트엔드 개발자를 목표로 공부하고 있습니다.
+            안녕하세요 <span className="fs-fr text-main">MARO</span>의
+            포트폴리오 페이지 입니다.
           </p>
         </div>
         {/* Blob 컴포넌트 */}

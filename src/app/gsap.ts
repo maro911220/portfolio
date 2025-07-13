@@ -59,6 +59,7 @@ export const mainGsap = (
       trigger: ".home-about-con",
       start: `top-=${window.innerHeight * 0.6}`,
       toggleActions: "play none none reverse",
+      toggleClass: "active",
     },
     opacity: 1,
   });
