@@ -9,28 +9,36 @@ const workList = [
     sub: "KT AiON 국방 관련 대시보드 (보안 사유로 소개용 화면으로 대체)",
     link: "http://stninfotech.com/dashboard/",
     type: ["Gulp", "React", "Sass", "JS"],
-    src: "/images/web/web_2.png",
+    src: "/images/web/web_2.jpg",
   },
   {
     name: "포레스트 한방병원",
     sub: "포레스트 한방병원 웹페이지 퍼블리싱",
     link: "https://foresthospital.co.kr/jongno/main/main.html",
     type: ["PHP", "CSS", "JS"],
-    src: "/images/web/web_1.png",
+    src: "/images/web/web_1.jpg",
+  },
+
+  {
+    name: "Pokedex",
+    sub: "[개인 프로젝트] 포켓몬 API를 활용한 종합 포켓몬 정보 검색 및 탐색 대시보드",
+    link: "https://maro-poke.vercel.app/",
+    type: ["React", "Next.js", "shadcn"],
+    src: "/images/web/web_5.jpg",
+  },
+  {
+    name: "My Dashboard",
+    sub: "[개인 프로젝트] 실시간 영화/미디어 정보 및 날씨 확인이 가능한 검색형 대시보드",
+    link: "https://maro-board.vercel.app/",
+    type: ["React", "Next.js", "framer"],
+    src: "/images/web/web_3.jpg",
   },
   {
     name: "Playground",
     sub: "[개인 프로젝트] 퍼블리싱 연습 프로젝트 모음 ",
     link: "https://marotemplate.vercel.app/",
     type: ["React", "Next.js", "framer"],
-    src: "/images/web/web_4.png",
-  },
-  {
-    name: "Dashboard",
-    sub: "[개인 프로젝트] 실시간 영화/미디어 정보 및 날씨 확인이 가능한 검색형 대시보드",
-    link: "https://maro-board.vercel.app/",
-    type: ["React", "Next.js", "framer"],
-    src: "/images/web/web_3.png",
+    src: "/images/web/web_4.jpg",
   },
 ];
 
