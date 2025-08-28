@@ -32,6 +32,7 @@
     @apply p-2;
     @apply flex;
     @apply opacity-0;
+    @apply pointer-events-none;
     @apply text-white;
     @apply bg-gradient-to-tl to-body/50 from-black backdrop-blur;
     @apply fixed left-[50%] bottom-[40px] translate-x-[-50%];
@@ -50,6 +51,7 @@
 
     &.show {
       @apply opacity-100;
+      @apply pointer-events-auto;
     }
   }
 
