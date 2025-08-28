@@ -21,8 +21,13 @@ export default function Home() {
   const sectionRef = useRef<HTMLElement[]>([]);
   const mainRef = useRef(null);
   const [resizeCheck, setResizeCheck] = useState(0);
-  const { setSectionRef, firstLoadEnd, firstLoad, setFirstLoadEnd } =
-    useStore(defaultStore);
+  const {
+    setSectionRef,
+    firstLoadEnd,
+    firstLoad,
+    setFirstLoadEnd,
+    setLenisInstance,
+  } = useStore(defaultStore);
 
   // 창 크기 변경 처리
   const handleResize = () => {
@@ -45,6 +50,9 @@ export default function Home() {
       syncTouch: true,
     });
 
+    // Lenis 인스턴스를 store에 저장
+    setLenisInstance(lenis);
+
     if (!firstLoad) {
       lenis.on("scroll", ScrollTrigger.update);
 
@@ -54,10 +62,12 @@ export default function Home() {
 
       gsap.ticker.lagSmoothing(0);
     }
+
     return () => {
       gsap.ticker.remove(lenis.raf);
+      setLenisInstance(null); // cleanup 시 null로 설정
     };
-  }, [firstLoad]);
+  }, [firstLoad, setLenisInstance]);
 
   // GSAP 애니메이션 설정
   useGSAP((context) => mainGsap(firstLoad, setFirstLoadEnd, context), {

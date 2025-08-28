@@ -216,7 +216,7 @@
     @apply w-[200px] h-[100px] p-md;
 
     img {
-      @apply w-full h-full;
+      @apply w-auto h-full;
       @apply object-contain object-center;
     }
   }

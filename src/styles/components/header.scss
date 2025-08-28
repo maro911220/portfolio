@@ -47,6 +47,10 @@
         @apply bg-black;
       }
     }
+
+    &.show {
+      @apply opacity-100;
+    }
   }
 
   // tablet
@@ -86,9 +90,4 @@
       }
     }
   }
-}
-
-.lenis-scrolling body.active .header-nav {
-  @apply opacity-0;
-  @apply pointer-events-none;
 }
