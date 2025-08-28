@@ -77,6 +77,7 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
                           placeholder="blur"
                           blurDataURL={item.src}
                           fill
+                          sizes="100%"
                         />
                         <p className="home-work-item__title">{item.name}</p>
                         <p className="home-work-item__sub">{item.sub}</p>
