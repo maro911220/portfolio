@@ -1,3 +1,5 @@
+@use "../utils/mixin" as mx;
+
 /* property */
 @property --textAngle {
   syntax: "<angle>";
@@ -10,7 +12,6 @@
   0% {
     --textAngle: 0deg;
   }
-
   100% {
     --textAngle: 360deg;
   }
@@ -25,7 +26,7 @@
   }
 }
 
-@include md("md") {
+@include mx.md("md") {
   @keyframes rolling {
     from {
       transform: translate(0);
@@ -47,7 +48,7 @@
   @apply h-[100vh] min-h-[700px] max-h-[920px];
 
   &-wrap {
-    @include container;
+    @include mx.container;
     @apply relative h-full flex;
   }
 
@@ -102,7 +103,7 @@
   }
 
   // pc
-  @include md("lg") {
+  @include mx.md("lg") {
     &-blob {
       @apply w-[450px] h-[450px];
     }
@@ -113,7 +114,7 @@
   }
 
   // tablet
-  @include md("md") {
+  @include mx.md("md") {
     @apply min-h-0 max-h-none h-auto pb-lg;
 
     &-con {
@@ -152,12 +153,13 @@
   }
 
   // mobile
-  @include md("sm") {
+  @include mx.md("sm") {
     &-con {
       @apply pt-[400px];
 
       &__title {
         @apply text-3xl;
+
         b {
           @apply text-5xl;
         }
@@ -175,10 +177,11 @@
   }
 
   // mobile xs
-  @include md("xs") {
+  @include mx.md("xs") {
     &-con {
       &__title {
         @apply text-2xl;
+
         b {
           @apply text-4xl;
         }
@@ -194,8 +197,9 @@
 /* Skills */
 .home-skills {
   @apply h-[220px];
+
   &-wrap {
-    @include container;
+    @include mx.container;
     @apply h-full;
     @apply relative overflow-hidden;
   }
@@ -222,7 +226,7 @@
   }
 
   // tablet
-  @include md("md") {
+  @include mx.md("md") {
     &-wrap {
       @apply px-0;
     }
@@ -233,7 +237,7 @@
   }
 
   // mobile
-  @include md("sm") {
+  @include mx.md("sm") {
     @apply h-[180px];
 
     &-logo {
@@ -246,7 +250,7 @@
 
 /* About */
 .home-about {
-  @include container;
+  @include mx.container;
   @apply py-con;
 
   &-con {
@@ -343,7 +347,7 @@
   }
 
   // pc
-  @include md("2xl") {
+  @include mx.md("2xl") {
     &-right {
       &::before {
         @apply -left-2;
@@ -353,7 +357,8 @@
       }
     }
   }
-  @include md("xl") {
+
+  @include mx.md("xl") {
     &-con {
       @apply flex-col;
     }
@@ -373,7 +378,7 @@
   }
 
   // tablet
-  @include md("md") {
+  @include mx.md("md") {
     @apply py-moCon;
 
     &-con {
@@ -411,7 +416,7 @@
   }
 
   // mobile
-  @include md("sm") {
+  @include mx.md("sm") {
     @apply pt-lg pb-moCon;
 
     &-title {
@@ -436,7 +441,7 @@
   }
 
   // mobile xs
-  @include md("xs") {
+  @include mx.md("xs") {
     &-left {
       @apply text-xs;
     }
@@ -464,7 +469,7 @@
   @apply overflow-hidden;
 
   &-scroller-dummy {
-    @include container;
+    @include mx.container;
   }
 
   &-scroller {
@@ -475,6 +480,7 @@
   &-con {
     @apply w-full h-full;
   }
+
   &-wrap {
     @apply flex;
     @apply w-fit min-w-full h-full;
@@ -569,7 +575,7 @@
   }
 
   // pc
-  @include md("lg") {
+  @include mx.md("lg") {
     &-hero {
       @apply w-[320px] mr-moCon;
     }
@@ -583,7 +589,7 @@
   }
 
   // tablet
-  @include md("md") {
+  @include mx.md("md") {
     &-hero {
       @apply w-[200px] mr-lg;
 
@@ -614,7 +620,7 @@
   }
 
   // mobile
-  @include md("sm") {
+  @include mx.md("sm") {
     &-hero {
       @apply mr-md;
 
@@ -648,7 +654,7 @@
   }
 
   // mobile xs
-  @include md("xs") {
+  @include mx.md("xs") {
     &-hero {
       @apply mr-sm;
 
@@ -734,7 +740,7 @@
   }
 
   // tablet
-  @include md("md") {
+  @include mx.md("md") {
     @apply py-moCon;
 
     &-title {
@@ -751,7 +757,7 @@
   }
 
   // mobile
-  @include md("sm") {
+  @include mx.md("sm") {
     &-title {
       @apply text-4xl;
     }
@@ -762,7 +768,7 @@
   }
 
   // mobile xs
-  @include md("xs") {
+  @include mx.md("xs") {
     &-form {
       @apply px-sm;
     }

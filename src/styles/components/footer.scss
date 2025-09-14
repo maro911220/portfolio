@@ -1,3 +1,5 @@
+@use "../utils/mixin" as mx;
+
 /* footer */
 .footer {
   @apply h-[140px];
@@ -5,7 +7,7 @@
   @apply text-center text-white;
 
   &-wrap {
-    @include container;
+    @include mx.container;
     @apply h-full gap-sm;
     @apply flex items-center justify-between;
 
@@ -21,8 +23,9 @@
   }
 
   // tablet
-  @include md("md") {
+  @include mx.md("md") {
     @apply h-[120px];
+
     &-wrap {
       @apply pt-md;
       @apply items-start;
@@ -30,11 +33,12 @@
   }
 
   // mobile
-  @include md("sm") {
+  @include mx.md("sm") {
     @apply h-[110px];
 
     &-wrap {
       @apply text-sm;
+
       a {
         @apply text-xl;
       }

@@ -1,3 +1,5 @@
+@use "../utils/mixin" as mx;
+
 /* header */
 .header {
   font-family: "Freesentation-9Black";
@@ -5,7 +7,7 @@
   @apply absolute top-0 z-[99];
 
   &-con {
-    @include container;
+    @include mx.container;
     @apply h-[80px];
     @apply flex items-center justify-between;
   }
@@ -56,7 +58,7 @@
   }
 
   // tablet
-  @include md("md") {
+  @include mx.md("md") {
     &-nav {
       @apply w-full;
       @apply justify-center;
@@ -70,7 +72,7 @@
   }
 
   // mobile
-  @include md("sm") {
+  @include mx.md("sm") {
     &-con {
       @apply h-[60px];
     }
@@ -85,7 +87,7 @@
   }
 
   // mobile xs
-  @include md("xs") {
+  @include mx.md("xs") {
     &-nav {
       button {
         @apply text-xs;

@@ -7,7 +7,6 @@ import "@/styles/globals.scss";
 export const metadata: Metadata = {
   title: "Maro Portfolio",
   description: "MARO의 포트폴리오 페이지 입니다.",
-  keywords: ["maro"],
   icons: { icon: "/favicon.ico" },
   metadataBase: new URL("https://maro-portfolio.vercel.app"),
   openGraph: {

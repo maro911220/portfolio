@@ -1,5 +1,6 @@
-@use "./utils/reset.scss";
-@use "./utils/common.scss";
+@use "./utils/reset";
+@use "./utils/common";
+
 /* tailwind */
 @tailwind base;
 @tailwind components;
