@@ -1,61 +1,47 @@
 "use client";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { useEffect, useRef } from "react";
 import { useStore } from "zustand";
 import { defaultStore } from "@/store/store";
 
-// 로딩 컨테이너 스타일
-const loadingStyle = `fixed flex justify-center items-center top-0 left-0 w-dvw h-dvh bg-white -hue-rotate-15	z-[999]`;
+const loadingStyle = `fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-white z-[999]`;
+const svgStyle = `animate-spin`; // Tailwind CSS spin 사용 (원하면 제거 가능)
 
-// loading 컴포넌트
 export default function Loading() {
-  const loadingRef = useRef<HTMLDivElement>(null); // 로딩 컨테이너 참조
-  const lottieRef = useRef<any>(null); // 로티 애니메이션 참조
-  const { setFirstLoad } = useStore(defaultStore); // zustand
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { setFirstLoad } = useStore(defaultStore);
 
-  // 로티 파일 동적 임포트
   useEffect(() => {
-    import("@lottiefiles/lottie-player");
-  }, []);
-
-  // GSAP 애니메이션 설정
-  useGSAP(
-    () => {
-      const lottieElement = lottieRef.current;
-      if (lottieElement) {
-        // 로티 애니메이션 종료 후 실행
-        lottieElement.addEventListener("complete", () => {
-          gsap.to("#loading-lottie", {
-            opacity: 0,
-          });
-
-          gsap.to(loadingRef.current, {
-            opacity: 0,
-            delay: 0.5,
-            duration: 1,
-            onStart: () => {
-              setFirstLoad();
-              document.body.classList.add("active");
-            },
-          });
-        });
+    const timeoutId = setTimeout(() => {
+      if (containerRef.current) {
+        containerRef.current.style.opacity = "0"; // 간단하게 opacity 적용
+        setFirstLoad();
+        document.body.classList.add("active");
       }
-    },
-    { dependencies: [lottieRef], scope: loadingRef }
-  );
+    }, 2000);
+
+    return () => clearTimeout(timeoutId);
+  }, [setFirstLoad]);
 
   return (
-    <div className={loadingStyle} ref={loadingRef}>
-      <lottie-player
-        speed={1.5}
-        autoplay
-        mode="normal"
-        ref={lottieRef}
-        id="loading-lottie"
-        style={{ width: "auto", height: 300 }}
-        src="/loading-lottie.json"
-      ></lottie-player>
+    <div className={loadingStyle} ref={containerRef}>
+      <svg
+        className={svgStyle}
+        width="100"
+        height="100"
+        viewBox="0 0 50 50"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="25"
+          cy="25"
+          r="20"
+          fill="none"
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeDasharray="90 150"
+          className="stroke-main"
+        />
+      </svg>
     </div>
   );
 }

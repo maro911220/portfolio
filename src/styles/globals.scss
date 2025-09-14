@@ -1,8 +1,6 @@
-/* reset */
-@import "./utils/reset.scss";
+@use "./utils/reset.scss";
+@use "./utils/common.scss";
 /* tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* utils */
-@import "./utils/common.scss";
