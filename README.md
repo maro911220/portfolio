@@ -2,8 +2,6 @@
 
 이 프로젝트는 Next.js로 구축된 개인 포트폴리오 웹사이트입니다.
 
-## 사용된 기술
-
 - **프레임워크**: Next.js
 - **언어**: TypeScript
 - **스타일링**: SCSS (Sass), Tailwind CSS.
@@ -31,7 +29,7 @@
    EMAILSERVICE=your_email_service_id
    EMAILTEMP=your_email_template_id
    ```
-   (문의 양식이 작동하려면 실제 이메일 서비스 세부 정보로 교체하십시오.)
+   (문의 양식이 작동하려면 실제 이메일 서비스 정보로 교체가 필요합니다.)
    https://www.emailjs.com/
 
 ### 개발 서버 실행
@@ -43,30 +41,3 @@ yarn dev
 ```
 
 브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 결과를 확인하십시오.
-
-## 프로젝트 구조
-
-```
-├── public/
-├── src/
-│   ├── app/
-│   │   ├── (home)/
-│   │   ├── (layout)/
-│   │   ├── gsap.ts
-│   │   ├── layout.tsx
-│   │   └── page.tsx
-│   ├── store/
-│   ├── styles/
-│   ├── types/
-│   └── utils/
-├── .eslintrc.json
-├── .gitignore
-├── next.config.mjs
-├── package.json
-├── postcss.config.js
-├── tailwind.config.ts
-├── tsconfig.json
-└── README.md
-```
-
----
