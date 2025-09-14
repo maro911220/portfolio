@@ -1,47 +1,51 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useStore } from "zustand";
 import { defaultStore } from "@/store/store";
+import Lottie from "lottie-react";
+import animationData from "./loading-lottie.json";
 
-const loadingStyle = `fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-white z-[999]`;
-const svgStyle = `animate-spin`; // Tailwind CSS spin 사용 (원하면 제거 가능)
+const loadingStyle = `fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-white z-[999] transition-opacity duration-1000`;
 
 export default function Loading() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const lottieRef = useRef<any>(null);
   const { setFirstLoad } = useStore(defaultStore);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
+    if (lottieRef.current) {
+      lottieRef.current.setSpeed(1.5);
+    }
+  }, []);
+
+  const handleAnimationComplete = useCallback(() => {
+    setTimeout(() => {
       if (containerRef.current) {
-        containerRef.current.style.opacity = "0"; // 간단하게 opacity 적용
+        containerRef.current.style.opacity = "0";
         setFirstLoad();
         document.body.classList.add("active");
       }
-    }, 2000);
-
-    return () => clearTimeout(timeoutId);
+    }, 100);
   }, [setFirstLoad]);
+
+  // 에러 핸들링
+  const handleAnimationError = useCallback(() => {
+    console.warn("Lottie animation failed to load");
+    handleAnimationComplete();
+  }, [handleAnimationComplete]);
 
   return (
     <div className={loadingStyle} ref={containerRef}>
-      <svg
-        className={svgStyle}
-        width="100"
-        height="100"
-        viewBox="0 0 50 50"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle
-          cx="25"
-          cy="25"
-          r="20"
-          fill="none"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeDasharray="90 150"
-          className="stroke-main"
-        />
-      </svg>
+      <Lottie
+        lottieRef={lottieRef}
+        animationData={animationData}
+        loop={false}
+        autoplay={true}
+        onComplete={handleAnimationComplete}
+        onError={handleAnimationError}
+        style={{ width: 300, height: 300 }}
+        className="pointer-events-none" // 클릭 방지
+      />
     </div>
   );
 }
