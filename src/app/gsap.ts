@@ -77,8 +77,10 @@ export const mainGsap = (
       scrub: 1,
       pin: true,
       start: "top",
-      end: list.clientHeight * 6,
+      end: `+=${list.scrollWidth * 0.8}`,
     },
+    invalidateOnRefresh: true,
+    refreshPriority: -1,
   });
 
   // contact
