@@ -21,6 +21,7 @@ export default function Home() {
   const sectionRef = useRef<HTMLElement[]>([]);
   const mainRef = useRef(null);
   const [resizeCheck, setResizeCheck] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const {
     setSectionRef,
     firstLoadEnd,
@@ -29,22 +30,50 @@ export default function Home() {
     setLenisInstance,
   } = useStore(defaultStore);
 
+  // 모바일 체크 함수
+  const checkIsMobile = () => {
+    const isTouchDevice =
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      navigator.maxTouchPoints > 0;
+    const mobileUserAgents =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    const isMobileUserAgent = mobileUserAgents.test(navigator.userAgent);
+
+    return isTouchDevice || isMobileUserAgent;
+  };
+
   // 창 크기 변경 처리
   const handleResize = () => {
-    if (window.innerWidth !== resizeCheck) setResizeCheck(window.innerWidth);
+    const newWidth = window.innerWidth;
+    const newIsMobile = checkIsMobile();
+
+    if (newWidth !== resizeCheck) {
+      setResizeCheck(newWidth);
+    }
+
+    if (newIsMobile !== isMobile) {
+      setIsMobile(newIsMobile);
+    }
   };
 
   useEffect(() => {
     setSectionRef(sectionRef);
     setResizeCheck(window.innerWidth);
+    setIsMobile(checkIsMobile());
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [setSectionRef, resizeCheck]);
+  }, [setSectionRef, resizeCheck, isMobile]);
 
-  // lenis 설정
+  // lenis 설정 - 모바일이 아닐 때만 실행
   useEffect(() => {
+    if (isMobile) {
+      setLenisInstance(null);
+      return;
+    }
+
     const lenis = new Lenis({
       lerp: 0.1,
       syncTouch: true,
@@ -65,15 +94,16 @@ export default function Home() {
 
     return () => {
       gsap.ticker.remove(lenis.raf);
-      setLenisInstance(null); // cleanup 시 null로 설정
+      lenis.destroy(); // 완전히 제거
+      setLenisInstance(null);
     };
-  }, [firstLoad, setLenisInstance]);
+  }, [firstLoad, setLenisInstance, isMobile]);
 
   // GSAP 애니메이션 설정
   useGSAP((context) => mainGsap(firstLoad, setFirstLoadEnd, context), {
     scope: mainRef,
     dependencies: [firstLoad, resizeCheck],
-    revertOnUpdate: true, // 반응형 체크
+    revertOnUpdate: true,
   });
 
   return (
