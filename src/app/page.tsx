@@ -6,7 +6,7 @@ import { defaultStore } from "@/store/store";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { mainGsap } from "./gsap";
-import { ScrollTrigger, Observer } from "gsap/all";
+import { ScrollTrigger } from "gsap/all";
 import About from "./(home)/about";
 import Contact from "./(home)/contact";
 import Hero from "./(home)/hero";
@@ -15,7 +15,7 @@ import Skills from "./(home)/skills";
 import Loading from "./(layout)/loading";
 import Lenis from "@studio-freight/lenis";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, Observer);
+gsap.registerPlugin(useGSAP);
 
 export default function Home() {
   const sectionRef = useRef<HTMLElement[]>([]);

@@ -1,11 +1,19 @@
 import gsap from "gsap";
-import { Observer } from "gsap/all";
+import { Observer, ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger, Observer);
 
 export const mainGsap = (
   firstLoad: boolean,
   setFirstLoadEnd: () => void,
   context: any
 ) => {
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  // iOS에서 ScrollTrigger 정규화
+  if (isIOS) {
+    ScrollTrigger.normalizeScroll(true);
+  }
+
   // Hero
   // 로딩 전
   gsap.set(".home-hero-con__title, .home-hero-con__sub, .home-hero-blob", {
@@ -79,8 +87,6 @@ export const mainGsap = (
       start: "top",
       end: `+=${list.scrollWidth * 0.8}`,
     },
-    invalidateOnRefresh: true,
-    refreshPriority: -1,
   });
 
   // contact
