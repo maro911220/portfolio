@@ -75,9 +75,11 @@ export const mainGsap = (
 
   // work
   const list = context.selector(".home-work-wrap")[0];
+  const wrap = context.selector(".home-work-scroller")[0];
 
   if (isIOSTouch) {
     gsap.set(list, { x: 0 });
+    wrap.classList.add("iphone");
   } else {
     const x =
       list.clientWidth - context.selector(".home-work-con")[0].clientWidth;

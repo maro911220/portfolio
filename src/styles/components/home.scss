@@ -684,6 +684,28 @@
   }
 }
 
+.home-work-scroller.iphone {
+  @apply h-auto;
+
+  .home-work-wrap,
+  .home-work-list {
+    @apply flex-col;
+  }
+
+  .home-work-hero {
+    @apply w-full ml-0;
+    @apply text-center;
+  }
+
+  .home-work-list {
+    @apply pl-0 pt-14;
+  }
+
+  .home-work-item {
+    @apply w-full h-[50dvh];
+  }
+}
+
 /* contact */
 .home-contact {
   @apply py-con;

@@ -28,15 +28,23 @@ export default function Header() {
 
   // 특정 섹션으로 스크롤하는 함수
   const move = (num: number) => {
-    if (lenisInstance && sectionRef.current[num]) {
-      // Lenis의 scrollTo 메서드 사용
-      lenisInstance.scrollTo(sectionRef.current[num], {
-        duration: 1.2,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
+    if (sectionRef.current[num]) {
+      if (lenisInstance) {
+        // Lenis가 활성화된 경우 (데스크톱)
+        lenisInstance.scrollTo(sectionRef.current[num], {
+          duration: 1.2,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+      } else {
+        // Lenis가 비활성화된 경우 (모바일) - 네이티브 스크롤 사용
+        sectionRef.current[num].scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }
     }
   };
-
   return (
     <header className="header">
       <div className="header-con">
