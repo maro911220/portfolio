@@ -7,12 +7,13 @@ export const mainGsap = (
   setFirstLoadEnd: () => void,
   context: any
 ) => {
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  // iOS 기기이면서 터치 지원하는 기기 체크
+  const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isTouchDevice =
+    "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  const isIOSTouch = isIOSDevice && isTouchDevice;
 
   // iOS에서 ScrollTrigger 정규화
-  if (isIOS) {
-    ScrollTrigger.normalizeScroll(true);
-  }
 
   // Hero
   // 로딩 전
@@ -74,20 +75,25 @@ export const mainGsap = (
 
   // work
   const list = context.selector(".home-work-wrap")[0];
-  const x =
-    list.clientWidth - context.selector(".home-work-con")[0].clientWidth;
 
-  gsap.to(list, {
-    x: -x,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".home-work-scroller",
-      scrub: 1,
-      pin: true,
-      start: "top",
-      end: `+=${list.scrollWidth * 0.8}`,
-    },
-  });
+  if (isIOSTouch) {
+    gsap.set(list, { x: 0 });
+  } else {
+    const x =
+      list.clientWidth - context.selector(".home-work-con")[0].clientWidth;
+
+    gsap.to(list, {
+      x: -x,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".home-work-scroller",
+        scrub: 1,
+        pin: true,
+        start: "top",
+        end: `+=${list.scrollWidth * 0.8}`,
+      },
+    });
+  }
 
   // contact
   gsap.set(".home-contact-con", {
