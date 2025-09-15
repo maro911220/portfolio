@@ -8,12 +8,12 @@ export const mainGsap = (
   context: any
 ) => {
   // iOS 기기이면서 터치 지원하는 기기 체크
-  const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isIOSDevice =
+    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 0);
   const isTouchDevice =
     "ontouchstart" in window || navigator.maxTouchPoints > 0;
   const isIOSTouch = isIOSDevice && isTouchDevice;
-
-  // iOS에서 ScrollTrigger 정규화
 
   // Hero
   // 로딩 전
