@@ -310,6 +310,8 @@
       @apply gap-md p-lg transition-all;
       @apply bg-white/60 border-2 border-solid border-contentLine rounded-lg;
       @apply backdrop-blur-lg;
+      -webkit-backdrop-filter: blur(16px);
+      will-change: backdrop-filter;
     }
 
     &__num {
