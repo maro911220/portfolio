@@ -1,16 +1,11 @@
 import "@/styles/vendors/blobz.min.css";
-import { sectionRef } from "@/types/useTypes";
+import { forwardRef } from "react";
 
 // Hero 컴포넌트
-export default function Hero({ Ref }: { Ref: sectionRef }) {
+const Hero = forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <section className="home-hero">
-      <div
-        className="home-hero-wrap"
-        ref={(e) => {
-          Ref.current[0] = e;
-        }}
-      >
+      <div className="home-hero-wrap" ref={ref}>
         <div className="home-hero-con">
           {/* Hero 콘텐츠 */}
           <h2 className="home-hero-con__title fs-fr">
@@ -33,7 +28,9 @@ export default function Hero({ Ref }: { Ref: sectionRef }) {
       </div>
     </section>
   );
-}
+});
+
+export default Hero;
 
 // Blob 컴포넌트
 function Blob() {

@@ -1,27 +1,44 @@
 "use client";
 import "@/styles/main.scss";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useStore } from "zustand";
 import { defaultStore } from "@/store/store";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { mainGsap } from "./gsap";
+import { mainGsap } from "@/lib/gsap";
 import { ScrollTrigger } from "gsap/all";
-import About from "./(home)/about";
-import Contact from "./(home)/contact";
-import Hero from "./(home)/hero";
-import Work from "./(home)/work";
-import Skills from "./(home)/skills";
-import Loading from "./(layout)/loading";
+import Loading from "@/components/layout/loading";
 import Lenis from "@studio-freight/lenis";
+import { useViewport } from "@/hooks/useViewport";
 
+// 네비게이션 및 섹션 컴포넌트 import
+import { NAV_SECTIONS } from "@/config/navigation";
+import About from "@/components/home/about";
+import Contact from "@/components/home/contact";
+import Hero from "@/components/home/hero";
+import Work from "@/components/home/work";
+import Skills from "@/components/home/skills";
+
+// GSAP 플러그인 등록
 gsap.registerPlugin(useGSAP);
 
+// 섹션 ID와 컴포넌트를 매핑
+const sectionComponents = {
+  home: Hero,
+  skills: Skills,
+  about: About,
+  work: Work,
+  contact: Contact,
+} as const;
+
 export default function Home() {
-  const sectionRef = useRef<HTMLElement[]>([]);
-  const mainRef = useRef(null);
-  const [resizeCheck, setResizeCheck] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const sectionRef = useRef<(HTMLElement | null)[]>([]);
+  const mainRef = useRef<HTMLElement>(null);
+
+  // 뷰포트 커스텀 훅
+  const { width: resizeCheck, isMobile } = useViewport();
+
+  // Zustand
   const {
     setSectionRef,
     firstLoadEnd,
@@ -30,91 +47,77 @@ export default function Home() {
     setLenisInstance,
   } = useStore(defaultStore);
 
-  // 모바일 체크 함수
-  const checkIsMobile = () => {
-    const isTouchDevice =
-      "ontouchstart" in window ||
-      navigator.maxTouchPoints > 0 ||
-      navigator.maxTouchPoints > 0;
-    const mobileUserAgents =
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-    const isMobileUserAgent = mobileUserAgents.test(navigator.userAgent);
-
-    return isTouchDevice || isMobileUserAgent;
-  };
-
-  // 창 크기 변경 처리
-  const handleResize = () => {
-    const newWidth = window.innerWidth;
-    const newIsMobile = checkIsMobile();
-
-    if (newWidth !== resizeCheck) {
-      setResizeCheck(newWidth);
-    }
-
-    if (newIsMobile !== isMobile) {
-      setIsMobile(newIsMobile);
-    }
-  };
-
   useEffect(() => {
-    setSectionRef(sectionRef);
-    setResizeCheck(window.innerWidth);
-    setIsMobile(checkIsMobile());
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [setSectionRef, resizeCheck, isMobile]);
+    const filteredRefs = sectionRef.current.filter(
+      (ref): ref is HTMLElement => ref !== null
+    );
 
-  // lenis 설정 - 모바일이 아닐 때만 실행
+    if (filteredRefs.length === NAV_SECTIONS.length) {
+      setSectionRef({ current: filteredRefs });
+    }
+  }, [setSectionRef]);
+
+  // Lenis
   useEffect(() => {
+    // 모바일에서는 Lenis를 사용하지 않음
     if (isMobile) {
       setLenisInstance(null);
       return;
     }
 
+    // Lenis 인스턴스 생성 (부드러운 스크롤 라이브러리)
     const lenis = new Lenis({
       lerp: 0.1,
       syncTouch: true,
     });
 
-    // Lenis 인스턴스를 store에 저장
     setLenisInstance(lenis);
 
     if (!firstLoad) {
       lenis.on("scroll", ScrollTrigger.update);
 
-      gsap.ticker.add((time) => {
+      const ticker = (time: number) => {
         lenis.raf(time * 1000);
-      });
+      };
 
+      gsap.ticker.add(ticker);
       gsap.ticker.lagSmoothing(0);
-    }
 
-    return () => {
-      gsap.ticker.remove(lenis.raf);
-      lenis.destroy(); // 완전히 제거
-      setLenisInstance(null);
-    };
+      return () => {
+        gsap.ticker.remove(ticker);
+        lenis.destroy();
+        setLenisInstance(null);
+      };
+    }
   }, [firstLoad, setLenisInstance, isMobile]);
 
   // GSAP 애니메이션 설정
-  useGSAP((context) => mainGsap(firstLoad, setFirstLoadEnd, context), {
+  useGSAP(() => mainGsap(firstLoad, setFirstLoadEnd, mainRef), {
     scope: mainRef,
     dependencies: [firstLoad, resizeCheck],
     revertOnUpdate: true,
   });
 
+  // 각 섹션의 ref 콜백을 생성하는 메모화된 함수
+  const createSectionRefCallback = useCallback(
+    (index: number) => (el: HTMLElement | null) => {
+      sectionRef.current[index] = el;
+    },
+    []
+  );
+
   return (
     <main className="home" ref={mainRef}>
       <h1 className="hidden">Maro-portfolio-main</h1>
       {firstLoadEnd && <Loading />}
-      <Hero Ref={sectionRef} />
-      <Skills Ref={sectionRef} />
-      <About Ref={sectionRef} />
-      <Work Ref={sectionRef} />
-      <Contact Ref={sectionRef} />
+      {NAV_SECTIONS.map((section, index) => {
+        const Component =
+          sectionComponents[section.id as keyof typeof sectionComponents];
+
+        return (
+          <Component key={section.id} ref={createSectionRefCallback(index)} />
+        );
+      })}
     </main>
   );
 }

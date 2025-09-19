@@ -1,5 +1,5 @@
-import { sectionRef } from "@/types/useTypes";
-import { useRef } from "react";
+"use client";
+import { forwardRef, useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 // 환경 변수에서 API 키와 서비스 ID 가져오기
@@ -8,7 +8,7 @@ const EMAILSERVICE = process.env.EMAILSERVICE;
 const EMAILTEMP = process.env.EMAILTEMP;
 
 // Contact 컴포넌트
-export default function Contact({ Ref }: { Ref: sectionRef }) {
+const Contact = forwardRef<HTMLElement>((props, ref) => {
   const form = useRef<HTMLFormElement>(null);
 
   // 이메일 전송 함수
@@ -45,12 +45,7 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
   };
 
   return (
-    <section
-      className="home-contact"
-      ref={(e) => {
-        Ref.current[4] = e;
-      }}
-    >
+    <section className="home-contact" ref={ref}>
       <h2 className="home-contact-title fs-fr">Contact</h2>
       <article className="home-contact-con">
         <h3 className="hidden">문의하기</h3>
@@ -78,4 +73,6 @@ export default function Contact({ Ref }: { Ref: sectionRef }) {
       <div className="home-contact-wave"></div>
     </section>
   );
-}
+});
+
+export default Contact;

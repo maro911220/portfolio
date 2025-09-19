@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import { defaultStore } from "@/store/store";
 import { FaGithub } from "react-icons/fa";
 
+import { NAV_SECTIONS } from "@/config/navigation";
+
 // Header 컴포넌트
 export default function Header() {
-  const sectionList = ["home", "skills", "about", "work", "contact"];
   const { sectionRef, lenisInstance } = useStore(defaultStore);
   const [showNav, setShowNav] = useState(false);
 
@@ -63,10 +64,10 @@ export default function Header() {
 
       <nav className={`header-nav ${showNav ? "show" : ""}`}>
         <h2 className="hidden">Maro-portfolio-nav</h2>
-        {sectionList.map((item, index) => {
+        {NAV_SECTIONS.map((item, index) => {
           return (
-            <button onClick={() => move(index)} key={index}>
-              {item}
+            <button onClick={() => move(index)} key={item.id}>
+              {item.label}
             </button>
           );
         })}
