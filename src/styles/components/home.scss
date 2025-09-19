@@ -100,6 +100,8 @@
     @apply absolute right-10 z-[2];
     @apply block w-[500px] h-[500px] rounded-full;
     @apply bg-white/30 backdrop-blur-lg shadow-[inset_0_0_16px_#ceedec];
+    -webkit-backdrop-filter: blur(16px);
+    will-change: backdrop-filter;
   }
 
   // pc
