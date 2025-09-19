@@ -1,10 +1,11 @@
 "use client";
 import { FaGithub, FaArrowAltCircleUp } from "react-icons/fa";
+import { MouseEvent } from "react";
 
 // Footer 컴포넌트
 export default function Footer() {
   // 페이지 상단으로 이동 스크롤 함수
-  const onUp = (e: any) => {
+  const onUp = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     window.scroll({ top: 0, behavior: "smooth" });
   };

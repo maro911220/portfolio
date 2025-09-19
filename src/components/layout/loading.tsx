@@ -2,14 +2,14 @@
 import { useEffect, useRef, useCallback } from "react";
 import { useStore } from "zustand";
 import { defaultStore } from "@/store/store";
-import Lottie from "lottie-react";
+import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import animationData from "./loading-lottie.json";
 
 const loadingStyle = `fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-white z-[999] transition-opacity duration-1000`;
 
 export default function Loading() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const lottieRef = useRef<any>(null);
+  const lottieRef = useRef<LottieRefCurrentProps>(null);
   const { setFirstLoad } = useStore(defaultStore);
 
   useEffect(() => {

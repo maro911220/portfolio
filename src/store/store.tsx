@@ -1,8 +1,11 @@
 import { create } from "zustand";
-import { storeSectionRef } from "@/types/useTypes";
 import type Lenis from "@studio-freight/lenis";
 
-// Store 타입 정의
+// type
+interface storeSectionRef {
+  current: HTMLElement[];
+}
+
 type Store = {
   sectionRef: storeSectionRef;
   firstLoad: boolean;
