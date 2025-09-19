@@ -732,6 +732,8 @@
     @apply bg-white/50 backdrop-blur overflow-hidden;
     @apply max-w-xl mt-moCon mx-auto w-[calc(100%-40px)];
     @apply border-2 border-solid border-contentLine rounded-xl;
+    -webkit-backdrop-filter: blur(12px);
+    will-change: backdrop-filter;
   }
 
   &-form {
