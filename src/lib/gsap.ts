@@ -1,12 +1,40 @@
 import gsap from "gsap";
 import { Observer, ScrollTrigger } from "gsap/all";
+
 gsap.registerPlugin(ScrollTrigger, Observer);
+
+// 애니메이션 설정을 위한 객체
+const ANIM_CONFIG = {
+  stagger: {
+    duration: 1.5,
+    delay: 0.3,
+  },
+  hero: {
+    y: 30,
+    scrollDist: 50,
+  },
+  parallax: {
+    value: 0.04,
+  },
+  scrub: 1,
+  scroll: {
+    aboutOffset: 0.6,
+    workEnd: 0.8,
+    contactOffset: 0.8,
+  },
+  contact: {
+    y: 100,
+  },
+};
 
 export const mainGsap = (
   firstLoad: boolean,
   setFirstLoadEnd: () => void,
-  context: any
+  scopeRef: React.RefObject<HTMLElement>
 ) => {
+  const scope = scopeRef.current;
+  if (!scope) return;
+
   // iOS 기기이면서 터치 지원하는 기기 체크
   const isIOSDevice =
     /iPad|iPhone|iPod/.test(navigator.userAgent) ||
@@ -16,35 +44,32 @@ export const mainGsap = (
   const isIOSTouch = isIOSDevice && isTouchDevice;
 
   // Hero
-  // 로딩 전
   gsap.set(".home-hero-con__title, .home-hero-con__sub, .home-hero-blob", {
-    y: 30,
+    y: ANIM_CONFIG.hero.y,
     opacity: 0,
   });
 
-  // 로딩 후
   if (!firstLoad) {
     gsap.to(".home-hero-con__title, .home-hero-blob", {
       y: 0,
       opacity: 1,
-      duration: 1.5,
+      duration: ANIM_CONFIG.stagger.duration,
       onComplete: setFirstLoadEnd,
     });
 
     gsap.to(".home-hero-con__sub", {
       y: 0,
       opacity: 1,
-      duration: 1.5,
-      delay: 0.3,
+      duration: ANIM_CONFIG.stagger.duration,
+      delay: ANIM_CONFIG.stagger.delay,
     });
   }
 
-  // 마우스 이동 이벤트
   Observer.create({
     target: window,
     type: "pointer,touch",
     onMove: (e) => {
-      const value = 0.04;
+      const value = ANIM_CONFIG.parallax.value;
       const x = (Number(e.x) - window.innerWidth / 2) * value;
       const y = (Number(e.y) - window.innerHeight / 2) * value;
       gsap.to(".home-hero-blur", { x: -x, y: -y });
@@ -57,16 +82,15 @@ export const mainGsap = (
       trigger: ".home-hero",
       start: "top",
       end: "bottom",
-      scrub: 1,
+      scrub: ANIM_CONFIG.scrub,
     },
-    y: 50,
+    y: ANIM_CONFIG.hero.scrollDist,
   });
 
-  // about
   gsap.to(".home-about-con", {
     scrollTrigger: {
       trigger: ".home-about-con",
-      start: `top-=${window.innerHeight * 0.6}`,
+      start: `top-=${window.innerHeight * ANIM_CONFIG.scroll.aboutOffset}`,
       toggleActions: "play none none reverse",
       toggleClass: "active",
     },
@@ -74,39 +98,40 @@ export const mainGsap = (
   });
 
   // work
-  const list = context.selector(".home-work-wrap")[0];
-  const wrap = context.selector(".home-work-scroller")[0];
+  const list = scope.querySelector<HTMLElement>(".home-work-wrap");
+  const wrap = scope.querySelector<HTMLElement>(".home-work-scroller");
+  const con = scope.querySelector<HTMLElement>(".home-work-con");
 
-  if (isIOSTouch) {
-    gsap.set(list, { x: 0 });
-    wrap.classList.add("iphone");
-  } else {
-    const x =
-      list.clientWidth - context.selector(".home-work-con")[0].clientWidth;
-
-    gsap.to(list, {
-      x: -x,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".home-work-scroller",
-        scrub: 1,
-        pin: true,
-        start: "top",
-        end: `+=${list.scrollWidth * 0.8}`,
-      },
-    });
+  if (list && wrap && con) {
+    if (isIOSTouch) {
+      gsap.set(list, { x: 0 });
+      wrap.classList.add("iphone");
+    } else {
+      const x = list.clientWidth - con.clientWidth;
+      gsap.to(list, {
+        x: -x,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".home-work-scroller",
+          scrub: ANIM_CONFIG.scrub,
+          pin: true,
+          start: "top",
+          end: `+=${list.scrollWidth * ANIM_CONFIG.scroll.workEnd}`,
+        },
+      });
+    }
   }
 
   // contact
   gsap.set(".home-contact-con", {
     opacity: 0,
-    y: 100,
+    y: ANIM_CONFIG.contact.y,
   });
 
   gsap.to(".home-contact-con", {
     scrollTrigger: {
       trigger: ".home-contact-con",
-      start: `top-=${window.innerHeight * 0.8}`,
+      start: `top-=${window.innerHeight * ANIM_CONFIG.scroll.contactOffset}`,
       toggleActions: "play none none reverse",
     },
     opacity: 1,

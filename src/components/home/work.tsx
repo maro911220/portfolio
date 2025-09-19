@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { sectionRef } from "@/types/useTypes";
+import { forwardRef } from "react";
 
 // 작업물 리스트
 const workList = [
@@ -43,18 +43,13 @@ const workList = [
 ];
 
 // Work 컴포넌트
-export default function Work({ Ref }: { Ref: sectionRef }) {
+const Work = forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <section className="home-work">
       <h2 className="hidden">Work</h2>
       <article className="home-work-scroller-dummy">
         <div className="home-work-scroller">
-          <div
-            className="home-work-con"
-            ref={(e) => {
-              Ref.current[3] = e;
-            }}
-          >
+          <div className="home-work-con" ref={ref}>
             <div className="home-work-wrap">
               <div className="home-work-hero">
                 <h3 className="home-work-hero__title fs-fr">Work</h3>
@@ -97,4 +92,6 @@ export default function Work({ Ref }: { Ref: sectionRef }) {
       </article>
     </section>
   );
-}
+});
+
+export default Work;

@@ -1,4 +1,4 @@
-import { sectionRef } from "@/types/useTypes";
+import { forwardRef } from "react";
 
 // 경력 정보 목록
 const aboutList = [
@@ -31,14 +31,9 @@ const aboutList = [
 ];
 
 // About 컴포넌트
-export default function About({ Ref }: { Ref: sectionRef }) {
+const About = forwardRef<HTMLElement>((props, ref) => {
   return (
-    <section
-      className="home-about"
-      ref={(e) => {
-        Ref.current[2] = e;
-      }}
-    >
+    <section className="home-about" ref={ref}>
       <div className="home-about-con">
         <div className="home-about-left">
           <h2 className="home-about-title fs-fr">About</h2>
@@ -82,4 +77,6 @@ export default function About({ Ref }: { Ref: sectionRef }) {
       </div>
     </section>
   );
-}
+});
+
+export default About;

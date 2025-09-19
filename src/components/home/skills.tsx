@@ -1,4 +1,4 @@
-import { sectionRef } from "@/types/useTypes";
+import { forwardRef } from "react";
 import Image from "next/image";
 
 // 스킬 로고 배열 생성
@@ -7,14 +7,9 @@ const skillLogos = [...new Array(9)].map(
 );
 
 // Skills 컴포넌트
-export default function Skills({ Ref }: { Ref: sectionRef }) {
+const Skills = forwardRef<HTMLElement>((props, ref) => {
   return (
-    <section
-      className="home-skills"
-      ref={(e) => {
-        Ref.current[1] = e;
-      }}
-    >
+    <section className="home-skills" ref={ref}>
       <h2 className="hidden">Skills</h2>
       <article className="home-skills-wrap">
         <h3 className="hidden">Skill Logo</h3>
@@ -27,7 +22,9 @@ export default function Skills({ Ref }: { Ref: sectionRef }) {
       </article>
     </section>
   );
-}
+});
+
+export default Skills;
 
 // LogoList 컴포넌트
 function LogoList() {
