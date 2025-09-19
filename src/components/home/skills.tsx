@@ -23,6 +23,7 @@ const Skills = forwardRef<HTMLElement>((props, ref) => {
     </section>
   );
 });
+Skills.displayName = "Skills";
 
 export default Skills;
 
