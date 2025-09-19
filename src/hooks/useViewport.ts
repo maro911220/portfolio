@@ -2,10 +2,11 @@
 
 import { useState, useEffect, useCallback } from "react";
 
-/* 모바일 디바이스 여부를 확인 함수 */
-const checkIsMobile = (): boolean => {
+/* Lenis 사용 불가능한 환경인지 확인하는 함수 */
+const checkIsLenisDisabled = (): boolean => {
   if (typeof window === "undefined") return false;
-  // 터치 이벤트 지원 여부 확인
+
+  // 터치 이벤트 지원 여부 확인 (모바일)
   const isTouchDevice =
     "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
@@ -16,7 +17,10 @@ const checkIsMobile = (): boolean => {
   // User Agent 문자열에서 모바일 패턴 확인
   const isMobileUserAgent = mobileUserAgentPattern.test(navigator.userAgent);
 
-  return isTouchDevice || isMobileUserAgent;
+  // Safari 브라우저 감지 (Chrome이나 다른 브라우저가 아닌 실제 Safari)
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+  return isTouchDevice || isMobileUserAgent || isSafari;
 };
 
 /* 뷰포트 크기와 모바일 여부를 추적하는 커스텀 훅 */
@@ -26,17 +30,21 @@ export const useViewport = () => {
     typeof window !== "undefined" ? window.innerWidth : 0
   );
 
-  // 모바일 디바이스 여부 상태
-  const [isMobile, setIsMobile] = useState(() => checkIsMobile());
+  // Lenis 비활성화 여부 상태
+  const [isLenisDisabled, setIsLenisDisabled] = useState(() =>
+    checkIsLenisDisabled()
+  );
 
   // 리사이즈 이벤트 핸들러
   const handleResize = useCallback(() => {
     const newWidth = window.innerWidth;
-    const newIsMobile = checkIsMobile();
+    const newIsLenisDisabled = checkIsLenisDisabled();
 
     setWidth((prevWidth) => (prevWidth !== newWidth ? newWidth : prevWidth));
-    setIsMobile((prevIsMobile) =>
-      prevIsMobile !== newIsMobile ? newIsMobile : prevIsMobile
+    setIsLenisDisabled((prevIsLenisDisabled) =>
+      prevIsLenisDisabled !== newIsLenisDisabled
+        ? newIsLenisDisabled
+        : prevIsLenisDisabled
     );
   }, []);
 
@@ -54,6 +62,6 @@ export const useViewport = () => {
 
   return {
     width,
-    isMobile,
+    isLenisDisabled, // 모바일이거나 Safari인 경우 true
   };
 };

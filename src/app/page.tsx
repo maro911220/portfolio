@@ -36,7 +36,7 @@ export default function Home() {
   const mainRef = useRef<HTMLElement>(null);
 
   // 뷰포트 커스텀 훅
-  const { width: resizeCheck, isMobile } = useViewport();
+  const { width: resizeCheck, isLenisDisabled } = useViewport();
 
   // Zustand
   const {
@@ -60,7 +60,7 @@ export default function Home() {
   // Lenis
   useEffect(() => {
     // 모바일에서는 Lenis를 사용하지 않음
-    if (isMobile) {
+    if (isLenisDisabled) {
       setLenisInstance(null);
       return;
     }
@@ -89,7 +89,7 @@ export default function Home() {
         setLenisInstance(null);
       };
     }
-  }, [firstLoad, setLenisInstance, isMobile]);
+  }, [firstLoad, setLenisInstance, isLenisDisabled]);
 
   // GSAP 애니메이션 설정
   useGSAP(() => mainGsap(firstLoad, setFirstLoadEnd, mainRef), {
