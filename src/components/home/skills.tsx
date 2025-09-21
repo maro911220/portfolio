@@ -32,7 +32,7 @@ function LogoList() {
   return skillLogos.map((item, index) => {
     return (
       <div className="home-skills-logo" key={index}>
-        <Image src={item} width={100} height={100} alt="logos" />
+        <Image src={item} width={100} height={100} alt="logos" priority />
       </div>
     );
   });

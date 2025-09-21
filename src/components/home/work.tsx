@@ -52,7 +52,7 @@ const Work = forwardRef<HTMLDivElement>((props, ref) => {
           <div className="home-work-con" ref={ref}>
             <div className="home-work-wrap">
               <div className="home-work-hero">
-                <h3 className="home-work-hero__title fs-fr">Work</h3>
+                <h3 className="home-work-hero__title fs-fr f-title">Work</h3>
                 <p className="home-work-hero__sub">
                   회사 작업물과 개인 작업물 목록입니다.
                 </p>
@@ -69,9 +69,9 @@ const Work = forwardRef<HTMLDivElement>((props, ref) => {
                         <Image
                           src={item.src}
                           alt={item.name}
-                          placeholder="blur"
                           blurDataURL={item.src}
                           fill
+                          priority
                           sizes="100%"
                         />
                         <p className="home-work-item__title">{item.name}</p>

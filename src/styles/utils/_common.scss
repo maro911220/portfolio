@@ -1,7 +1,6 @@
 @use "sass:string";
-
+@use "./mixin" as mx;
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
-
 @font-face {
   font-family: "Freesentation-9Black";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
@@ -10,35 +9,33 @@
   font-style: normal;
 }
 
+/* variables */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --rolling: -1980px;
 }
 
+@include mx.md("md") {
+  :root {
+    --rolling: -1440px;
+  }
+}
+
+/* utils */
 .fs-fr {
   font-family: "Freesentation-9Black";
 }
 
-.col-main {
-  @apply text-main;
+.f-title {
+  @apply text-4xl sm:text-5xl md:text-6xl;
 }
 
+/* body */
 body {
   font-family: "Pretendard Variable", sans-serif;
   @apply overflow-hidden;
 
   &.active {
     @apply overflow-visible overflow-x-hidden;
-  }
-
-  @keyframes fade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
   }
 
   // Scroll 스타일 전체 적용

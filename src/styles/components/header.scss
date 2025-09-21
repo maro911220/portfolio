@@ -8,13 +8,13 @@
 
   &-con {
     @include mx.container;
-    @apply h-[80px];
+    @apply h-[60px] sm:h-[80px];
     @apply flex items-center justify-between;
   }
 
   &-title {
     @apply transition-all;
-    @apply text-3xl font-bold uppercase;
+    @apply font-bold uppercase text-2xl sm:text-3xl;
 
     &:hover {
       @apply text-main;
@@ -22,8 +22,8 @@
   }
 
   &-git {
-    @apply text-4xl;
     @apply transition-all;
+    @apply text-3xl sm:text-4xl;
 
     &:hover {
       @apply text-main;
@@ -32,20 +32,20 @@
 
   &-nav {
     @apply p-2;
-    @apply flex;
-    @apply opacity-0;
-    @apply pointer-events-none;
-    @apply text-white;
-    @apply bg-gradient-to-tl to-body/50 from-black backdrop-blur;
-    @apply fixed left-[50%] bottom-[40px] translate-x-[-50%];
-    @apply border border-solid border-gray-500 rounded-full;
-    @apply duration-500;
+    @apply w-full md:w-auto;
+    @apply flex justify-center;
+    @apply opacity-0 pointer-events-none duration-500;
+    @apply border-0 border-solid border-gray-500 md:border;
+    @apply rounded-t-xl rounded-b-none md:rounded-b-full md:rounded-t-full;
+    @apply text-white bg-gradient-to-tl to-body/50 from-black backdrop-blur;
+    @apply fixed left-0 bottom-0 translate-x-0 md:left-[50%] md:bottom-[40px] md:translate-x-[-50%];
 
     button {
-      @apply px-4 py-2;
-      @apply rounded-full;
+      @apply px-0 py-2 md:px-4;
+      @apply flex-1 md:flex-none;
+      @apply rounded-xl md:rounded-full;
+      @apply text-xs xs:text-sm sm:text-base;
       @apply first-letter:uppercase transition-all duration-300;
-
       &:hover {
         @apply bg-black;
       }
@@ -54,44 +54,6 @@
     &.show {
       @apply opacity-100;
       @apply pointer-events-auto;
-    }
-  }
-
-  // tablet
-  @include mx.md("md") {
-    &-nav {
-      @apply w-full;
-      @apply justify-center;
-      @apply left-0 bottom-0 translate-x-0;
-      @apply border-0 rounded-t-xl rounded-b-none;
-
-      button {
-        @apply flex-1 rounded-xl text-sm px-0;
-      }
-    }
-  }
-
-  // mobile
-  @include mx.md("sm") {
-    &-con {
-      @apply h-[60px];
-    }
-
-    &-title {
-      @apply text-2xl;
-    }
-
-    &-git {
-      @apply text-3xl;
-    }
-  }
-
-  // mobile xs
-  @include mx.md("xs") {
-    &-nav {
-      button {
-        @apply text-xs;
-      }
     }
   }
 }

@@ -2,45 +2,24 @@
 
 /* footer */
 .footer {
-  @apply h-[140px];
   @apply relative z-10;
   @apply text-center text-white;
+  @apply h-[110px] sm:h-[120px] md:h-[140px];
 
   &-wrap {
     @include mx.container;
     @apply h-full gap-sm;
-    @apply flex items-center justify-between;
+    @apply pt-md md:pt-0;
+    @apply text-sm sm:text-base;
+    @apply flex items-start md:items-center justify-between;
 
     a {
-      @apply text-2xl;
       @apply transition-all;
       @apply flex items-center;
+      @apply text-xl sm:text-2xl;
 
       &:hover {
         @apply text-main;
-      }
-    }
-  }
-
-  // tablet
-  @include mx.md("md") {
-    @apply h-[120px];
-
-    &-wrap {
-      @apply pt-md;
-      @apply items-start;
-    }
-  }
-
-  // mobile
-  @include mx.md("sm") {
-    @apply h-[110px];
-
-    &-wrap {
-      @apply text-sm;
-
-      a {
-        @apply text-xl;
       }
     }
   }

@@ -46,7 +46,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
 
   return (
     <section className="home-contact" ref={ref}>
-      <h2 className="home-contact-title fs-fr">Contact</h2>
+      <h2 className="home-contact-title fs-fr f-title">Contact</h2>
       <article className="home-contact-con">
         <h3 className="hidden">문의하기</h3>
         <form className="home-contact-form" ref={form} onSubmit={sendEmail}>

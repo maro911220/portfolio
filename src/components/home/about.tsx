@@ -36,9 +36,10 @@ const About = forwardRef<HTMLElement>((props, ref) => {
     <section className="home-about" ref={ref}>
       <div className="home-about-con">
         <div className="home-about-left">
-          <h2 className="home-about-title fs-fr">About</h2>
+          <h2 className="home-about-title fs-fr f-title">About</h2>
           <p>
-            안녕하세요 저는 <span className="fs-fr col-main">MARO</span> 입니다.
+            안녕하세요 저는 <span className="fs-fr text-main">MARO</span>{" "}
+            입니다.
           </p>
           <p>
             이전에 3D 모델러 및 애니메이터로 일한 경험이 있으며 현재는
