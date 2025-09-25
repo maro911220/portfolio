@@ -7,7 +7,7 @@ const workList = [
   {
     name: "Dashboard",
     sub: "KT AiON, 국방 관련 대시보드 (보안 사유로 소개용 화면으로 대체)",
-    link: "http://lab.stninfotech.com/case_02.html",
+    link: "https://maroworkstn.vercel.app/",
     type: ["Gulp", "React", "Sass", "JS"],
     src: "/images/web/web_2.jpg",
   },
