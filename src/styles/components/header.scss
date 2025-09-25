@@ -40,6 +40,18 @@
     @apply text-white bg-gradient-to-tl to-body/50 from-black backdrop-blur;
     @apply fixed left-0 bottom-0 translate-x-0 md:left-[50%] md:bottom-[40px] md:translate-x-[-50%];
 
+    @include mx.md("h-md") {
+      @apply bottom-4;
+    }
+
+    @include mx.md("h-sm") {
+      @apply bottom-2;
+    }
+
+    @include mx.md("md") {
+      @apply bottom-0;
+    }
+
     button {
       @apply px-0 py-2 md:px-4;
       @apply flex-1 md:flex-none;

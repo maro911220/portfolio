@@ -303,6 +303,14 @@
       @apply inline-block;
       @apply w-[10vw] lg:w-[40px] h-full;
     }
+
+    @include mx.md("h-md") {
+      @apply py-moCon;
+    }
+
+    @include mx.md("h-sm") {
+      @apply py-10;
+    }
   }
 
   &-item {

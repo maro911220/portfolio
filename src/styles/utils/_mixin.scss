@@ -8,6 +8,16 @@
 
 /* media query */
 @mixin md($size) {
+  @if ($size == "h-md") {
+    @media (max-height: 700px) {
+      @content;
+    }
+  }
+  @if ($size == "h-sm") {
+    @media (max-height: 499px) {
+      @content;
+    }
+  }
   @if ($size == "2xl") {
     @media (max-width: 1600px) {
       @content;
