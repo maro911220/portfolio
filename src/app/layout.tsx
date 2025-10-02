@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import localFont from "next/font/local";
 import "@/styles/globals.scss";
 
 // 메타 정보
@@ -35,6 +36,18 @@ export const metadata: Metadata = {
   },
 };
 
+const pretendard = localFont({
+  src: "../styles/fonts/PretendardVariable.woff2",
+  display: "swap",
+  variable: "--font-pretendard",
+});
+
+const freesentation = localFont({
+  src: "../styles/fonts/Freesentation-9Black.woff2",
+  display: "swap",
+  variable: "--font-freesentation",
+});
+
 // RootLayout 컴포넌트
 export default function RootLayout({
   children,
@@ -42,24 +55,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <head>
-        {/* 폰트 preload */}
-        <link
-          rel="preload"
-          href="/fonts/PretendardVariable.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/Freesentation-9Black.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-      </head>
+    <html
+      lang="ko"
+      className={`${pretendard.variable} ${freesentation.variable}`}
+    >
       <body>
         <Header />
         {children}

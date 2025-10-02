@@ -30,7 +30,7 @@
 
 /* utils */
 .fs-fr {
-  font-family: "Freesentation-9Black", "Pretendard Variable", -apple-system,
+  font-family: var(--font-freesentation), "Pretendard Variable", -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -41,9 +41,7 @@
 /* body */
 body {
   @apply overflow-hidden;
-  font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-feature-settings: "cv01", "cv02", "cv03", "cv04";
+  font-family: var(--font-pretendard), sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

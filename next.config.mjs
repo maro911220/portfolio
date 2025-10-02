@@ -1,15 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-
-  // 프로덕션 환경에서만 콘솔 제거
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
 
-  // 폰트 최적화
   optimizeFonts: true,
-
   // 헤더 설정으로 캐싱 최적화
   async headers() {
     return [
