@@ -112,7 +112,7 @@ export const mainGsap = (
         x: -x,
         ease: "none",
         scrollTrigger: {
-          trigger: ".home-work-scroller",
+          trigger: wrap,
           scrub: ANIM_CONFIG.scrub,
           pin: true,
           start: "top",

@@ -1,47 +1,38 @@
 "use client";
-import { forwardRef, useRef } from "react";
+import { forwardRef, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
-// 환경 변수에서 API 키와 서비스 ID 가져오기
-const API_KEY = process.env.EMAIL;
-const EMAILSERVICE = process.env.EMAILSERVICE;
-const EMAILTEMP = process.env.EMAILTEMP;
+// 환경 변수값 가져오기
+const API_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+const EMAILSERVICE = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+const EMAILTEMP = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
 
 // Contact 컴포넌트
 const Contact = forwardRef<HTMLElement>((props, ref) => {
   const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // 이메일 전송 함수
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!form.current) return;
 
-    if (!form.current) {
-      console.error("환경 변수가 설정되지 않았거나 올바르지 않습니다.");
-      return;
-    }
+    setIsSubmitting(true);
 
-    emailjs
-      .sendForm(
-        EMAILSERVICE as string, //서비스 아이디
-        EMAILTEMP as string, // 메일 템플릿 아이디
-        form.current, // 연결 폼
-        API_KEY // API keys
-      )
-      .then(
-        (result) => {
-          if (form.current) {
-            // 폼 초기화
-            Array.from(form.current.elements).forEach((element) => {
-              const target = element as HTMLInputElement;
-              target.value = "";
-            });
-          }
-          alert("메일을 전송했습니다.");
-        },
-        (error) => {
-          console.log(error.text);
-        }
+    try {
+      await emailjs.sendForm(
+        EMAILSERVICE as string,
+        EMAILTEMP as string,
+        form.current,
+        API_KEY
       );
+
+      alert("메일이 전송되었습니다!");
+      form.current.reset();
+    } catch (error) {
+      alert("메일 전송에 실패했습니다.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -49,25 +40,42 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
       <h2 className="home-contact-title fs-fr f-title">Contact</h2>
       <article className="home-contact-con">
         <h3 className="hidden">문의하기</h3>
-        <form className="home-contact-form" ref={form} onSubmit={sendEmail}>
+        <form className="home-contact-form" ref={form} onSubmit={handleSubmit}>
           <div className="home-contact-form-item">
-            <label>이름</label>
-            <input placeholder="홍길동" type="text" name="user_name" required />
+            <label htmlFor="user_name">이름</label>
+            <input
+              id="user_name"
+              placeholder="홍길동"
+              type="text"
+              name="user_name"
+              required
+              disabled={isSubmitting}
+            />
           </div>
           <div className="home-contact-form-item">
-            <label>이메일</label>
+            <label htmlFor="user_email">이메일</label>
             <input
+              id="user_email"
               placeholder="abc@abc.com"
               type="email"
               name="user_email"
               required
+              disabled={isSubmitting}
             />
           </div>
           <div className="home-contact-form-item">
-            <label>메세지</label>
-            <textarea placeholder="상세 메세지" name="message" required />
+            <label htmlFor="message">메시지</label>
+            <textarea
+              id="message"
+              placeholder="상세 메시지"
+              name="message"
+              required
+              disabled={isSubmitting}
+            />
           </div>
-          <button type="submit">보내기</button>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "전송 중..." : "보내기"}
+          </button>
         </form>
       </article>
       <div className="home-contact-wave"></div>

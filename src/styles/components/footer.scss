@@ -13,7 +13,8 @@
     @apply text-sm sm:text-base;
     @apply flex items-start md:items-center justify-between;
 
-    a {
+    a,
+    button {
       @apply transition-all;
       @apply flex items-center;
       @apply text-xl sm:text-2xl;

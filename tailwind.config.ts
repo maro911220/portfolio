@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Pretendard Variable", "system-ui", "sans-serif"],
+      },
       colors: {
         body: "#222",
         dark: "#161717",

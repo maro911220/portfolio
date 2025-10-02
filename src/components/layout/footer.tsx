@@ -5,9 +5,9 @@ import { MouseEvent } from "react";
 // Footer 컴포넌트
 export default function Footer() {
   // 페이지 상단으로 이동 스크롤 함수
-  const onUp = (e: MouseEvent<HTMLAnchorElement>) => {
+  const onUp = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    window.scroll({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -19,12 +19,13 @@ export default function Footer() {
             href="https://github.com/maro911220"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub 프로필 방문"
           >
             <FaGithub />
           </a>
-          <a href="#none" onClick={onUp}>
+          <button onClick={onUp}>
             <FaArrowAltCircleUp />
-          </a>
+          </button>
         </div>
       </div>
     </footer>
