@@ -3,9 +3,9 @@ import { forwardRef, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 // 환경 변수값 가져오기
-const API_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
-const EMAILSERVICE = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
-const EMAILTEMP = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+const API_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+const EMAILSERVICE = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+const EMAILTEMP = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
 
 // Contact 컴포넌트
 const Contact = forwardRef<HTMLElement>((props, ref) => {
