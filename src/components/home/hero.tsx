@@ -2,10 +2,10 @@ import "@/styles/vendors/blobz.min.css";
 import { forwardRef } from "react";
 
 // Hero 컴포넌트
-const Hero = forwardRef<HTMLDivElement>((props, ref) => {
+const Hero = forwardRef<HTMLElement>((props, ref) => {
   return (
-    <section className="home-hero">
-      <div className="home-hero-wrap" ref={ref}>
+    <section className="home-hero" ref={ref}>
+      <div className="home-hero-wrap">
         <div className="home-hero-con">
           {/* Hero 콘텐츠 */}
           <h2 className="home-hero-con__title fs-fr">

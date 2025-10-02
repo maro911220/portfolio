@@ -1,31 +1,43 @@
 import { forwardRef } from "react";
 
 // 경력 정보 목록
-const aboutList = [
+const ABOUT_DATA = [
   {
+    id: "education",
     title: "학력",
     list: [
-      { year: "2007.03 ~ 2010.02", name: "구로 고등학교" },
+      { id: "high-school", year: "2007.03 ~ 2010.02", name: "구로 고등학교" },
       {
+        id: "college",
         year: "2013.02 ~ 2015.02",
         name: "서울예술 전문학교 / 디지털 디자인과",
       },
     ],
   },
   {
+    id: "other-career",
     title: "기타 경력",
     list: [
-      { year: "2016.02 ~ 2017.02", name: "골든프레임 / 3D 애니메이터" },
-      { year: "2017.12 ~ 2020.05", name: "KOG / 3D캐릭터 모델러" },
+      {
+        id: "golden-frame",
+        year: "2016.02 ~ 2017.02",
+        name: "골든프레임 / 3D 애니메이터",
+      },
+      { id: "kog", year: "2017.12 ~ 2020.05", name: "KOG / 3D캐릭터 모델러" },
     ],
   },
   {
+    id: "web-career",
     title: "웹 퍼블리셔 경력",
     list: [
-      { year: "2020.05 ~ 2020.09", name: "대구 코리아IT아카데미 수료" },
-      { year: "2020.09 ~ 2021.05", name: "스카이 패밀리" },
-      { year: "2021.06 ~ 2022.08", name: "에이토즈" },
-      { year: "2022.09 ~ 2025.08", name: "에스티엔인포텍" },
+      {
+        id: "academy",
+        year: "2020.05 ~ 2020.09",
+        name: "대구 코리아IT아카데미 수료",
+      },
+      { id: "sky", year: "2020.09 ~ 2021.05", name: "스카이 패밀리" },
+      { id: "atoz", year: "2021.06 ~ 2022.08", name: "에이토즈" },
+      { id: "stn", year: "2022.09 ~ 2025.08", name: "에스티엔인포텍" },
     ],
   },
 ];
@@ -52,15 +64,15 @@ const About = forwardRef<HTMLElement>((props, ref) => {
           </p>
         </div>
         <div className="home-about-right">
-          {aboutList.map((item, index) => {
+          {ABOUT_DATA.map((item, index) => {
             return (
-              <article className="home-about-right-box" key={index}>
+              <article className="home-about-right-box" key={item.id}>
                 <p className="home-about-right__num">0{index + 1}</p>
                 <div className="home-about-right__list">
                   <h3 className="home-about-right__title">{item.title}</h3>
-                  {item.list.map((listItem, index) => {
+                  {item.list.map((listItem) => {
                     return (
-                      <div className="home-about-right__item" key={index}>
+                      <div className="home-about-right__item" key={listItem.id}>
                         <p className="home-about-right__year">
                           {listItem.year}
                         </p>

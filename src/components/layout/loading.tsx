@@ -5,8 +5,6 @@ import { defaultStore } from "@/store/store";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import animationData from "./loading-lottie.json";
 
-const loadingStyle = `fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-white z-[999] transition-opacity duration-1000`;
-
 export default function Loading() {
   const containerRef = useRef<HTMLDivElement>(null);
   const lottieRef = useRef<LottieRefCurrentProps>(null);
@@ -18,6 +16,7 @@ export default function Loading() {
     }
   }, []);
 
+  // 애니메이션 완료
   const handleAnimationComplete = useCallback(() => {
     setTimeout(() => {
       if (containerRef.current) {
@@ -28,14 +27,17 @@ export default function Loading() {
     }, 100);
   }, [setFirstLoad]);
 
-  // 에러 핸들링
+  // 에러
   const handleAnimationError = useCallback(() => {
     console.warn("Lottie animation failed to load");
     handleAnimationComplete();
   }, [handleAnimationComplete]);
 
   return (
-    <div className={loadingStyle} ref={containerRef}>
+    <div
+      ref={containerRef}
+      className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-white z-[999] transition-opacity duration-1000"
+    >
       <Lottie
         lottieRef={lottieRef}
         animationData={animationData}

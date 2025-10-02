@@ -3,7 +3,7 @@ import Image from "next/image";
 import { forwardRef } from "react";
 
 // 작업물 리스트
-const workList = [
+const WORK_LIST = [
   {
     name: "Dashboard",
     sub: "KT AiON, 국방 관련 대시보드 (보안 사유로 소개용 화면으로 대체)",
@@ -58,27 +58,28 @@ const Work = forwardRef<HTMLDivElement>((props, ref) => {
                 </p>
               </div>
               <ul className="home-work-list">
-                {workList.map((item, index) => {
+                {WORK_LIST.map((item, index) => {
                   return (
-                    <li className="home-work-item" key={index}>
+                    <li className="home-work-item" key={item.name}>
                       <a
                         className="home-work-item__link"
                         href={item.link}
                         target="_blank"
                       >
                         <Image
-                          src={item.src}
-                          alt={item.name}
-                          blurDataURL={item.src}
                           fill
-                          priority
                           sizes="100%"
+                          src={item.src}
+                          priority={index < 2}
+                          alt={`${item.name} 썸네일`}
                         />
                         <p className="home-work-item__title">{item.name}</p>
                         <p className="home-work-item__sub">{item.sub}</p>
                         <div className="home-work-item__box">
-                          {item.type.map((label, index) => {
-                            return <span key={index}>{label}</span>;
+                          {item.type.map((label) => {
+                            return (
+                              <span key={`${item.name}-${label}`}>{label}</span>
+                            );
                           })}
                         </div>
                       </a>

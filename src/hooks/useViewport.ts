@@ -2,35 +2,27 @@
 
 import { useState, useEffect, useCallback } from "react";
 
-/* Lenis 사용 불가능한 환경인지 확인하는 함수 */
+/* Lenis 사용 체크 함수 */
 const checkIsLenisDisabled = (): boolean => {
   if (typeof window === "undefined") return false;
 
-  // 터치 이벤트 지원 여부 확인 (모바일)
   const isTouchDevice =
     "ontouchstart" in window || navigator.maxTouchPoints > 0;
-
-  // 모바일 디바이스의 User Agent 패턴
   const mobileUserAgentPattern =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-
-  // User Agent 문자열에서 모바일 패턴 확인
   const isMobileUserAgent = mobileUserAgentPattern.test(navigator.userAgent);
-
-  // Safari 브라우저 감지 (Chrome이나 다른 브라우저가 아닌 실제 Safari)
+  // !Safari + Lenis + GSAP ScrollTrigger 조합 이슈로 인한 체크
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
   return isTouchDevice || isMobileUserAgent || isSafari;
 };
 
-/* 뷰포트 크기와 모바일 여부를 추적하는 커스텀 훅 */
+/* 뷰포트 크기와 Lenis 활성화 여부를 추적하는 커스텀 훅 */
 export const useViewport = () => {
-  // 뷰포트 너비 상태
   const [width, setWidth] = useState(() =>
     typeof window !== "undefined" ? window.innerWidth : 0
   );
 
-  // Lenis 비활성화 여부 상태
   const [isLenisDisabled, setIsLenisDisabled] = useState(() =>
     checkIsLenisDisabled()
   );
@@ -40,28 +32,33 @@ export const useViewport = () => {
     const newWidth = window.innerWidth;
     const newIsLenisDisabled = checkIsLenisDisabled();
 
-    setWidth((prevWidth) => (prevWidth !== newWidth ? newWidth : prevWidth));
-    setIsLenisDisabled((prevIsLenisDisabled) =>
-      prevIsLenisDisabled !== newIsLenisDisabled
-        ? newIsLenisDisabled
-        : prevIsLenisDisabled
-    );
-  }, []);
+    if (newWidth !== width) setWidth(newWidth);
+    if (newIsLenisDisabled !== isLenisDisabled) {
+      setIsLenisDisabled(newIsLenisDisabled);
+    }
+  }, [width, isLenisDisabled]);
 
-  // 리사이즈 이벤트 리스너 등록
+  // 리사이즈 이벤트 리스너 등록 (디바운스 적용)
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    window.addEventListener("resize", handleResize);
-    handleResize();
+    let timeoutId: NodeJS.Timeout;
+
+    const debouncedResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(handleResize, 150);
+    };
+
+    window.addEventListener("resize", debouncedResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeoutId);
+      window.removeEventListener("resize", debouncedResize);
     };
   }, [handleResize]);
 
   return {
     width,
-    isLenisDisabled, // 모바일이거나 Safari인 경우 true
+    isLenisDisabled,
   };
 };

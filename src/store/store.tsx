@@ -21,10 +21,10 @@ type Store = {
 export const defaultStore = create<Store>()((set) => ({
   sectionRef: { current: [] }, // 섹션 참조
   firstLoad: true, // 로드 초기
-  firstLoadEnd: true, // 로드 종료
+  firstLoadEnd: false, // 로드 종료
   lenisInstance: null, // lenis
   setFirstLoad: () => set(() => ({ firstLoad: false })), // 로드 초기 설정 함수
-  setFirstLoadEnd: () => set(() => ({ firstLoadEnd: false })), // 로드 종료 설정 함수
+  setFirstLoadEnd: () => set(() => ({ firstLoadEnd: true })), // 로드 종료 설정 함수
   setSectionRef: (e) => set(() => ({ sectionRef: e })), // 섹션 참조 설정 함수
   setLenisInstance: (lenis) => set({ lenisInstance: lenis }), // lenis 설정 함수
 }));

@@ -1,9 +1,8 @@
 "use client";
 import { useStore } from "zustand";
-import { useState, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { defaultStore } from "@/store/store";
 import { FaGithub } from "react-icons/fa";
-
 import { NAV_SECTIONS } from "@/config/navigation";
 
 // Header 컴포넌트
@@ -11,62 +10,93 @@ export default function Header() {
   const { sectionRef, lenisInstance } = useStore(defaultStore);
   const [showNav, setShowNav] = useState(false);
 
-  // 스크롤 이벤트 핸들러
+  // 네비게이션 표시/숨김
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setShowNav(scrollY > 100);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setShowNav(window.scrollY > 100);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    // 스크롤 이벤트 리스너 추가
-    window.addEventListener("scroll", handleScroll);
+    if (lenisInstance) {
+      lenisInstance.on("scroll", handleScroll);
+    } else {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }
 
-    // 클린업 함수
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (lenisInstance) {
+        lenisInstance.off("scroll", handleScroll);
+      } else {
+        window.removeEventListener("scroll", handleScroll);
+      }
     };
-  }, []);
+  }, [lenisInstance]);
 
   // 특정 섹션으로 스크롤하는 함수
-  const move = (num: number) => {
-    if (sectionRef.current[num]) {
+  const handleNavClick = useCallback(
+    (index: number) => {
+      const targetSection = sectionRef.current[index];
+      if (!targetSection) return;
+
       if (lenisInstance) {
-        // Lenis가 활성화된 경우 (데스크톱)
-        lenisInstance.scrollTo(sectionRef.current[num], {
+        lenisInstance.scrollTo(targetSection, {
           duration: 1.2,
           easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         });
       } else {
-        // Lenis가 비활성화된 경우 (모바일) - 네이티브 스크롤 사용
-        sectionRef.current[num].scrollIntoView({
+        targetSection.scrollIntoView({
           behavior: "smooth",
           block: "start",
-          inline: "nearest",
         });
       }
-    }
-  };
+    },
+    [lenisInstance, sectionRef]
+  );
+
+  // 홈으로 스크롤
+  const handleLogoClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      handleNavClick(0);
+    },
+    [handleNavClick]
+  );
+
   return (
     <header className="header">
       <div className="header-con">
         <h1 className="header-title">
-          <a href="#none">Maro</a>
+          <a href="/" onClick={handleLogoClick} aria-label="홈으로 이동">
+            Maro
+          </a>
         </h1>
         <a
-          className="header-git"
-          href="https://github.com/maro911220"
           target="_blank"
+          className="header-git"
           rel="noopener noreferrer"
+          href="https://github.com/maro911220"
+          aria-label="GitHub 프로필"
         >
           <FaGithub />
         </a>
       </div>
 
       <nav className={`header-nav ${showNav ? "show" : ""}`}>
-        <h2 className="hidden">Maro-portfolio-nav</h2>
+        <h2 className="hidden">메인 네비게이션</h2>
         {NAV_SECTIONS.map((item, index) => {
           return (
-            <button onClick={() => move(index)} key={item.id}>
+            <button
+              key={item.id}
+              onClick={() => handleNavClick(index)}
+              aria-label={`${item.label} 섹션으로 이동`}
+            >
               {item.label}
             </button>
           );
