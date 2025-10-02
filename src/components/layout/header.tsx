@@ -62,7 +62,7 @@ export default function Header() {
 
   // 홈으로 스크롤
   const handleLogoClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>) => {
+    (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       handleNavClick(0);
     },
@@ -73,9 +73,9 @@ export default function Header() {
     <header className="header">
       <div className="header-con">
         <h1 className="header-title">
-          <a href="/" onClick={handleLogoClick} aria-label="홈으로 이동">
+          <button onClick={handleLogoClick} aria-label="홈으로 이동">
             Maro
-          </a>
+          </button>
         </h1>
         <a
           target="_blank"
