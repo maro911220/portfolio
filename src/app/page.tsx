@@ -1,5 +1,4 @@
 "use client";
-import "@/styles/main.scss";
 import { useEffect, useRef, useCallback } from "react";
 import { useStore } from "zustand";
 import { defaultStore } from "@/store/store";
@@ -16,6 +15,7 @@ import Contact from "@/components/home/contact";
 import Hero from "@/components/home/hero";
 import Work from "@/components/home/work";
 import Skills from "@/components/home/skills";
+import styles from "@/styles/components/home.module.scss";
 
 gsap.registerPlugin(useGSAP);
 
@@ -99,7 +99,7 @@ export default function Home() {
   );
 
   return (
-    <main className="home" ref={mainRef}>
+    <main className={styles.home} ref={mainRef}>
       {/* 초기 로딩 */}
       {!firstLoadEnd && <Loading />}
       {/* 섹션 */}

@@ -1,6 +1,7 @@
 "use client";
 import { forwardRef, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import styles from "@/styles/components/home.module.scss";
 
 // 환경 변수값 가져오기
 const API_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
@@ -36,12 +37,18 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
   };
 
   return (
-    <section className="home-contact" ref={ref}>
-      <h2 className="home-contact-title fs-fr f-title">Contact</h2>
-      <article className="home-contact-con">
+    <section className={styles["home-contact"]} ref={ref}>
+      <h2 className={`${styles["home-contact-title"]} fs-fr f-title`}>
+        Contact
+      </h2>
+      <article className={styles["home-contact-con"]}>
         <h3 className="hidden">문의하기</h3>
-        <form className="home-contact-form" ref={form} onSubmit={handleSubmit}>
-          <div className="home-contact-form-item">
+        <form
+          className={styles["home-contact-form"]}
+          ref={form}
+          onSubmit={handleSubmit}
+        >
+          <div className={styles["home-contact-form-item"]}>
             <label htmlFor="user_name">이름</label>
             <input
               id="user_name"
@@ -52,7 +59,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
               disabled={isSubmitting}
             />
           </div>
-          <div className="home-contact-form-item">
+          <div className={styles["home-contact-form-item"]}>
             <label htmlFor="user_email">이메일</label>
             <input
               id="user_email"
@@ -63,7 +70,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
               disabled={isSubmitting}
             />
           </div>
-          <div className="home-contact-form-item">
+          <div className={styles["home-contact-form-item"]}>
             <label htmlFor="message">메시지</label>
             <textarea
               id="message"
@@ -78,7 +85,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
           </button>
         </form>
       </article>
-      <div className="home-contact-wave"></div>
+      <div className={styles["home-contact-wave"]}></div>
     </section>
   );
 });

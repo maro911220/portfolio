@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import { defaultStore } from "@/store/store";
 import { FaGithub } from "react-icons/fa";
 import { NAV_SECTIONS } from "@/config/navigation";
+import styles from "@/styles/components/header.module.scss";
 
 // Header 컴포넌트
 export default function Header() {
@@ -70,16 +71,16 @@ export default function Header() {
   );
 
   return (
-    <header className="header">
-      <div className="header-con">
-        <h1 className="header-title">
+    <header className={styles.header}>
+      <div className={styles["header-con"]}>
+        <h1 className={styles["header-title"]}>
           <button onClick={handleLogoClick} aria-label="홈으로 이동">
             Maro
           </button>
         </h1>
         <a
           target="_blank"
-          className="header-git"
+          className={styles["header-git"]}
           rel="noopener noreferrer"
           href="https://github.com/maro911220"
           aria-label="GitHub 프로필"
@@ -88,7 +89,7 @@ export default function Header() {
         </a>
       </div>
 
-      <nav className={`header-nav ${showNav ? "show" : ""}`}>
+      <nav className={`${styles["header-nav"]} ${showNav ? styles.show : ""}`}>
         <h2 className="hidden">메인 네비게이션</h2>
         {NAV_SECTIONS.map((item, index) => {
           return (
