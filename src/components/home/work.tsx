@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { forwardRef } from "react";
+import styles from "@/styles/components/home.module.scss";
 
 // 작업물 리스트
 const WORK_LIST = [
@@ -45,24 +46,28 @@ const WORK_LIST = [
 // Work 컴포넌트
 const Work = forwardRef<HTMLDivElement>((props, ref) => {
   return (
-    <section className="home-work">
+    <section className={styles["home-work"]}>
       <h2 className="hidden">Work</h2>
-      <article className="home-work-scroller-dummy">
-        <div className="home-work-scroller">
-          <div className="home-work-con" ref={ref}>
-            <div className="home-work-wrap">
-              <div className="home-work-hero">
-                <h3 className="home-work-hero__title fs-fr f-title">Work</h3>
-                <p className="home-work-hero__sub">
+      <article className={styles["home-work-scroller-dummy"]}>
+        <div className={styles["home-work-scroller"]}>
+          <div className={styles["home-work-con"]} ref={ref}>
+            <div className={styles["home-work-wrap"]}>
+              <div className={styles["home-work-hero"]}>
+                <h3
+                  className={`${styles["home-work-hero__title"]} fs-fr f-title`}
+                >
+                  Work
+                </h3>
+                <p className={styles["home-work-hero__sub"]}>
                   회사 작업물과 개인 작업물 목록입니다.
                 </p>
               </div>
-              <ul className="home-work-list">
+              <ul className={styles["home-work-list"]}>
                 {WORK_LIST.map((item, index) => {
                   return (
-                    <li className="home-work-item" key={item.name}>
+                    <li className={styles["home-work-item"]} key={item.name}>
                       <a
-                        className="home-work-item__link"
+                        className={styles["home-work-item__link"]}
                         href={item.link}
                         target="_blank"
                       >
@@ -73,9 +78,13 @@ const Work = forwardRef<HTMLDivElement>((props, ref) => {
                           priority={index < 2}
                           alt={`${item.name} 썸네일`}
                         />
-                        <p className="home-work-item__title">{item.name}</p>
-                        <p className="home-work-item__sub">{item.sub}</p>
-                        <div className="home-work-item__box">
+                        <p className={styles["home-work-item__title"]}>
+                          {item.name}
+                        </p>
+                        <p className={styles["home-work-item__sub"]}>
+                          {item.sub}
+                        </p>
+                        <div className={styles["home-work-item__box"]}>
                           {item.type.map((label) => {
                             return (
                               <span key={`${item.name}-${label}`}>{label}</span>

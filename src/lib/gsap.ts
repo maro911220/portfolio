@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { Observer, ScrollTrigger } from "gsap/all";
+import styles from "@/styles/components/home.module.scss";
 
 gsap.registerPlugin(ScrollTrigger, Observer);
 
@@ -44,20 +45,26 @@ export const mainGsap = (
   const isIOSTouch = isIOSDevice && isTouchDevice;
 
   // Hero
-  gsap.set(".home-hero-con__title, .home-hero-con__sub, .home-hero-blob", {
-    y: ANIM_CONFIG.hero.y,
-    opacity: 0,
-  });
+  gsap.set(
+    `.${styles["home-hero-con__title"]}, .${styles["home-hero-con__sub"]}, .${styles["home-hero-blob"]}`,
+    {
+      y: ANIM_CONFIG.hero.y,
+      opacity: 0,
+    }
+  );
 
   if (!firstLoad) {
-    gsap.to(".home-hero-con__title, .home-hero-blob", {
-      y: 0,
-      opacity: 1,
-      duration: ANIM_CONFIG.stagger.duration,
-      onComplete: setFirstLoadEnd,
-    });
+    gsap.to(
+      `.${styles["home-hero-con__title"]}, .${styles["home-hero-blob"]}`,
+      {
+        y: 0,
+        opacity: 1,
+        duration: ANIM_CONFIG.stagger.duration,
+        onComplete: setFirstLoadEnd,
+      }
+    );
 
-    gsap.to(".home-hero-con__sub", {
+    gsap.to(`.${styles["home-hero-con__sub"]}`, {
       y: 0,
       opacity: 1,
       duration: ANIM_CONFIG.stagger.duration,
@@ -72,14 +79,14 @@ export const mainGsap = (
       const value = ANIM_CONFIG.parallax.value;
       const x = (Number(e.x) - window.innerWidth / 2) * value;
       const y = (Number(e.y) - window.innerHeight / 2) * value;
-      gsap.to(".home-hero-blur", { x: -x, y: -y });
-      gsap.to(".home-hero-blob", { x, y });
+      gsap.to(`.${styles["home-hero-blur"]}`, { x: -x, y: -y });
+      gsap.to(`.${styles["home-hero-blob"]}`, { x, y });
     },
   });
 
-  gsap.to(".home-hero-imgbox, .home-hero-con", {
+  gsap.to(`.${styles["home-hero-imgbox"]}, .${styles["home-hero-con"]}`, {
     scrollTrigger: {
-      trigger: ".home-hero",
+      trigger: `.${styles["home-hero"]}`,
       start: "top",
       end: "bottom",
       scrub: ANIM_CONFIG.scrub,
@@ -87,25 +94,27 @@ export const mainGsap = (
     y: ANIM_CONFIG.hero.scrollDist,
   });
 
-  gsap.to(".home-about-con", {
+  gsap.to(`.${styles["home-about-con"]}`, {
     scrollTrigger: {
-      trigger: ".home-about-con",
+      trigger: `.${styles["home-about-con"]}`,
       start: `top-=${window.innerHeight * ANIM_CONFIG.scroll.aboutOffset}`,
       toggleActions: "play none none reverse",
-      toggleClass: "active",
+      toggleClass: styles["active"],
     },
     opacity: 1,
   });
 
   // work
-  const list = scope.querySelector<HTMLElement>(".home-work-wrap");
-  const wrap = scope.querySelector<HTMLElement>(".home-work-scroller");
-  const con = scope.querySelector<HTMLElement>(".home-work-con");
+  const list = scope.querySelector<HTMLElement>(`.${styles["home-work-wrap"]}`);
+  const wrap = scope.querySelector<HTMLElement>(
+    `.${styles["home-work-scroller"]}`
+  );
+  const con = scope.querySelector<HTMLElement>(`.${styles["home-work-con"]}`);
 
   if (list && wrap && con) {
     if (isIOSTouch) {
       gsap.set(list, { x: 0 });
-      wrap.classList.add("iphone");
+      wrap.classList.add(styles["iphone"]);
     } else {
       const x = list.clientWidth - con.clientWidth;
       gsap.to(list, {
@@ -123,14 +132,14 @@ export const mainGsap = (
   }
 
   // contact
-  gsap.set(".home-contact-con", {
+  gsap.set(`.${styles["home-contact-con"]}`, {
     opacity: 0,
     y: ANIM_CONFIG.contact.y,
   });
 
-  gsap.to(".home-contact-con", {
+  gsap.to(`.${styles["home-contact-con"]}`, {
     scrollTrigger: {
-      trigger: ".home-contact-con",
+      trigger: `.${styles["home-contact-con"]}`,
       start: `top-=${window.innerHeight * ANIM_CONFIG.scroll.contactOffset}`,
       toggleActions: "play none none reverse",
     },
