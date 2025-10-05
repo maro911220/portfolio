@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import styles from "@/styles/components/home.module.scss";
 
 // 경력 정보 목록
 const ABOUT_DATA = [
@@ -46,12 +45,10 @@ const ABOUT_DATA = [
 // About 컴포넌트
 const About = forwardRef<HTMLElement>((props, ref) => {
   return (
-    <section className={styles["home-about"]} ref={ref}>
-      <div className={styles["home-about-con"]}>
-        <div className={styles["home-about-left"]}>
-          <h2 className={`${styles["home-about-title"]} fs-fr f-title`}>
-            About
-          </h2>
+    <section className="home-about" ref={ref}>
+      <div className="home-about-con">
+        <div className="home-about-left">
+          <h2 className="home-about-title fs-fr f-title">About</h2>
           <p>
             안녕하세요 저는 <span className="fs-fr text-main">MARO</span>{" "}
             입니다.
@@ -66,25 +63,20 @@ const About = forwardRef<HTMLElement>((props, ref) => {
             경험을 만드는 퍼블리셔를 목표로 공부하고 있습니다.
           </p>
         </div>
-        <div className={styles["home-about-right"]}>
+        <div className="home-about-right">
           {ABOUT_DATA.map((item, index) => {
             return (
-              <article className={styles["home-about-right-box"]} key={item.id}>
-                <p className={styles["home-about-right__num"]}>0{index + 1}</p>
-                <div className={styles["home-about-right__list"]}>
-                  <h3 className={styles["home-about-right__title"]}>
-                    {item.title}
-                  </h3>
+              <article className="home-about-right-box" key={item.id}>
+                <p className="home-about-right__num">0{index + 1}</p>
+                <div className="home-about-right__list">
+                  <h3 className="home-about-right__title">{item.title}</h3>
                   {item.list.map((listItem) => {
                     return (
-                      <div
-                        className={styles["home-about-right__item"]}
-                        key={listItem.id}
-                      >
-                        <p className={styles["home-about-right__year"]}>
+                      <div className="home-about-right__item" key={listItem.id}>
+                        <p className="home-about-right__year">
                           {listItem.year}
                         </p>
-                        <p className={styles["home-about-right__name"]}>
+                        <p className="home-about-right__name">
                           {listItem.name}
                         </p>
                       </div>

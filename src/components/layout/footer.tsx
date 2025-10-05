@@ -1,7 +1,6 @@
 "use client";
 import { FaGithub, FaArrowAltCircleUp } from "react-icons/fa";
 import { MouseEvent } from "react";
-import styles from "@/styles/components/footer.module.scss";
 
 // Footer 컴포넌트
 export default function Footer() {
@@ -12,8 +11,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className={styles.footer}>
-      <div className={`${styles["footer-wrap"]} fs-fr`}>
+    <footer className="footer">
+      <div className="footer-wrap fs-fr">
         <p>Maro911220</p>
         <div className="flex gap-sm">
           <a

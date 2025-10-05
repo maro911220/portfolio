@@ -25,9 +25,9 @@
 3. **환경 변수 설정:**
    프로젝트 루트에 `.env.local` 파일을 생성하고 다음을 추가하십시오
    ```
-   API_KEY: 개인 EMAILJS_PUBLIC_KEY,
-   EMAILSERVICE: 개인 EMAILJS_SERVICE_ID,
-   EMAILTEMP: 개인 EMAILJS_TEMPLATE_ID,
+   EMAIL=your_email@example.com
+   EMAILSERVICE=your_email_service_id
+   EMAILTEMP=your_email_template_id
    ```
    (문의 양식이 작동하려면 실제 이메일 서비스 정보로 교체가 필요합니다.)
    https://www.emailjs.com/

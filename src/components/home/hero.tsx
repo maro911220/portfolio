@@ -1,28 +1,27 @@
 import "@/styles/vendors/blobz.min.css";
 import { forwardRef } from "react";
-import styles from "@/styles/components/home.module.scss";
 
 // Hero 컴포넌트
 const Hero = forwardRef<HTMLElement>((props, ref) => {
   return (
-    <section className={styles["home-hero"]} ref={ref}>
-      <div className={styles["home-hero-wrap"]}>
-        <div className={styles["home-hero-con"]}>
+    <section className="home-hero" ref={ref}>
+      <div className="home-hero-wrap">
+        <div className="home-hero-con">
           {/* Hero 콘텐츠 */}
-          <h2 className={`${styles["home-hero-con__title"]} fs-fr`}>
+          <h2 className="home-hero-con__title fs-fr">
             Welcome To My
             <br />
             <b>PORTFOLIO</b>
           </h2>
-          <p className={styles["home-hero-con__sub"]}>
+          <p className="home-hero-con__sub ">
             안녕하세요 <span className="fs-fr text-main">MARO</span>의
             포트폴리오 페이지 입니다.
           </p>
         </div>
         {/* Blob 컴포넌트 */}
-        <div className={styles["home-hero-imgbox"]}>
-          <div className={styles["home-hero-blur"]}></div>
-          <div className={styles["home-hero-blob"]}>
+        <div className="home-hero-imgbox">
+          <div className="home-hero-blur"></div>
+          <div className="home-hero-blob">
             <Blob />
           </div>
         </div>
@@ -37,7 +36,7 @@ export default Hero;
 // Blob 컴포넌트
 function Blob() {
   return (
-    <div className={styles["tk-blob"]}>
+    <div className="tk-blob">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 747.2 726.7">
         <linearGradient id="PSgrad_0" x1="70.711%" x2="0%" y1="70.711%" y2="0%">
           <stop offset="0%" stopColor="rgb(34, 193, 195)" stopOpacity="1" />
