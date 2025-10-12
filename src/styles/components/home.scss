@@ -362,7 +362,7 @@
 
     &__sub {
       @apply h-[48px] mt-xs;
-      @apply text-gray-200 text-xs xs:text-sm sm:text-lg md:text-xl;
+      @apply text-gray-200 text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl;
     }
 
     &__box {

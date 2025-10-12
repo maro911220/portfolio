@@ -6,7 +6,7 @@ import { forwardRef } from "react";
 const WORK_LIST = [
   {
     name: "Dashboard",
-    sub: "KT AiON, 국방 관련 대시보드 (보안 사유로 소개용 화면으로 대체)",
+    sub: "KT AiON, M-BcN 등 대시보드 퍼블리싱 (보안 사유로 소개용 화면으로 대체)",
     link: "https://maroworkstn.vercel.app/",
     type: ["Gulp", "React", "Sass", "JS"],
     src: "/images/web/web_2.jpg",
@@ -17,14 +17,6 @@ const WORK_LIST = [
     link: "https://foresthospital.co.kr/jongno/main/main.html",
     type: ["PHP", "CSS", "JS"],
     src: "/images/web/web_1.jpg",
-  },
-
-  {
-    name: "Pokedex",
-    sub: "[개인 프로젝트] 포켓몬 API를 활용한 종합 포켓몬 정보 검색 및 탐색 대시보드",
-    link: "https://maro-poke.vercel.app/",
-    type: ["React", "Next.js", "shadcn"],
-    src: "/images/web/web_5.jpg",
   },
   {
     name: "My Dashboard",
