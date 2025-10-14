@@ -19,6 +19,13 @@ const WORK_LIST = [
     src: "/images/web/web_1.jpg",
   },
   {
+    name: "My sss",
+    sub: "[개인 프로젝트] 홍대 지역의 굿즈샵 정보를 확인할 수 있는 웹 애플리케이션",
+    link: "https://maro-board.vercel.app/",
+    type: ["React", "Next.js", "TailwindCSS", "KAKAO API"],
+    src: "/images/web/web_6.jpg",
+  },
+  {
     name: "My Dashboard",
     sub: "[개인 프로젝트] 실시간 영화/미디어 정보 및 날씨 확인이 가능한 검색형 대시보드",
     link: "https://maro-board.vercel.app/",
