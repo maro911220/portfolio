@@ -83,7 +83,7 @@ const Work = forwardRef<HTMLDivElement>((props, ref) => {
                           fill
                           sizes="100%"
                           src={item.src}
-                          priority={index < 2}
+                          priority
                           alt={`${item.name} 썸네일`}
                         />
                         <p className="home-work-item__title">{item.name}</p>
